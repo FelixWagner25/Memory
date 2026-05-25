@@ -4,6 +4,13 @@
 .home {
   background-color: #303131;
   @include mx.d-flex($flex-direction: column, $gap: 88px);
+  position: relative;
+
+  &__bg-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 .home-title {
@@ -39,7 +46,7 @@
 
     .start-btn__img--arrow {
       transform: scale(1.25);
-      transition: transform 250ms ease 100ms;
+      transition: transform 250ms ease;
     }
 
     .start-btn__text {
