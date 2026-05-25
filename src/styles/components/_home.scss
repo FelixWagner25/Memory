@@ -28,17 +28,30 @@
   padding: 24px;
   @include mx.d-flex($gap: 20px);
 
+  &:hover {
+    .start-btn__img--controller {
+      transform: rotate(-30deg);
+      transition: transform 250ms ease;
+    }
+
+    .start-btn__img--arrow {
+      transform: scale(1.25);
+      transition: transform 250ms ease;
+    }
+  }
+
   &__img {
     padding: 0;
+
     &--controller {
       width: 44px;
       height: 32px;
     }
+  }
 
-    &--arrow {
-      width: 33px;
-      height: 20px;
-    }
+  &--arrow {
+    width: 33px;
+    height: 20px;
   }
 
   &__text {

@@ -6,6 +6,12 @@ body {
   margin: 0;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 p {
   margin: 0;
   margin-block: 0;
