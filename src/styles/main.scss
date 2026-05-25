@@ -1,4 +1,5 @@
-@use "./components/main";
+@use "./components/main" as comp;
+@use "./abstract/main" as abs;
 
 body {
   margin: 0;

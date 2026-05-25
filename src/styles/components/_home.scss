@@ -1,3 +1,6 @@
+@use "../abstract/mixins" as mx;
+
 .home {
   background-color: #303131;
+  @include mx.d-flex();
 }
