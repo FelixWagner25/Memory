@@ -1,6 +1,19 @@
 @use "../abstract/mixins" as mx;
+@use "../base/typography" as typgr;
 
 .home {
   background-color: #303131;
-  @include mx.d-flex();
+  @include mx.d-flex($flex-direction: column, $gap: 72px);
+}
+
+.home-title {
+  color: white;
+
+  &__subtitle {
+    @include mx.font(48px);
+  }
+
+  &__title {
+    @include mx.font(140px, 700);
+  }
 }

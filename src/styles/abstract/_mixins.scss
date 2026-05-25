@@ -10,3 +10,17 @@
   align-items: $align-items;
   gap: $gap;
 }
+
+@mixin font(
+  $size: 16px,
+  $weight: 400,
+  $name: "Red_Rose",
+  $line-height: 100%,
+  $letter-spacing: 0%
+) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: $name;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
