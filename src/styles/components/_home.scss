@@ -3,11 +3,16 @@
 
 .home {
   background-color: #303131;
-  @include mx.d-flex($flex-direction: column, $gap: 72px);
+  @include mx.d-flex($flex-direction: column, $gap: 88px);
 }
 
 .home-title {
   color: white;
+  @include mx.d-flex(
+    $flex-direction: column,
+    $align-items: flex-start,
+    $gap: 40px
+  );
 
   &__subtitle {
     @include mx.font(48px);
@@ -15,5 +20,29 @@
 
   &__title {
     @include mx.font(140px, 700);
+  }
+}
+
+.start-btn {
+  background-color: #f0ea6e;
+  padding: 24px;
+  @include mx.d-flex($gap: 20px);
+
+  &__img {
+    padding: 0;
+    &--controller {
+      width: 44px;
+      height: 32px;
+    }
+
+    &--arrow {
+      width: 33px;
+      height: 20px;
+    }
+  }
+
+  &__text {
+    padding: 0;
+    @include mx.font(40px, 700);
   }
 }
