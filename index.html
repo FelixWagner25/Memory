@@ -8,7 +8,7 @@
     <script type="module" src="src/main.ts"></script>
   </head>
   <body>
-    <section class="screen home">
+    <section class="screen home d-none">
       <div class="home-title">
         <p class="home-title home-title__subtitle">It's play time.</p>
         <p class="home-title home-title__title">Ready to play?</p>
@@ -32,7 +32,92 @@
         class="home__bg-img"
       />
     </section>
-    <section class="screen settings"></section>
+    <section class="screen settings">
+      <h1>Settings</h1>
+      <div class="settings-body">
+        <div class="settings-menu-wrap">
+          <div>
+            <h2>
+              <img src="" alt="painter's palette" />
+              <span>Game themes</span>
+            </h2>
+            <div class="menu-options">
+              <div >
+                <button>
+                  <img src="" alt="radial button" /> 
+                  <span>Code vibes theme</span>
+                </button>
+              </div>
+              <div>
+                <button>
+                  <img src="" alt="radial button" />
+                  <span>DA projects theme</span>
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>
+              <img src="" alt="token figure">
+              <span>Chose player</span>
+            </h2>
+            <div class="menu-options">
+              <div>
+                <button>
+                  <img src="" alt="radial button">
+                <span>Blue</span>
+              </button>
+              </div>
+              <div>
+                <button>
+                  <img src="" alt="radial button">
+                  <span>Orange</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>
+              <img src="" alt="deck of cards">
+              <span>Board size</span>
+            </h2>
+            <div class="menu-options">
+              <div>
+                <button>
+                  <img src="" alt="radial button">
+                <span>16 cards</span>
+              </button>
+              </div>
+              <div>
+                <button>
+                  <img src="" alt="radial button">
+                  <span>24 cards</span>
+                </button>
+              </div>
+              <div>
+                <button>
+                  <img src="" alt="radial button">
+                  <span>36 cards</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="selection-overview-wrap">
+          <img src="" alt="card deck theme">
+          <div class="selection-overview-panel">
+            <span>Game theme</span>
+            <span>Player</span>
+            <span>Board size</span>
+            <button>
+              <img src="" alt="play button">
+              <span>Start</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="screen game"></section>
     <section class="screen game-over"></section>
     <section class="screen winner-orange"></section>
