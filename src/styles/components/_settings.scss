@@ -1,0 +1,20 @@
+@use "../abstract/mixins" as mx;
+@use "../base/typography" as typgr;
+
+.settings {
+  @include mx.d-flex($align-items: flex-start);
+  padding: 100px;
+}
+
+.set-body {
+  width: 1100px;
+}
+
+h1 {
+  @include mx.font(54px, 700);
+}
+
+h2 {
+  @include mx.font(24px, 700);
+  @include mx.d-flex($justify-content: flex-start);
+}
