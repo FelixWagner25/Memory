@@ -10,6 +10,7 @@
 .set-body {
   width: 1100px;
   @include mx.d-flex($justify-content: space-between, $align-items: flex-start);
+  padding-top: fct.px-to-rem(64px);
 }
 
 h1 {
@@ -21,6 +22,10 @@ h2 {
   @include mx.font(24px, 700);
   @include mx.d-flex($justify-content: flex-start);
   margin: 0;
+  > img {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .set-selection {

@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  font-family: "Red_Rose";
 }
 
 button {
@@ -23,4 +24,8 @@ p {
 
 .d-none {
   display: none;
+}
+
+input[type="radio"] {
+  accent-color: black;
 }
