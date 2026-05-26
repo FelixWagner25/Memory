@@ -33,4 +33,34 @@ h2 {
     width: 460px;
     height: 412px;
   }
+  @include mx.d-flex($flex-direction: column, $align-items: flex-end);
+}
+
+.set-panel {
+  @include mx.font(20px, 400);
+
+  &__btn {
+    border: none;
+    background-color: white;
+  }
+}
+
+.menu-options {
+  padding-top: 16px;
+  padding-bottom: 48px;
+  @include mx.d-flex($flex-direction: column, $align-items: flex-start);
+
+  &__btn {
+    background-color: white;
+    border: none;
+    @include mx.d-flex($justify-content: flex-start, $gap: 10px);
+    @include mx.font(20px, 400);
+  }
+}
+
+.set-point {
+  border: 3px solid #303131;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
 }
