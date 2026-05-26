@@ -1,5 +1,6 @@
 @use "../abstract/mixins" as mx;
 @use "../base/typography" as typgr;
+@use "../abstract/functions" as fct;
 
 .home {
   background-color: #303131;
@@ -32,7 +33,7 @@
 
 .start-btn {
   background-color: #f0ea6e;
-  padding: 24px;
+  padding: fct.px-to-rem(24px);
   @include mx.d-flex($gap: 20px);
 
   &:hover {

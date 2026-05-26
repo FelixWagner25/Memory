@@ -1,10 +1,10 @@
 @use "../abstract/mixins" as mx;
 @use "../base/typography" as typgr;
+@use "../abstract/functions" as fct;
 
 .settings {
   @include mx.d-flex($align-items: flex-start);
-  padding: 100px;
-  padding-top: 200px;
+  padding-top: fct.px-to-rem(100px);
 }
 
 .set-body {
