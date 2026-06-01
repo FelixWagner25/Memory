@@ -20,7 +20,7 @@
   &__score {
     padding: 17px 20px;
     background-color: #86e9d633;
-    @include mx.d-flex($gap: 20px);
+    @include mx.d-flex($gap: 32px);
 
     &--blue,
     &--orange {
