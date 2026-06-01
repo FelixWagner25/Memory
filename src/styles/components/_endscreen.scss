@@ -45,3 +45,24 @@
     );
   }
 }
+
+.winner {
+  @include mx.d-flex($flex-direction: column, $justify-content: flex-start);
+
+  > div {
+    width: 1220px;
+    @include mx.d-flex(
+      $flex-direction: column,
+      $justify-content: flex-start,
+      $gap: 54px
+    );
+
+    > img {
+      height: 360px;
+    }
+  }
+}
+
+.winner-content {
+  color: white;
+}

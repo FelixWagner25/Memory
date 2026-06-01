@@ -164,7 +164,7 @@
         </div>
       </div>
     </section>
-    <section class="screen game-over">
+    <section class="screen game-over d-none">
       <div>
         <div class="game-over__headline">Game over</div>
         <div class="game-over-score-wrap">
@@ -184,8 +184,44 @@
         </div>
       </div>
     </section>
-    <section class="screen winner-orange"></section>
-    <section class="screen winner-blue"></section>
-    <section class="screen draw"></section>
+    <section class="screen winner winner--orange">
+      <div>
+        <img
+          src="public/assets/img/confetti.svg"
+          alt="confetti"
+          class="confetti"
+        />
+        <div class="winner-content">
+          <div>
+            <div>The winner is</div>
+            <div>Orange Player</div>
+          </div>
+          <img src="" alt="" class="winner-content__img" />
+          <button class="winner-content__btn">Back to the start</button>
+        </div>
+      </div>
+    </section>
+    <section class="screen winner winner--blue">
+      <div>
+        <img
+          src="public/assets/img/confetti.svg"
+          alt="confetti"
+          class="confetti"
+        />
+        <div class="winner-content">
+          <div>
+            <div>The winner is</div>
+            <div>Orange Player</div>
+          </div>
+          <img src="" alt="" class="winner-content__img" />
+          <button class="winner-content__btn">Back to the start</button>
+        </div>
+      </div>
+    </section>
+    <section class="screen draw">
+      <div class="draw__headline"></div>
+      <div class="draw__img"></div>
+      <div class="draw__btn">Back to the start</div>
+    </section>
   </body>
 </html>
