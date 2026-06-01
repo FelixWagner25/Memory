@@ -5,7 +5,7 @@
   @include mx.d-flex(
     $flex-direction: column,
     $justify-content: flex-start,
-    $gap: 0
+    $gap: 54px
   );
 }
 
@@ -71,5 +71,30 @@
 
   &--orange {
     background-color: #f58e39;
+  }
+}
+
+.card {
+  height: 120px;
+  width: 120px;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    &--front {
+      background-image: url("../../../public/assets/img/git.svg");
+    }
+
+    &--back {
+      background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
+    }
   }
 }
