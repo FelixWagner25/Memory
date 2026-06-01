@@ -63,6 +63,8 @@
   width: 24px;
   height: 20px;
 
+  clip-path: polygon(0 0, 67% 0, 100% 50%, 67% 100%, 0 100%);
+
   &--blue {
     background-color: #2bb1ff;
   }
