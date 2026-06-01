@@ -130,7 +130,7 @@
         </div>
       </div>
     </section>
-    <section class="screen game-screen">
+    <section class="screen game-screen d-none">
       <div class="game">
         <div class="game-header">
           <div class="game-header__score">
@@ -164,7 +164,26 @@
         </div>
       </div>
     </section>
-    <section class="screen game-over"></section>
+    <section class="screen game-over">
+      <div>
+        <div class="game-over__headline">Game over</div>
+        <div class="game-over-score-wrap">
+          <div>Final score</div>
+          <div class="game-over__score">
+            <div class="game-over__score--blue">
+              <div class="player-icon player-icon--blue"></div>
+              <span>Blue</span>
+              <span>10</span>
+            </div>
+            <div class="game-over__score--orange">
+              <div class="player-icon player-icon--orange"></div>
+              <span>Orange</span>
+              <span>16</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="screen winner-orange"></section>
     <section class="screen winner-blue"></section>
     <section class="screen draw"></section>

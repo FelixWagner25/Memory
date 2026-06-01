@@ -1,0 +1,47 @@
+@use "../abstract/mixins" as mx;
+
+.game-over {
+  @include mx.d-flex();
+  @include mx.font(26px, 400);
+  color: #ffffff;
+
+  > div {
+    @include mx.d-flex(
+      $flex-direction: column,
+      $justify-content: flex-start,
+      $gap: 124px
+    );
+  }
+
+  &__headline {
+    color: #4dd5bc;
+    @include mx.font(140px, 700);
+  }
+  &__score {
+    padding: 17px 20px;
+    background-color: #86e9d633;
+    @include mx.d-flex($gap: 20px);
+
+    &--blue,
+    &--orange {
+      @include mx.d-flex($gap: 4px);
+      @include mx.font(24px, 700);
+    }
+
+    &--blue {
+      color: #2bb1ff;
+    }
+
+    &--orange {
+      color: #f58e39;
+    }
+  }
+
+  .game-over-score-wrap {
+    @include mx.d-flex(
+      $flex-direction: column,
+      $justify-content: flex-start,
+      $gap: 24px
+    );
+  }
+}
