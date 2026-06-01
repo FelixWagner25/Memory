@@ -92,3 +92,28 @@
     @include mx.font(24px, 700);
   }
 }
+
+.draw {
+  @include mx.d-flex($flex-direction: column, $gap: 64px);
+  &__headline {
+    @include mx.d-flex($flex-direction: column, $gap: 0);
+    &--primary {
+      @include mx.font(100px, 700);
+      color: #4dd5bc;
+      text-transform: uppercase;
+    }
+
+    &--secondary {
+      @include mx.font(40px, 400);
+      color: #ffffff;
+    }
+  }
+
+  &__btn {
+    padding: 16px 24px;
+    border: 1px solid #4dd5bc;
+    background-color: #86e9d633;
+    color: #ffffff;
+    @include mx.font(24px, 700);
+  }
+}
