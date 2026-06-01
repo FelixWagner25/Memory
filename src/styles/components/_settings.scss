@@ -79,6 +79,12 @@ h2 {
     padding-left: 40px;
     @include mx.d-flex($justify-content: flex-start, $gap: 10px);
     @include mx.font(20px, 400);
+
+    &:hover {
+      .set-deco {
+        display: block;
+      }
+    }
   }
 }
 
@@ -127,4 +133,28 @@ h2 {
 
 .h1-wrap {
   margin-left: 16px;
+}
+
+.set-deco {
+  display: none;
+  position: relative;
+  border-bottom: 3px solid #f0ea6e;
+  width: 40px;
+}
+
+.set-deco::after {
+  margin-top: 1px;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  width: 8px;
+  height: 8px;
+  background-color: #f0ea6e;
+  transform: rotate(45deg);
+}
+
+.set {
+  display: block;
 }
