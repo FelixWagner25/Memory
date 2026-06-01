@@ -130,26 +130,31 @@
         </div>
       </div>
     </section>
-    <section class="screen game">
-      <div class="game-header">
-        <div class="game-header__score">
-          <div class="game-header__score--blue">
-            <img src="" alt="blue icon" />
-            <span>Blue</span>
+    <section class="screen game-screen">
+      <div class="game">
+        <div class="game-header">
+          <div class="game-header__score">
+            <div class="game-header__score--blue">
+              <div class="player-icon player-icon--blue"></div>
+              <span>Blue</span>
+              <span>0</span>
+            </div>
+            <div class="game-header__score--orange">
+              <div class="player-icon player-icon--orange"></div>
+              <span>Orange</span>
+              <span>6</span>
+            </div>
           </div>
-          <div class="game-header__score--orange">
-            <img src="" alt="orange icon" />
-            <span>Orange</span>
+          <div class="game-header__current-player">
+            <span>Current player:</span>
+            <div class="player-icon player-icon--blue"></div>
+          </div>
+          <div class="game-header__exit-btn">
+            <img src="public/assets/img/leave.svg" alt="exit icon" />
+            <span>Exit game</span>
           </div>
         </div>
-        <div class="game-header__current-player">
-          <span>Current player:</span>
-          <img src="" alt="player color icon" />
-        </div>
-        <div class="game-header__exit-game">
-          <img src="" alt="exit icon" />
-          <span>Exit game</span>
-        </div>
+        <div class="game-core"></div>
       </div>
     </section>
     <section class="screen game-over"></section>

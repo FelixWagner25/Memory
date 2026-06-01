@@ -3,7 +3,6 @@
 @use "../abstract/functions" as fct;
 
 .home {
-  background-color: #303131;
   @include mx.d-flex($flex-direction: column, $gap: 88px);
   position: relative;
 

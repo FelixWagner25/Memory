@@ -5,6 +5,7 @@
 .settings {
   @include mx.d-flex($align-items: flex-start);
   padding-top: fct.px-to-rem(100px);
+  background-color: white;
 }
 
 .set-body {
