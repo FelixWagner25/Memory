@@ -54,7 +54,7 @@
     @include mx.d-flex(
       $flex-direction: column,
       $justify-content: flex-start,
-      $gap: 54px
+      $gap: 0
     );
 
     > img {
@@ -65,4 +65,30 @@
 
 .winner-content {
   color: white;
+  @include mx.d-flex(
+    $flex-direction: column,
+    $justify-content: flex-start,
+    $gap: 64px
+  );
+
+  &__headline {
+    @include mx.d-flex($flex-direction: column, $gap: 8px);
+
+    &--primary {
+      @include mx.font(60px, 700);
+      text-transform: uppercase;
+    }
+
+    &--secondary {
+      @include mx.font(40px, 400);
+    }
+  }
+
+  &__btn {
+    padding: 16px 24px;
+    border: 1px solid #4dd5bc;
+    background-color: #86e9d633;
+    color: #ffffff;
+    @include mx.font(24px, 700);
+  }
 }
