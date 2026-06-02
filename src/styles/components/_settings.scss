@@ -106,15 +106,31 @@ h2 {
       .set-deco {
         display: block;
       }
+      .set-point::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        border-radius: 50%;
+        background-color: #303131;
+      }
     }
   }
 }
 
 .set-point {
+  position: relative;
   border: 3px solid #303131;
   border-radius: 50%;
   width: 14px;
   height: 14px;
+}
+
+.set-point.set::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background-color: #303131;
 }
 
 .set-menu-wrap {
@@ -177,6 +193,6 @@ h2 {
   transform: rotate(45deg);
 }
 
-.set {
+.set-deco.set {
   display: block;
 }
