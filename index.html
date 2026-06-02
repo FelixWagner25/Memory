@@ -53,7 +53,8 @@
                 <button
                   class="menu-options__btn"
                   onclick="setGameTheme('Code-vibes')"
-                  onmouseover="setThemePreview('Code-vibes')"
+                  onmouseenter="setThemePreview('Code-vibes')"
+                  onmouseout="setThemePreview(gameTheme)"
                 >
                   <span class="set-point"></span>
                   <span>Code vibes theme</span>
@@ -62,7 +63,8 @@
                 <button
                   class="menu-options__btn"
                   onclick="setGameTheme('DA-projects')"
-                  onmouseover="setThemePreview('DA-projects')"
+                  onmouseenter="setThemePreview('DA-projects')"
+                  onmouseout="setThemePreview(gameTheme)"
                 >
                   <span class="set-point"></span>
                   <span>DA projects theme</span>
@@ -109,7 +111,7 @@
                 <button class="menu-options__btn" onclick="setBoardSize('16')">
                   <span class="set-point"></span>
                   <span>16 cards</span>
-                  <div class="set-deco set"></div>
+                  <div class="set-deco"></div>
                 </button>
                 <button class="menu-options__btn" onclick="setBoardSize('24')">
                   <span class="set-point"></span>
@@ -133,7 +135,7 @@
             />
             <div class="set-panel">
               <span
-                class="set-panel__text min-width-180px"
+                class="set-panel__text min-width-200px"
                 id="game-theme-selected"
                 >Game theme</span
               >

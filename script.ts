@@ -68,7 +68,7 @@ function changeImageSrc(htmlId: string, srcPath: string): void {
   }
 }
 
-function setThemePreview(option: "Code-vibes" | "DA-projects") {
+function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
   switch (option) {
     case "DA-projects":
       changeImageSrc(
