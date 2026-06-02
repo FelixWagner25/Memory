@@ -43,7 +43,7 @@ h2 {
 
 .set-panel {
   @include mx.font(20px, 400);
-  @include mx.d-flex($gap: 16px);
+  @include mx.d-flex($justify-content: space-evenly, $gap: 16px);
   background-color: #f6f6f6;
   padding: 14px 20px;
 
@@ -58,6 +58,10 @@ h2 {
       width: 20px;
       height: 16px;
     }
+  }
+
+  &__text {
+    @include mx.d-flex();
   }
 
   &__separator {
