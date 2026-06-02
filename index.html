@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
 
+    <script src="script.ts"></script>
     <script type="module" src="src/main.ts"></script>
   </head>
   <body>
@@ -32,7 +33,7 @@
         class="home__bg-img"
       />
     </section>
-    <section class="screen settings d-none">
+    <section class="screen settings">
       <div>
         <div class="h1-wrap">
           <h1>Settings</h1>
@@ -49,12 +50,18 @@
                 <span>Game themes</span>
               </h2>
               <div class="menu-options">
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setGameTheme('code-vibes')"
+                >
                   <span class="set-point"></span>
                   <span>Code vibes theme</span>
                   <div class="set-deco"></div>
                 </button>
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setGameTheme('DA-projects')"
+                >
                   <span class="set-point"></span>
                   <span>DA projects theme</span>
                   <div class="set-deco"></div>
@@ -70,12 +77,18 @@
                 <span>Chose player</span>
               </h2>
               <div class="menu-options">
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setStartPlayer('blue')"
+                >
                   <span class="set-point"></span>
                   <span>Blue</span>
                   <div class="set-deco"></div>
                 </button>
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setStartPlayer('orange')"
+                >
                   <span class="set-point"></span>
                   <span>Orange</span>
                   <div class="set-deco"></div>
@@ -91,17 +104,26 @@
                 <span>Board size</span>
               </h2>
               <div class="menu-options">
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setBoardSize('16cards')"
+                >
                   <span class="set-point"></span>
                   <span>16 cards</span>
                   <div class="set-deco set"></div>
                 </button>
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setBoardSize('24cards')"
+                >
                   <span class="set-point"></span>
                   <span>24 cards</span>
                   <div class="set-deco"></div>
                 </button>
-                <button class="menu-options__btn">
+                <button
+                  class="menu-options__btn"
+                  onclick="setBoardSize('36cards')"
+                >
                   <span class="set-point"></span>
                   <span>36 cards</span>
                   <div class="set-deco"></div>
@@ -230,7 +252,7 @@
         </div>
       </div>
     </section>
-    <section class="screen draw">
+    <section class="screen draw d-none">
       <div class="draw__headline">
         <div class="draw__headline--secondary">It's a</div>
         <div class="draw__headline--primary">Draw</div>
