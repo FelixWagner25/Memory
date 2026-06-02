@@ -6,21 +6,22 @@ let gameTheme: "Code-vibes" | "DA-projects";
 let startPlayer: "Blue" | "Orange";
 let boardSize: "16" | "24" | "36";
 
-function setGameTheme(option: "Code-vibes" | "DA-projects") {
+function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   gameTheme = option;
   renderSetPanel(option);
+  setThemePreview(option);
   themeSelected = true;
   if (allSettingsSelected()) enableStartBtn();
 }
 
-function setStartPlayer(option: "Blue" | "Orange") {
+function setStartPlayer(option: "Blue" | "Orange"): void {
   startPlayer = option;
   renderSetPanel(option);
   playerSelected = true;
   if (allSettingsSelected()) enableStartBtn();
 }
 
-function setBoardSize(option: "16" | "24" | "36") {
+function setBoardSize(option: "16" | "24" | "36"): void {
   boardSize = option;
   renderSetPanel(option);
   boardSelected = true;
@@ -31,11 +32,11 @@ function allSettingsSelected() {
   return themeSelected && playerSelected && boardSelected;
 }
 
-function enableStartBtn() {
+function enableStartBtn(): void {
   document.getElementById("set-start-btn")?.classList.remove("disabled");
 }
 
-function renderSetPanel(option: string) {
+function renderSetPanel(option: string): void {
   switch (option) {
     case "Code-vibes":
     case "DA-projects":
@@ -53,9 +54,33 @@ function renderSetPanel(option: string) {
   }
 }
 
-function setInnerText(htmlId: string, text: string) {
+function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
   if (element) {
     element.innerText = text;
+  }
+}
+
+function changeImageSrc(htmlId: string, srcPath: string): void {
+  const element = document.getElementById(htmlId);
+  if (element && element instanceof HTMLImageElement) {
+    element.src = srcPath;
+  }
+}
+
+function setThemePreview(option: "Code-vibes" | "DA-projects") {
+  switch (option) {
+    case "DA-projects":
+      changeImageSrc(
+        "theme-preview",
+        "public/assets/img/preview_DA_projects.svg",
+      );
+      break;
+    default:
+      changeImageSrc(
+        "theme-preview",
+        "public/assets/img/preview_code_icons.svg",
+      );
+      break;
   }
 }

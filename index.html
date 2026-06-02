@@ -53,6 +53,7 @@
                 <button
                   class="menu-options__btn"
                   onclick="setGameTheme('Code-vibes')"
+                  onmouseover="setThemePreview('Code-vibes')"
                 >
                   <span class="set-point"></span>
                   <span>Code vibes theme</span>
@@ -61,6 +62,7 @@
                 <button
                   class="menu-options__btn"
                   onclick="setGameTheme('DA-projects')"
+                  onmouseover="setThemePreview('DA-projects')"
                 >
                   <span class="set-point"></span>
                   <span>DA projects theme</span>
@@ -127,6 +129,7 @@
               src="public/assets/img/preview_code_icons.svg"
               alt="card deck theme"
               class="set-selection set-selection__img"
+              id="theme-preview"
             />
             <div class="set-panel">
               <span
@@ -153,7 +156,7 @@
         </div>
       </div>
     </section>
-    <section class="screen game-screen d-none">
+    <section class="screen game-screen">
       <div class="game">
         <div class="game-header">
           <div class="game-header__score">
