@@ -39,16 +39,16 @@ function renderSetPanel(option: string) {
   switch (option) {
     case "Code-vibes":
     case "DA-projects":
-      setInnerText("game-theme-selected", option);
+      setInnerText("game-theme-selected", option + " theme");
       break;
     case "Blue":
     case "Orange":
-      setInnerText("player-selected", option);
+      setInnerText("player-selected", option + " player");
       break;
     case "16":
     case "24":
     case "36":
-      setInnerText("board-size-selected", option);
+      setInnerText("board-size-selected", option + " cards");
       break;
   }
 }
