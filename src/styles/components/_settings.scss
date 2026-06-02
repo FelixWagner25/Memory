@@ -67,6 +67,13 @@ h2 {
   }
 }
 
+.set-panel__btn.disabled {
+  background-color: #a3a39f;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .menu-options {
   @include mx.d-flex(
     $flex-direction: column,
