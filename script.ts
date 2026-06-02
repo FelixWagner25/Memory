@@ -84,3 +84,12 @@ function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
       break;
   }
 }
+
+function setListDecorators(element: HTMLElement): void {
+  document.querySelectorAll(".set-point, .set-deco").forEach((el) => {
+    el.classList.remove("set");
+  });
+  element.querySelectorAll(".set-point, .set-deco").forEach((el) => {
+    el.classList.add("set");
+  });
+}

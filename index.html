@@ -52,17 +52,23 @@
               <div class="menu-options">
                 <button
                   class="menu-options__btn"
-                  onclick="setGameTheme('Code-vibes')"
+                  onclick="
+                    setGameTheme('Code-vibes');
+                    setListDecorators(this);
+                  "
                   onmouseenter="setThemePreview('Code-vibes')"
                   onmouseout="setThemePreview(gameTheme)"
                 >
-                  <span class="set-point set"></span>
+                  <span class="set-point"></span>
                   <span>Code vibes theme</span>
-                  <div class="set-deco set"></div>
+                  <div class="set-deco"></div>
                 </button>
                 <button
                   class="menu-options__btn"
-                  onclick="setGameTheme('DA-projects')"
+                  onclick="
+                    setGameTheme('DA-projects');
+                    setListDecorators(this);
+                  "
                   onmouseenter="setThemePreview('DA-projects')"
                   onmouseout="setThemePreview(gameTheme)"
                 >
@@ -83,7 +89,10 @@
               <div class="menu-options">
                 <button
                   class="menu-options__btn"
-                  onclick="setStartPlayer('Blue')"
+                  onclick="
+                    setStartPlayer('Blue');
+                    setListDecorators(this);
+                  "
                 >
                   <span class="set-point"></span>
                   <span>Blue</span>
@@ -91,7 +100,10 @@
                 </button>
                 <button
                   class="menu-options__btn"
-                  onclick="setStartPlayer('Orange')"
+                  onclick="
+                    setStartPlayer('Orange');
+                    setListDecorators(this);
+                  "
                 >
                   <span class="set-point"></span>
                   <span>Orange</span>
@@ -108,17 +120,35 @@
                 <span>Board size</span>
               </h2>
               <div class="menu-options">
-                <button class="menu-options__btn" onclick="setBoardSize('16')">
+                <button
+                  class="menu-options__btn"
+                  onclick="
+                    setBoardSize('16');
+                    setListDecorators(this);
+                  "
+                >
                   <span class="set-point"></span>
                   <span>16 cards</span>
                   <div class="set-deco"></div>
                 </button>
-                <button class="menu-options__btn" onclick="setBoardSize('24')">
+                <button
+                  class="menu-options__btn"
+                  onclick="
+                    setBoardSize('24');
+                    setListDecorators(this);
+                  "
+                >
                   <span class="set-point"></span>
                   <span>24 cards</span>
                   <div class="set-deco"></div>
                 </button>
-                <button class="menu-options__btn" onclick="setBoardSize('36')">
+                <button
+                  class="menu-options__btn"
+                  onclick="
+                    setBoardSize('36');
+                    setListDecorators(this);
+                  "
+                >
                   <span class="set-point"></span>
                   <span>36 cards</span>
                   <div class="set-deco"></div>
