@@ -60,6 +60,7 @@
 
     &:hover {
       border: 3px solid #6cf0d8;
+      background-color: #438e7f33;
     }
   }
 }
@@ -106,7 +107,8 @@
 
 .exit-overlay {
   position: absolute;
-  top: 50%;
+  opacity: 0;
+  top: 0px;
   left: 50%;
   translate: -50% -50%;
   width: 540px;
@@ -115,6 +117,7 @@
   border-radius: 24px;
   padding: 40px;
   @include mx.d-flex($flex-direction: column, $gap: 54px);
+  transition: all 400ms ease-in-out;
 
   &__text {
     color: #303131;
@@ -149,4 +152,14 @@
 
 .exit-overlay-btn-wrap {
   @include mx.d-flex($gap: 32px);
+}
+
+.exit-overlay-in {
+  opacity: 1;
+  top: 50%;
+}
+
+.exit-overlay-out {
+  opacity: 0;
+  top: 0px;
 }

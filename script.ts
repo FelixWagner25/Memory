@@ -96,3 +96,14 @@ function setListDecorators(element: HTMLElement): void {
     el.classList.add("set");
   });
 }
+
+function moveExitOverlay(moveType: string) {
+  const overlayElement = document.getElementById("exit-overlay");
+  if (!overlayElement) return;
+
+  if (moveType == "move-in") {
+    overlayElement.classList.add("exit-overlay-in");
+  } else if (moveType == "move-out") {
+    overlayElement.classList.remove("exit-overlay-in");
+  }
+}

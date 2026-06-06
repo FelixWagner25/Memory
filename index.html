@@ -207,7 +207,10 @@
             <span>Current player:</span>
             <div class="player-icon player-icon--blue"></div>
           </div>
-          <button class="game-header__exit-btn">
+          <button
+            class="game-header__exit-btn"
+            onclick="moveExitOverlay('move-in')"
+          >
             <img src="public/assets/img/leave.svg" alt="exit icon" />
             <span>Exit game</span>
           </button>
@@ -221,12 +224,15 @@
           </button>
         </div>
       </div>
-      <div class="exit-overlay">
+      <div class="exit-overlay" id="exit-overlay">
         <div class="exit-overlay__text">
           Are you sure you want to quit the game?
         </div>
         <div class="exit-overlay-btn-wrap">
-          <button class="exit-overlay__btn exit-overlay__btn--primary">
+          <button
+            class="exit-overlay__btn exit-overlay__btn--primary"
+            onclick="moveExitOverlay('move-out')"
+          >
             Back to game
           </button>
           <button class="exit-overlay__btn exit-overlay__btn--secondary">
