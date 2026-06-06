@@ -11,6 +11,7 @@
 
 .game-screen {
   @include mx.d-flex($align-items: flex-start);
+  position: relative;
 }
 
 .game-header {
@@ -97,4 +98,50 @@
       background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
     }
   }
+}
+
+.exit-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 540px;
+  height: 270px;
+  background-color: #ffffff;
+  padding: 40px;
+  @include mx.d-flex($flex-direction: column, $gap: 54px);
+
+  &__text {
+    color: #303131;
+    @include mx.font(32px, 700);
+    line-height: 40px;
+    text-align: center;
+  }
+
+  &__btn {
+    color: #ffffff;
+    @include mx.font(20px, 700);
+    padding: 16px 24px;
+
+    &--primary {
+      background-color: #66cfbc;
+      color: #ffffff;
+      &:hover {
+        background-color: #86e9d6;
+      }
+    }
+
+    &--secondary {
+      background-color: #dcfdf6;
+      border: 2px solid #4dd5bc;
+      color: #4dd5bc;
+      &:hover {
+        background-color: #b4f6e9;
+      }
+    }
+  }
+}
+
+.exit-overlay-btn-wrap {
+  @include mx.d-flex($gap: 32px);
 }
