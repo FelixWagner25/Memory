@@ -97,13 +97,17 @@ function setListDecorators(element: HTMLElement): void {
   });
 }
 
-function moveExitOverlay(moveType: string) {
+function moveExitOverlay(moveType: string, event: Event) {
+  event.stopPropagation();
   const overlayElement = document.getElementById("exit-overlay");
-  if (!overlayElement) return;
+  const bgOverlayElement = document.getElementById("exit-overlay-bg-blur");
+  if (!overlayElement || !bgOverlayElement) return;
 
   if (moveType == "move-in") {
     overlayElement.classList.add("exit-overlay-in");
+    bgOverlayElement.classList.add("blur-on");
   } else if (moveType == "move-out") {
     overlayElement.classList.remove("exit-overlay-in");
+    bgOverlayElement.classList.remove("blur-on");
   }
 }

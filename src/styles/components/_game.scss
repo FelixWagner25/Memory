@@ -12,6 +12,7 @@
 .game-screen {
   @include mx.d-flex($align-items: flex-start);
   position: relative;
+  z-index: 1;
 }
 
 .game-header {
@@ -107,6 +108,7 @@
 
 .exit-overlay {
   position: absolute;
+  z-index: 100;
   opacity: 0;
   top: 0px;
   left: 50%;
@@ -162,4 +164,22 @@
 .exit-overlay-out {
   opacity: 0;
   top: 0px;
+}
+
+.exit-overlay-blur {
+  position: absolute;
+  z-index: 10;
+  height: calc(100vh - 100px);
+  width: 100%;
+  top: 100px;
+  left: 0;
+  background-color: #303131;
+  opacity: 0;
+  transition: all 300ms ease-in;
+}
+
+.blur-on {
+  top: 0;
+  height: 100vh;
+  opacity: 0.5;
 }
