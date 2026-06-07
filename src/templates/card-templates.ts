@@ -1,4 +1,4 @@
-function getCardTemplate(id: number) {
+export function getCardTemplate(id: number) {
   return `
         <button class="card" id="${id}">
         <div class="card__inner">

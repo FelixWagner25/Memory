@@ -1,4 +1,4 @@
-//import { getCardTemplate } from "./src/templates/card-templates";
+import { getCardTemplate } from "./src/templates/card-templates";
 
 let themeSelected: boolean = false;
 let playerSelected: boolean = false;
@@ -114,10 +114,10 @@ function moveExitOverlay(moveType: string, event: Event) {
   }
 }
 
-// function renderCards() {
-//   const gameCoreElement = document.getElementById("game-core");
-//   if (!gameCoreElement) return;
-//   for (let i = 0; i < boardSize; i++) {
-//     gameCoreElement.innerHTML += getCardTemplate(i);
-//   }
-// }
+function renderCards() {
+  const gameCoreElement = document.getElementById("game-core");
+  if (!gameCoreElement) return;
+  for (let i = 0; i < boardSize; i++) {
+    gameCoreElement.innerHTML += getCardTemplate(i);
+  }
+}
