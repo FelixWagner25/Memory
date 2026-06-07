@@ -14,6 +14,12 @@ const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
 const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
 const blueBtnRef = document.getElementById("set-btn-blue");
 const organgeBtnRef = document.getElementById("set-btn-orange");
+const sixteenBtnRef = document.getElementById("set-btn-16-cards");
+const twentyfourBtnRef = document.getElementById("set-btn-24-cards");
+const thirtysixBtnRef = document.getElementById("set-btn-36-cards");
+const exitBtnRef = document.getElementById("exit-btn");
+const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
+const backToGameBtnRef = document.getElementById("back-to-game-btn");
 
 codeVibesBtnRef?.addEventListener("click", () => {
   setGameTheme("Code-vibes");
@@ -43,6 +49,33 @@ blueBtnRef?.addEventListener("click", () => {
 organgeBtnRef?.addEventListener("click", () => {
   setStartPlayer("Orange");
   setListDecorators(organgeBtnRef);
+});
+
+sixteenBtnRef?.addEventListener("click", () => {
+  setBoardSize(16);
+  setListDecorators(sixteenBtnRef);
+});
+
+twentyfourBtnRef?.addEventListener("click", () => {
+  setBoardSize(24);
+  setListDecorators(twentyfourBtnRef);
+});
+
+thirtysixBtnRef?.addEventListener("click", () => {
+  setBoardSize(36);
+  setListDecorators(thirtysixBtnRef);
+});
+
+exitBtnRef?.addEventListener("click", (event) => {
+  moveExitOverlay("move-in", event);
+});
+
+exitOverlayBgBlurRef?.addEventListener("click", (event) => {
+  moveExitOverlay("move-out", event);
+});
+
+backToGameBtnRef?.addEventListener("click", (event) => {
+  moveExitOverlay("move-out", event);
 });
 
 function setGameTheme(option: "Code-vibes" | "DA-projects"): void {

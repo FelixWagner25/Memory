@@ -90,35 +90,17 @@
                 <span>Board size</span>
               </h2>
               <div class="menu-options">
-                <button
-                  class="menu-options__btn"
-                  onclick="
-                    setBoardSize(16);
-                    setListDecorators(this);
-                  "
-                >
+                <button class="menu-options__btn" id="set-btn-16-cards">
                   <span class="set-point"></span>
                   <span>16 cards</span>
                   <div class="set-deco"></div>
                 </button>
-                <button
-                  class="menu-options__btn"
-                  onclick="
-                    setBoardSize(24);
-                    setListDecorators(this);
-                  "
-                >
+                <button class="menu-options__btn" id="set-btn-24-cards">
                   <span class="set-point"></span>
                   <span>24 cards</span>
                   <div class="set-deco"></div>
                 </button>
-                <button
-                  class="menu-options__btn"
-                  onclick="
-                    setBoardSize(36);
-                    setListDecorators(this);
-                  "
-                >
+                <button class="menu-options__btn" id="set-btn-36-cards">
                   <span class="set-point"></span>
                   <span>36 cards</span>
                   <div class="set-deco"></div>
@@ -177,10 +159,7 @@
             <span>Current player:</span>
             <div class="player-icon player-icon--blue"></div>
           </div>
-          <button
-            class="game-header__exit-btn"
-            onclick="moveExitOverlay('move-in', event)"
-          >
+          <button class="game-header__exit-btn" id="exit-btn">
             <img src="public/assets/img/leave.svg" alt="exit icon" />
             <span>Exit game</span>
           </button>
@@ -194,23 +173,22 @@
           </button>
         </div>
       </div>
-      <div
-        class="exit-overlay-blur"
-        id="exit-overlay-bg-blur"
-        onclick="moveExitOverlay('move-out', event)"
-      ></div>
+      <div class="exit-overlay-blur" id="exit-overlay-bg-blur"></div>
       <div class="exit-overlay" id="exit-overlay">
         <div class="exit-overlay__text">
           Are you sure you want to quit the game?
         </div>
         <div class="exit-overlay-btn-wrap">
           <button
+            id="back-to-game-btn"
             class="exit-overlay__btn exit-overlay__btn--primary"
-            onclick="moveExitOverlay('move-out', event)"
           >
             Back to game
           </button>
-          <button class="exit-overlay__btn exit-overlay__btn--secondary">
+          <button
+            class="exit-overlay__btn exit-overlay__btn--secondary"
+            id="confirm-exit-game-btn"
+          >
             Exit game
           </button>
         </div>
