@@ -1,10 +1,12 @@
+//import { getCardTemplate } from "./src/templates/card-templates";
+
 let themeSelected: boolean = false;
 let playerSelected: boolean = false;
 let boardSelected: boolean = false;
 
 let gameTheme: "Code-vibes" | "DA-projects";
 let startPlayer: "Blue" | "Orange";
-let boardSize: "16" | "24" | "36";
+let boardSize: 16 | 24 | 36;
 
 function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   gameTheme = option;
@@ -21,7 +23,7 @@ function setStartPlayer(option: "Blue" | "Orange"): void {
   if (allSettingsSelected()) enableStartBtn();
 }
 
-function setBoardSize(option: "16" | "24" | "36"): void {
+function setBoardSize(option: 16 | 24 | 36): void {
   boardSize = option;
   renderSetPanel(option);
   boardSelected = true;
@@ -36,7 +38,7 @@ function enableStartBtn(): void {
   document.getElementById("set-start-btn")?.classList.remove("disabled");
 }
 
-function renderSetPanel(option: string): void {
+function renderSetPanel(option: string | number): void {
   switch (option) {
     case "Code-vibes":
     case "DA-projects":
@@ -46,9 +48,9 @@ function renderSetPanel(option: string): void {
     case "Orange":
       setInnerText("player-selected", option + " player");
       break;
-    case "16":
-    case "24":
-    case "36":
+    case 16:
+    case 24:
+    case 36:
       setInnerText("board-size-selected", option + " cards");
       break;
   }
@@ -111,3 +113,11 @@ function moveExitOverlay(moveType: string, event: Event) {
     bgOverlayElement.classList.remove("blur-on");
   }
 }
+
+// function renderCards() {
+//   const gameCoreElement = document.getElementById("game-core");
+//   if (!gameCoreElement) return;
+//   for (let i = 0; i < boardSize; i++) {
+//     gameCoreElement.innerHTML += getCardTemplate(i);
+//   }
+// }

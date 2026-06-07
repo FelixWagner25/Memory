@@ -6,6 +6,7 @@
     <title>Memory</title>
 
     <script src="script.ts"></script>
+    <script src="src/templates/card-templates.ts"></script>
     <script type="module" src="src/main.ts"></script>
   </head>
   <body>
@@ -123,7 +124,7 @@
                 <button
                   class="menu-options__btn"
                   onclick="
-                    setBoardSize('16');
+                    setBoardSize(16);
                     setListDecorators(this);
                   "
                 >
@@ -134,7 +135,7 @@
                 <button
                   class="menu-options__btn"
                   onclick="
-                    setBoardSize('24');
+                    setBoardSize(24);
                     setListDecorators(this);
                   "
                 >
@@ -145,7 +146,7 @@
                 <button
                   class="menu-options__btn"
                   onclick="
-                    setBoardSize('36');
+                    setBoardSize(36);
                     setListDecorators(this);
                   "
                 >
@@ -215,7 +216,7 @@
             <span>Exit game</span>
           </button>
         </div>
-        <div class="game-core">
+        <div class="game-core" id="game-core">
           <button class="card">
             <div class="card__inner">
               <div class="card__face card__face--front"></div>
