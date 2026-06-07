@@ -10,15 +10,40 @@ let gameTheme: "Code-vibes" | "DA-projects";
 let startPlayer: "Blue" | "Orange";
 let boardSize: 16 | 24 | 36;
 
-const gameThemeBtnRef = document.getElementById("set-btn-game-theme");
-gameThemeBtnRef?.addEventListener("click", () => {
+const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
+const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
+const blueBtnRef = document.getElementById("set-btn-blue");
+const organgeBtnRef = document.getElementById("set-btn-orange");
+
+codeVibesBtnRef?.addEventListener("click", () => {
   setGameTheme("Code-vibes");
-  setListDecorators(gameThemeBtnRef);
+  setListDecorators(codeVibesBtnRef);
 });
-gameThemeBtnRef?.addEventListener("mouseenter", () =>
+codeVibesBtnRef?.addEventListener("mouseenter", () =>
   setThemePreview("Code-vibes"),
 );
-gameThemeBtnRef?.addEventListener("mouseout", () => setThemePreview(gameTheme));
+codeVibesBtnRef?.addEventListener("mouseout", () => setThemePreview(gameTheme));
+
+daProjectsBtnRef?.addEventListener("click", () => {
+  setGameTheme("DA-projects");
+  setListDecorators(daProjectsBtnRef);
+});
+daProjectsBtnRef?.addEventListener("mouseenter", () =>
+  setThemePreview("DA-projects"),
+);
+daProjectsBtnRef?.addEventListener("mouseout", () =>
+  setThemePreview(gameTheme),
+);
+
+blueBtnRef?.addEventListener("click", () => {
+  setStartPlayer("Blue");
+  setListDecorators(blueBtnRef);
+});
+
+organgeBtnRef?.addEventListener("click", () => {
+  setStartPlayer("Orange");
+  setListDecorators(organgeBtnRef);
+});
 
 function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   gameTheme = option;
