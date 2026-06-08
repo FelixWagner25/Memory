@@ -118,12 +118,10 @@
     height: 100%;
     position: absolute;
     inset: 0;
-    background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
     backface-visibility: hidden;
 
     &--back {
       transform: rotateY(180deg);
-      background-image: url("../../../public/assets/img/git.svg");
     }
   }
 

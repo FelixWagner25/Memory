@@ -2,8 +2,8 @@ export function getCardTemplate(id: number) {
   return `
         <button class="card" id="${id}">
         <div class="card__inner">
-            <div class="card__face"></div>
-            <div class="card__face card__face--back"></div>
+            <img src="public/assets/img/card--back_DA-theme.svg" class="card__face" />
+            <img src="public/assets/img/git.svg" class="card__face card__face--back" />
         </div>
         </button>
         `;
