@@ -174,7 +174,7 @@ function setListDecorators(element: HTMLElement): void {
   });
 }
 
-function moveExitOverlay(moveType: string, event: Event) {
+function moveExitOverlay(moveType: string, event: Event): void {
   event.stopPropagation();
   const overlayElement = document.getElementById("exit-overlay");
   const bgOverlayElement = document.getElementById("exit-overlay-bg-blur");
@@ -189,18 +189,25 @@ function moveExitOverlay(moveType: string, event: Event) {
   }
 }
 
-function initGame() {
+function initGame(): void {
   if (!allSettingsSelected()) return;
   renderCards();
 }
 
-function renderCards() {
+function renderCards(): void {
   const gameCoreRef = document.getElementById("game-core");
-  renderCardGrid(boardSize);
   if (!gameCoreRef) return;
+  renderCardGrid(boardSize);
   for (let i = 0; i < boardSize; i++) {
     gameCoreRef.innerHTML += getCardTemplate(i);
   }
+  gameCoreRef.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(
+      ".card__face",
+    ) as HTMLButtonElement;
+    if (!card) return;
+    card.classList.toggle("is-flipped");
+  });
 }
 
 function renderCardGrid(boardSize: number): void {

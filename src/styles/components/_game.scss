@@ -116,14 +116,12 @@
     height: 100%;
     position: absolute;
     inset: 0;
-    &--front {
-      background-image: url("../../../public/assets/img/git.svg");
-    }
-
-    &--back {
-      background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
-    }
+    background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
   }
+}
+
+.is-flipped {
+  background-image: url("../../../public/assets/img/git.svg");
 }
 
 .exit-overlay {
