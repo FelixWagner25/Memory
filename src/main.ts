@@ -20,6 +20,7 @@ const thirtysixBtnRef = document.getElementById("set-btn-36-cards");
 const exitBtnRef = document.getElementById("exit-btn");
 const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
 const backToGameBtnRef = document.getElementById("back-to-game-btn");
+const setStartBtn = document.getElementById("set-start-btn");
 
 codeVibesBtnRef?.addEventListener("click", () => {
   setGameTheme("Code-vibes");
@@ -76,6 +77,10 @@ exitOverlayBgBlurRef?.addEventListener("click", (event) => {
 
 backToGameBtnRef?.addEventListener("click", (event) => {
   moveExitOverlay("move-out", event);
+});
+
+setStartBtn?.addEventListener("click", () => {
+  initGame();
 });
 
 function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
@@ -184,10 +189,37 @@ function moveExitOverlay(moveType: string, event: Event) {
   }
 }
 
+function initGame() {
+  if (!allSettingsSelected()) return;
+  renderCards();
+}
+
 function renderCards() {
-  const gameCoreElement = document.getElementById("game-core");
-  if (!gameCoreElement) return;
+  const gameCoreRef = document.getElementById("game-core");
+  renderCardGrid(boardSize);
+  if (!gameCoreRef) return;
   for (let i = 0; i < boardSize; i++) {
-    gameCoreElement.innerHTML += getCardTemplate(i);
+    gameCoreRef.innerHTML += getCardTemplate(i);
   }
+}
+
+function renderCardGrid(boardSize: number): void {
+  const gameCoreRef = document.getElementById("game-core");
+  removeAnyGridSetting();
+  switch (boardSize) {
+    case 16:
+      gameCoreRef?.classList.add("grid-4x4");
+      break;
+    case 24:
+      gameCoreRef?.classList.add("grid-6x4");
+    case 36:
+      gameCoreRef?.classList.add("grid-6x6");
+  }
+}
+
+function removeAnyGridSetting(): void {
+  const gameCoreRef = document.getElementById("game-core");
+  gameCoreRef?.classList.remove("grid-4x4");
+  gameCoreRef?.classList.remove("grid-6x4");
+  gameCoreRef?.classList.remove("grid-6x6");
 }

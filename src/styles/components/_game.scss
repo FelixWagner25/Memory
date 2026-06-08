@@ -81,6 +81,26 @@
   }
 }
 
+.game-core {
+  display: grid;
+  gap: 8px;
+}
+
+.grid-4x4 {
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
+}
+
+.grid-6x4 {
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
+}
+
+.grid-6x6 {
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
 .card {
   height: 120px;
   width: 120px;
