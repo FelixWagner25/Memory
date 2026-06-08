@@ -203,7 +203,7 @@ function renderCards(): void {
   }
   gameCoreRef.addEventListener("click", (e) => {
     const card = (e.target as HTMLElement).closest(
-      ".card__face",
+      ".card",
     ) as HTMLButtonElement;
     if (!card) return;
     card.classList.toggle("is-flipped");

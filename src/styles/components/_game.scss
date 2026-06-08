@@ -109,6 +109,8 @@
     position: relative;
     width: 100%;
     height: 100%;
+    transition: all 300ms ease-in-out;
+    transform-style: preserve-3d;
   }
 
   &__face {
@@ -117,11 +119,17 @@
     position: absolute;
     inset: 0;
     background-image: url("../../../public/assets/img/card--back_DA-theme.svg");
-  }
-}
+    backface-visibility: hidden;
 
-.is-flipped {
-  background-image: url("../../../public/assets/img/git.svg");
+    &--back {
+      transform: rotateY(180deg);
+      background-image: url("../../../public/assets/img/git.svg");
+    }
+  }
+
+  &.is-flipped .card__inner {
+    transform: rotateY(180deg);
+  }
 }
 
 .exit-overlay {
