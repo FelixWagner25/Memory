@@ -32,7 +32,6 @@ export function initGameCards() {
     let card = createNewCard(i, cardSrc, i + set.boardSize / 2);
     let partnerCard = createNewCard(i + set.boardSize / 2, cardSrc, i);
     gameCards.push(card, partnerCard);
-    //gameCards.push(partnerCard);
   }
   gameCards = shuffleArray(gameCards);
   console.log(gameCards);
