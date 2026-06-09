@@ -39,7 +39,21 @@ export function initGameCards() {
     gameCardsSrcs.push(cardSrc);
     gameCardsSrcs.push(cardSrc);
   }
+  gameCardsSrcs = shuffleArray(gameCardsSrcs);
   console.log(gameCardsSrcs);
+}
+
+function shuffleArray<T>(array: T[]): T[] {
+  let currentIndex = array.length;
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
 }
 
 export function renderCards(): void {

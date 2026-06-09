@@ -30,7 +30,7 @@ export const DAProjectsSrc = [
   "public/assets/img/DA-projects/eggs.svg",
   "public/assets/img/DA-projects/join.svg",
   "public/assets/img/DA-projects/kochwelt.svg",
-  "public/assets/img/DA-projects/noddles.svg",
+  "public/assets/img/DA-projects/noodles.svg",
   "public/assets/img/DA-projects/pokedex.svg",
   "public/assets/img/DA-projects/pollo-loco.svg",
   "public/assets/img/DA-projects/sakura.svg",
