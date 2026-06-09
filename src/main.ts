@@ -39,9 +39,13 @@ export function initGameCards() {
   for (let i = 0; i < set.boardSize / 2; i++) {
     randomIndex = Math.round((set.boardSize / 2 - i - 1) * Math.random());
     cardSrc = srcPaths.splice(randomIndex, 1)[0];
-    let card: GameCard = { id: i, src: cardSrc, partnerId: i + 1 };
+    let card: GameCard = {
+      id: i,
+      src: cardSrc,
+      partnerId: i + set.boardSize / 2,
+    };
     let partnerCard: GameCard = {
-      id: i + 1,
+      id: i + set.boardSize / 2,
       src: cardSrc,
       partnerId: i,
     };
