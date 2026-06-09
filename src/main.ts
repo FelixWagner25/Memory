@@ -22,11 +22,33 @@ export function initGame(): void {
 }
 
 export function initGameCards() {
-  let srcPaths: string[];
   let randomIndex: number;
   let cardSrc: string;
-  let partnerCardSrc: string;
+  let srcPaths = getCardSrcsPathSet();
 
+  for (let i = 0; i < set.boardSize / 2; i++) {
+    randomIndex = Math.round((set.boardSize / 2 - i - 1) * Math.random());
+    cardSrc = srcPaths.splice(randomIndex, 1)[0];
+    let card = createNewCard(i, cardSrc, i + set.boardSize / 2);
+    let partnerCard = createNewCard(i + set.boardSize / 2, cardSrc, i);
+    gameCards.push(card, partnerCard);
+    //gameCards.push(partnerCard);
+  }
+  gameCards = shuffleArray(gameCards);
+  console.log(gameCards);
+}
+
+function createNewCard(id: number, src: string, partnerId: number) {
+  let card: GameCard = {
+    id: id,
+    src: src,
+    partnerId: partnerId,
+  };
+  return card;
+}
+
+function getCardSrcsPathSet() {
+  let srcPaths: string[];
   switch (set.gameTheme) {
     case "Code-vibes":
       srcPaths = constants.codeVibesSrc;
@@ -35,25 +57,7 @@ export function initGameCards() {
       srcPaths = constants.DAProjectsSrc;
       break;
   }
-
-  for (let i = 0; i < set.boardSize / 2; i++) {
-    randomIndex = Math.round((set.boardSize / 2 - i - 1) * Math.random());
-    cardSrc = srcPaths.splice(randomIndex, 1)[0];
-    let card: GameCard = {
-      id: i,
-      src: cardSrc,
-      partnerId: i + set.boardSize / 2,
-    };
-    let partnerCard: GameCard = {
-      id: i + set.boardSize / 2,
-      src: cardSrc,
-      partnerId: i,
-    };
-    gameCards.push(card);
-    gameCards.push(partnerCard);
-  }
-  gameCards = shuffleArray(gameCards);
-  console.log(gameCards);
+  return srcPaths;
 }
 
 function shuffleArray<T>(array: T[]): T[] {
