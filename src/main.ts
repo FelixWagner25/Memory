@@ -1,7 +1,10 @@
 import "./styles/main.scss";
 import * as set from "./scripts/settings";
+import * as constants from "./scripts/constants";
 
 import { getCardTemplate } from "./templates/card-templates";
+
+export let gameCardsSrcs: string[] = [];
 
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
@@ -12,7 +15,31 @@ export function setInnerText(htmlId: string, text: string): void {
 
 export function initGame(): void {
   if (!set.allSettingsSelected()) return;
+  initGameCards();
   renderCards();
+}
+
+export function initGameCards() {
+  let srcPaths: string[];
+  let randomIndex: number;
+  let cardSrc: string;
+
+  switch (set.gameTheme) {
+    case "Code-vibes":
+      srcPaths = constants.codeVibesSrc;
+      break;
+    case "DA-projects":
+      srcPaths = constants.DAProjectsSrc;
+      break;
+  }
+
+  for (let i = 0; i < set.boardSize / 2; i++) {
+    randomIndex = Math.round((set.boardSize / 2 - i - 1) * Math.random());
+    cardSrc = srcPaths.splice(randomIndex, 1)[0];
+    gameCardsSrcs.push(cardSrc);
+    gameCardsSrcs.push(cardSrc);
+  }
+  console.log(gameCardsSrcs);
 }
 
 export function renderCards(): void {

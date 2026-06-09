@@ -1,4 +1,4 @@
-const codeVibesSrc = [
+export const codeVibesSrc = [
   "public/assets/img/code-vibes/angular.svg",
   "public/assets/img/code-vibes/bootstrap.svg",
   "public/assets/img/code-vibes/css.svg",
@@ -19,7 +19,7 @@ const codeVibesSrc = [
   "public/assets/img/code-vibes/vue.svg",
 ];
 
-const DAProjectsSrc = [
+export const DAProjectsSrc = [
   "public/assets/img/DA-projects/bestell-app.svg",
   "public/assets/img/DA-projects/bookstore.svg",
   "public/assets/img/DA-projects/can-mind.svg",
