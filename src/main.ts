@@ -1,204 +1,25 @@
 import "./styles/main.scss";
+import * as set from "./scripts/settings";
 
 import { getCardTemplate } from "./templates/card-templates";
 
-let themeSelected: boolean = false;
-let playerSelected: boolean = false;
-let boardSelected: boolean = false;
-
-let gameTheme: "Code-vibes" | "DA-projects";
-let startPlayer: "Blue" | "Orange";
-let boardSize: 16 | 24 | 36;
-
-const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
-const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
-const blueBtnRef = document.getElementById("set-btn-blue");
-const organgeBtnRef = document.getElementById("set-btn-orange");
-const sixteenBtnRef = document.getElementById("set-btn-16-cards");
-const twentyfourBtnRef = document.getElementById("set-btn-24-cards");
-const thirtysixBtnRef = document.getElementById("set-btn-36-cards");
-const exitBtnRef = document.getElementById("exit-btn");
-const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
-const backToGameBtnRef = document.getElementById("back-to-game-btn");
-const setStartBtn = document.getElementById("set-start-btn");
-
-codeVibesBtnRef?.addEventListener("click", () => {
-  setGameTheme("Code-vibes");
-  setListDecorators(codeVibesBtnRef);
-});
-codeVibesBtnRef?.addEventListener("mouseenter", () =>
-  setThemePreview("Code-vibes"),
-);
-codeVibesBtnRef?.addEventListener("mouseout", () => setThemePreview(gameTheme));
-
-daProjectsBtnRef?.addEventListener("click", () => {
-  setGameTheme("DA-projects");
-  setListDecorators(daProjectsBtnRef);
-});
-daProjectsBtnRef?.addEventListener("mouseenter", () =>
-  setThemePreview("DA-projects"),
-);
-daProjectsBtnRef?.addEventListener("mouseout", () =>
-  setThemePreview(gameTheme),
-);
-
-blueBtnRef?.addEventListener("click", () => {
-  setStartPlayer("Blue");
-  setListDecorators(blueBtnRef);
-});
-
-organgeBtnRef?.addEventListener("click", () => {
-  setStartPlayer("Orange");
-  setListDecorators(organgeBtnRef);
-});
-
-sixteenBtnRef?.addEventListener("click", () => {
-  setBoardSize(16);
-  setListDecorators(sixteenBtnRef);
-});
-
-twentyfourBtnRef?.addEventListener("click", () => {
-  setBoardSize(24);
-  setListDecorators(twentyfourBtnRef);
-});
-
-thirtysixBtnRef?.addEventListener("click", () => {
-  setBoardSize(36);
-  setListDecorators(thirtysixBtnRef);
-});
-
-exitBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-in", event);
-});
-
-exitOverlayBgBlurRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
-});
-
-backToGameBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
-});
-
-setStartBtn?.addEventListener("click", () => {
-  initGame();
-});
-
-function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
-  gameTheme = option;
-  renderSetPanel(option);
-  setThemePreview(option);
-  themeSelected = true;
-  if (allSettingsSelected()) enableStartBtn();
-}
-
-function setStartPlayer(option: "Blue" | "Orange"): void {
-  startPlayer = option;
-  renderSetPanel(option);
-  playerSelected = true;
-  if (allSettingsSelected()) enableStartBtn();
-}
-
-function setBoardSize(option: 16 | 24 | 36): void {
-  boardSize = option;
-  renderSetPanel(option);
-  boardSelected = true;
-  if (allSettingsSelected()) enableStartBtn();
-}
-
-function allSettingsSelected() {
-  return themeSelected && playerSelected && boardSelected;
-}
-
-function enableStartBtn(): void {
-  document.getElementById("set-start-btn")?.classList.remove("disabled");
-}
-
-function renderSetPanel(option: string | number): void {
-  switch (option) {
-    case "Code-vibes":
-    case "DA-projects":
-      setInnerText("game-theme-selected", option + " theme");
-      break;
-    case "Blue":
-    case "Orange":
-      setInnerText("player-selected", option + " player");
-      break;
-    case 16:
-    case 24:
-    case 36:
-      setInnerText("board-size-selected", option + " cards");
-      break;
-  }
-}
-
-function setInnerText(htmlId: string, text: string): void {
+export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
   if (element) {
     element.innerText = text;
   }
 }
 
-function changeImageSrc(htmlId: string, srcPath: string): void {
-  const element = document.getElementById(htmlId);
-  if (element && element instanceof HTMLImageElement) {
-    element.src = srcPath;
-  }
-}
-
-function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
-  switch (option) {
-    case "DA-projects":
-      changeImageSrc(
-        "theme-preview",
-        "public/assets/img/preview_DA_projects.svg",
-      );
-      break;
-    default:
-      changeImageSrc(
-        "theme-preview",
-        "public/assets/img/preview_code_icons.svg",
-      );
-      break;
-  }
-}
-
-function setListDecorators(element: HTMLElement): void {
-  const partentElement = element.parentElement;
-  if (partentElement) {
-    partentElement.querySelectorAll(".set-point, .set-deco").forEach((el) => {
-      el.classList.remove("set");
-    });
-  }
-  element.querySelectorAll(".set-point, .set-deco").forEach((el) => {
-    el.classList.add("set");
-  });
-}
-
-function moveExitOverlay(moveType: string, event: Event): void {
-  event.stopPropagation();
-  const overlayElement = document.getElementById("exit-overlay");
-  const bgOverlayElement = document.getElementById("exit-overlay-bg-blur");
-  if (!overlayElement || !bgOverlayElement) return;
-
-  if (moveType == "move-in") {
-    overlayElement.classList.add("exit-overlay-in");
-    bgOverlayElement.classList.add("blur-on");
-  } else if (moveType == "move-out") {
-    overlayElement.classList.remove("exit-overlay-in");
-    bgOverlayElement.classList.remove("blur-on");
-  }
-}
-
-function initGame(): void {
-  if (!allSettingsSelected()) return;
+export function initGame(): void {
+  if (!set.allSettingsSelected()) return;
   renderCards();
 }
 
-function renderCards(): void {
+export function renderCards(): void {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
-  renderCardGrid(boardSize);
-  for (let i = 0; i < boardSize; i++) {
+  renderCardGrid(set.boardSize);
+  for (let i = 0; i < set.boardSize; i++) {
     gameCoreRef.innerHTML += getCardTemplate(i);
   }
   gameCoreRef.addEventListener("click", (e) => {
@@ -210,7 +31,7 @@ function renderCards(): void {
   });
 }
 
-function renderCardGrid(boardSize: number): void {
+export function renderCardGrid(boardSize: number): void {
   const gameCoreRef = document.getElementById("game-core");
   removeAnyGridSetting();
   switch (boardSize) {
@@ -224,7 +45,7 @@ function renderCardGrid(boardSize: number): void {
   }
 }
 
-function removeAnyGridSetting(): void {
+export function removeAnyGridSetting(): void {
   const gameCoreRef = document.getElementById("game-core");
   gameCoreRef?.classList.remove("grid-4x4");
   gameCoreRef?.classList.remove("grid-6x4");
