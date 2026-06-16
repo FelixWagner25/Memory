@@ -37,7 +37,14 @@ function turnBackFlippedCards() {
   }, 2000);
 }
 
-function excludeMatchedCards() {}
+function excludeMatchedCards() {
+  if (firstTurnId == null || secondTurnId == null) return;
+  let firstCardRef = document.getElementById(String(firstTurnId));
+  let secondCardRef = document.getElementById(String(secondTurnId));
+  if (!firstCardRef || !secondCardRef) return;
+  firstCardRef.style.pointerEvents = "none";
+  secondCardRef.style.pointerEvents = "none";
+}
 
 function turnedCardsMatch() {
   if (firstTurnId == null || secondTurnId == null) return;
