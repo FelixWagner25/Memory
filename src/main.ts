@@ -21,7 +21,7 @@ export function setInnerText(htmlId: string, text: string): void {
 export function initGame(): void {
   if (!allSettingsSelected()) return;
   initGameCards();
-  updateGameBoard();
+  initGameBoard();
   renderCards();
 }
 
@@ -45,6 +45,21 @@ export function initGameCards() {
   }
   shuffleArray(gameCards);
   console.log(gameCards);
+}
+
+function initGameBoard() {
+  const iconRef = document.getElementById("current-player-icon");
+  if (!iconRef) return;
+  iconRef.classList.remove("player-icon--blue");
+  iconRef.classList.remove("player-icon--orange");
+  switch (gameState.currentPlayer) {
+    case "Blue":
+      iconRef.classList.add("player-icon--blue");
+      break;
+    case "Orange":
+      iconRef.classList.add("player-icon--orange");
+      break;
+  }
 }
 
 function createNewCard(id: number, src: string, partnerId: number) {

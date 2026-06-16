@@ -1,5 +1,5 @@
 import * as main from "../main";
-import { startSettings, gameState, gameCards } from "./shared";
+import { gameState, gameCards } from "./shared";
 
 export let firstTurnId: number | null = null;
 export let secondTurnId: number | null = null;
