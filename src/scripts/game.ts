@@ -82,8 +82,10 @@ export function updateGameBoard() {
   updateGameBoardScore();
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
-  iconRef.classList.toggle("player-icon--blue");
-  iconRef.classList.toggle("player-icon--orange");
+  setTimeout(() => {
+    iconRef.classList.toggle("player-icon--blue");
+    iconRef.classList.toggle("player-icon--orange");
+  }, 2500);
 }
 
 function updateGameBoardScore() {
