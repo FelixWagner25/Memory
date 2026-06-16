@@ -27,9 +27,13 @@ function turnBackFlippedCards() {
   if (firstTurnId == null || secondTurnId == null) return;
   let firstCardRef = document.getElementById(String(firstTurnId));
   let secondCardRef = document.getElementById(String(secondTurnId));
+  let gameCoreRef = document.getElementById("game-core");
+  if (!gameCoreRef) return;
+  gameCoreRef.style.pointerEvents = "none";
   setTimeout(() => {
     firstCardRef?.classList.toggle("is-flipped");
     secondCardRef?.classList.toggle("is-flipped");
+    gameCoreRef.style.pointerEvents = "auto";
   }, 2000);
 }
 
