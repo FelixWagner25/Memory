@@ -1,25 +1,39 @@
 import * as main from "../main";
 import { startSettings, gameState, gameCards } from "./shared";
 
-let firstTurnId: number | null = null;
-let secondTurnId: number | null = null;
+export let firstTurnId: number | null = null;
+export let secondTurnId: number | null = null;
 
-export function processTurn(cardId: number) {
+export function processTurn(cardHTMLid: number) {
   if (firstTurnId == null) {
-    firstTurnId = cardId;
+    firstTurnId = cardHTMLid;
     return;
   } else {
-    secondTurnId = cardId;
+    secondTurnId = cardHTMLid;
     if (turnedCardsMatch()) {
       addScorePoint(gameState.currentPlayer);
       updateGameBoardScore();
+      excludeMatchedCards();
     } else {
       changePlayer();
       updateGameBoard();
+      turnBackFlippedCards();
     }
     resetTurnIds();
   }
 }
+
+function turnBackFlippedCards() {
+  if (firstTurnId == null || secondTurnId == null) return;
+  let firstCardRef = document.getElementById(String(firstTurnId));
+  let secondCardRef = document.getElementById(String(secondTurnId));
+  setTimeout(() => {
+    firstCardRef?.classList.toggle("is-flipped");
+    secondCardRef?.classList.toggle("is-flipped");
+  }, 2000);
+}
+
+function excludeMatchedCards() {}
 
 function turnedCardsMatch() {
   if (firstTurnId == null || secondTurnId == null) return;
