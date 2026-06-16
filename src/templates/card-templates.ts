@@ -1,4 +1,4 @@
-import * as main from "../main";
+import { gameCards } from "../scripts/shared";
 import { getCardBgSrc } from "../scripts/settings";
 
 export function getCardTemplate(id: number) {
@@ -7,7 +7,7 @@ export function getCardTemplate(id: number) {
         <button class="card" id="${id}">
         <div class="card__inner">
             <img src=${cardBackSrc} class="card__face" />
-            <img src=${main.gameCards[id].src} class="card__face card__face--back" />
+            <img src=${gameCards[id].src} class="card__face card__face--back" />
         </div>
         </button>
         `;

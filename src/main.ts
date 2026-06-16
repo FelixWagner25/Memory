@@ -1,13 +1,15 @@
 import "./styles/main.scss";
 
-import * as set from "./scripts/settings";
 import * as constants from "./scripts/constants";
-import { GameCard } from "./scripts/interfaces";
-
+import {
+  startSettings,
+  gameState,
+  gameCards,
+  GameCard,
+} from "./scripts/shared";
+import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
 import { processTurn } from "./scripts/game";
-
-export let gameCards: GameCard[] = [];
 
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
@@ -17,7 +19,7 @@ export function setInnerText(htmlId: string, text: string): void {
 }
 
 export function initGame(): void {
-  if (!set.allSettingsSelected()) return;
+  if (!allSettingsSelected()) return;
   initGameCards();
   renderCards();
 }
@@ -27,14 +29,20 @@ export function initGameCards() {
   let cardSrc: string;
   let srcPaths = getCardSrcsPathSet();
 
-  for (let i = 0; i < set.boardSize / 2; i++) {
-    randomIndex = Math.round((set.boardSize / 2 - i - 1) * Math.random());
+  for (let i = 0; i < startSettings.boardSize / 2; i++) {
+    randomIndex = Math.round(
+      (startSettings.boardSize / 2 - i - 1) * Math.random(),
+    );
     cardSrc = srcPaths.splice(randomIndex, 1)[0];
-    let card = createNewCard(i, cardSrc, i + set.boardSize / 2);
-    let partnerCard = createNewCard(i + set.boardSize / 2, cardSrc, i);
+    let card = createNewCard(i, cardSrc, i + startSettings.boardSize / 2);
+    let partnerCard = createNewCard(
+      i + startSettings.boardSize / 2,
+      cardSrc,
+      i,
+    );
     gameCards.push(card, partnerCard);
   }
-  gameCards = shuffleArray(gameCards);
+  shuffleArray(gameCards);
   console.log(gameCards);
 }
 
@@ -49,7 +57,7 @@ function createNewCard(id: number, src: string, partnerId: number) {
 
 function getCardSrcsPathSet() {
   let srcPaths: string[];
-  switch (set.gameTheme) {
+  switch (startSettings.gameTheme) {
     case "Code-vibes":
       srcPaths = constants.codeVibesSrc;
       break;
@@ -76,8 +84,8 @@ function shuffleArray<T>(array: T[]): T[] {
 export function renderCards(): void {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
-  renderCardGrid(set.boardSize);
-  for (let i = 0; i < set.boardSize; i++) {
+  renderCardGrid(startSettings.boardSize);
+  for (let i = 0; i < startSettings.boardSize; i++) {
     gameCoreRef.innerHTML += getCardTemplate(i);
   }
   gameCoreRef.addEventListener("click", (e) => {

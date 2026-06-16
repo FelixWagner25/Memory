@@ -1,13 +1,8 @@
 import * as main from "../main";
-import * as set from "../scripts/settings";
-
-export let currentPlayer: "Blue" | "Orange" = set.startPlayer;
+import { startSettings, gameState, gameCards } from "./shared";
 
 let firstTurnId: number | null = null;
 let secondTurnId: number | null = null;
-
-let scoreBlue: number = 0;
-let scoreOrange: number = 0;
 
 export function processTurn(cardId: number) {
   if (firstTurnId == null) {
@@ -16,7 +11,7 @@ export function processTurn(cardId: number) {
   } else {
     secondTurnId = cardId;
     if (turnedCardsMatch()) {
-      addScorePoint(currentPlayer);
+      addScorePoint(gameState.currentPlayer);
       updateGameBoardScore();
     } else {
       changePlayer();
@@ -28,18 +23,16 @@ export function processTurn(cardId: number) {
 
 function turnedCardsMatch() {
   if (firstTurnId == null || secondTurnId == null) return;
-  return (
-    main.gameCards[firstTurnId].partnerId == main.gameCards[secondTurnId].id
-  );
+  return gameCards[firstTurnId].partnerId == gameCards[secondTurnId].id;
 }
 
 function changePlayer(): void {
-  switch (currentPlayer) {
+  switch (gameState.currentPlayer) {
     case "Blue":
-      currentPlayer = "Orange";
+      gameState.currentPlayer = "Orange";
       break;
     case "Orange":
-      currentPlayer = "Blue";
+      gameState.currentPlayer = "Blue";
       break;
   }
 }
@@ -47,10 +40,10 @@ function changePlayer(): void {
 function addScorePoint(player: "Blue" | "Orange"): void {
   switch (player) {
     case "Blue":
-      scoreBlue += 1;
+      gameState.scoreBlue += 1;
       break;
     case "Orange":
-      scoreOrange += 1;
+      gameState.scoreOrange += 1;
       break;
   }
 }
@@ -72,8 +65,8 @@ function updateGameBoardScore() {
   const scoreBlueRef = document.getElementById("score-blue");
   const scoreOrangeRef = document.getElementById("score-orange");
   if (!scoreBlueRef || !scoreOrangeRef) return;
-  scoreBlueRef.innerText = String(scoreBlue);
-  scoreOrangeRef.innerHTML = String(scoreOrange);
+  scoreBlueRef.innerText = String(gameState.scoreBlue);
+  scoreOrangeRef.innerHTML = String(gameState.scoreOrange);
 }
 
 const exitBtnRef = document.getElementById("exit-btn");

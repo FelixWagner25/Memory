@@ -1,12 +1,9 @@
 import * as main from "../main";
+import { startSettings, gameState } from "./shared";
 
 export let themeSelected: boolean = false;
 export let playerSelected: boolean = false;
 export let boardSelected: boolean = false;
-
-export let gameTheme: "Code-vibes" | "DA-projects";
-export let startPlayer: "Blue" | "Orange" = "Blue";
-export let boardSize: 16 | 24 | 36;
 
 const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
 const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
@@ -24,7 +21,9 @@ codeVibesBtnRef?.addEventListener("click", () => {
 codeVibesBtnRef?.addEventListener("mouseenter", () =>
   setThemePreview("Code-vibes"),
 );
-codeVibesBtnRef?.addEventListener("mouseout", () => setThemePreview(gameTheme));
+codeVibesBtnRef?.addEventListener("mouseout", () =>
+  setThemePreview(startSettings.gameTheme),
+);
 
 daProjectsBtnRef?.addEventListener("click", () => {
   setGameTheme("DA-projects");
@@ -34,7 +33,7 @@ daProjectsBtnRef?.addEventListener("mouseenter", () =>
   setThemePreview("DA-projects"),
 );
 daProjectsBtnRef?.addEventListener("mouseout", () =>
-  setThemePreview(gameTheme),
+  setThemePreview(startSettings.gameTheme),
 );
 
 blueBtnRef?.addEventListener("click", () => {
@@ -67,7 +66,7 @@ setStartBtn?.addEventListener("click", () => {
 });
 
 export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
-  gameTheme = option;
+  startSettings.gameTheme = option;
   renderSetPanel(option);
   setThemePreview(option);
   themeSelected = true;
@@ -75,14 +74,15 @@ export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
 }
 
 export function setStartPlayer(option: "Blue" | "Orange"): void {
-  startPlayer = option;
+  startSettings.startPlayer = option;
+  gameState.currentPlayer = option;
   renderSetPanel(option);
   playerSelected = true;
   if (allSettingsSelected()) enableStartBtn();
 }
 
 export function setBoardSize(option: 16 | 24 | 36): void {
-  boardSize = option;
+  startSettings.boardSize = option;
   renderSetPanel(option);
   boardSelected = true;
   if (allSettingsSelected()) enableStartBtn();
@@ -152,7 +152,7 @@ export function setListDecorators(element: HTMLElement): void {
 
 export function getCardBgSrc() {
   let cardSrc: string;
-  switch (gameTheme) {
+  switch (startSettings.gameTheme) {
     case "Code-vibes":
       cardSrc = "public/assets/img/card--back_Code-vibes.svg";
       break;
