@@ -43,21 +43,30 @@ h2 {
 
 .set-panel {
   @include mx.font(20px, 400);
-  @include mx.d-flex($justify-content: space-evenly, $gap: 16px);
+  @include mx.d-flex($justify-content: flex-start, $gap: 16px);
+  position: relative;
   background-color: #f6f6f6;
   padding: 14px 20px;
   height: 48px;
-  width: 700px;
+  width: 670px;
 
   &__btn {
+    position: absolute;
+    right: 24px;
     border: none;
     background-color: #f0ea6e;
     padding: 14px 20px;
     @include mx.d-flex();
     @include mx.font(20px, 700);
+    transition: all 200ms ease;
 
     &:hover {
       padding: 18px 24px;
+      right: 20px;
+      font-size: 22px;
+      > img {
+        transform: scale(1.1) rotate(-10deg);
+      }
     }
 
     > img {
@@ -74,6 +83,10 @@ h2 {
     border: 3px solid #f0ea6e;
     height: 36px;
     rotate: 15deg;
+  }
+
+  &__placeholder {
+    color: #f6f6f6;
   }
 }
 
