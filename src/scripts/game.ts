@@ -53,7 +53,7 @@ function resetTurnIds(): void {
   secondTurnId = null;
 }
 
-function updateGameBoard() {
+export function updateGameBoard() {
   updateGameBoardScore();
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;

@@ -9,7 +9,7 @@ import {
 } from "./scripts/shared";
 import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
-import { processTurn } from "./scripts/game";
+import { processTurn, updateGameBoard } from "./scripts/game";
 
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
@@ -21,6 +21,7 @@ export function setInnerText(htmlId: string, text: string): void {
 export function initGame(): void {
   if (!allSettingsSelected()) return;
   initGameCards();
+  updateGameBoard();
   renderCards();
 }
 
