@@ -17,8 +17,10 @@ export function processTurn(cardId: number) {
     secondTurnId = cardId;
     if (turnedCardsMatch()) {
       addScorePoint(currentPlayer);
+      updateGameBoardScore();
     } else {
       changePlayer();
+      updateGameBoard();
     }
     resetTurnIds();
   }
@@ -56,6 +58,22 @@ function addScorePoint(player: "Blue" | "Orange"): void {
 function resetTurnIds(): void {
   firstTurnId = null;
   secondTurnId = null;
+}
+
+function updateGameBoard() {
+  updateGameBoardScore();
+  const iconRef = document.getElementById("current-player-icon");
+  if (!iconRef) return;
+  iconRef.classList.toggle("player-icon--blue");
+  iconRef.classList.toggle("player-icon--orange");
+}
+
+function updateGameBoardScore() {
+  const scoreBlueRef = document.getElementById("score-blue");
+  const scoreOrangeRef = document.getElementById("score-orange");
+  if (!scoreBlueRef || !scoreOrangeRef) return;
+  scoreBlueRef.innerText = String(scoreBlue);
+  scoreOrangeRef.innerHTML = String(scoreOrange);
 }
 
 const exitBtnRef = document.getElementById("exit-btn");
