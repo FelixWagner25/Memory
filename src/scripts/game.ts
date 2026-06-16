@@ -1,3 +1,22 @@
+import * as main from "../main";
+
+let firstTurnId: number | null = null;
+let secondTurnId: number | null = null;
+
+export function processTurn(cardId: number) {
+  if (secondTurnId == null) {
+    firstTurnId = cardId;
+    console.log(cardId, getCardParentId(cardId));
+    return;
+  }
+}
+
+function getCardParentId(cardId: number) {
+  let partnerId: number | null = null;
+  const cardElement = main.gameCards.find((card) => card.id === cardId);
+  return cardElement?.partnerId;
+}
+
 const exitBtnRef = document.getElementById("exit-btn");
 const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
 const backToGameBtnRef = document.getElementById("back-to-game-btn");

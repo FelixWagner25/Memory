@@ -5,6 +5,7 @@ import * as constants from "./scripts/constants";
 import { GameCard } from "./scripts/interfaces";
 
 import { getCardTemplate } from "./templates/card-templates";
+import { processTurn } from "./scripts/game";
 
 export let gameCards: GameCard[] = [];
 
@@ -85,6 +86,7 @@ export function renderCards(): void {
     ) as HTMLButtonElement;
     if (!card) return;
     card.classList.toggle("is-flipped");
+    processTurn(Number(card.id));
   });
 }
 
