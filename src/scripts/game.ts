@@ -1,20 +1,61 @@
 import * as main from "../main";
+import * as set from "../scripts/settings";
+
+export let currentPlayer: "Blue" | "Orange" = set.startPlayer;
 
 let firstTurnId: number | null = null;
 let secondTurnId: number | null = null;
 
+let scoreBlue: number = 0;
+let scoreOrange: number = 0;
+
 export function processTurn(cardId: number) {
-  if (secondTurnId == null) {
+  if (firstTurnId == null) {
     firstTurnId = cardId;
-    console.log(cardId, getCardParentId(cardId));
     return;
+  } else {
+    secondTurnId = cardId;
+    if (turnedCardsMatch()) {
+      addScorePoint(currentPlayer);
+    } else {
+      changePlayer();
+    }
+    resetTurnIds();
   }
 }
 
-function getCardParentId(cardId: number) {
-  let partnerId: number | null = null;
-  const cardElement = main.gameCards.find((card) => card.id === cardId);
-  return cardElement?.partnerId;
+function turnedCardsMatch() {
+  if (firstTurnId == null || secondTurnId == null) return;
+  return (
+    main.gameCards[firstTurnId].partnerId == main.gameCards[secondTurnId].id
+  );
+}
+
+function changePlayer(): void {
+  switch (currentPlayer) {
+    case "Blue":
+      currentPlayer = "Orange";
+      break;
+    case "Orange":
+      currentPlayer = "Blue";
+      break;
+  }
+}
+
+function addScorePoint(player: "Blue" | "Orange"): void {
+  switch (player) {
+    case "Blue":
+      scoreBlue += 1;
+      break;
+    case "Orange":
+      scoreOrange += 1;
+      break;
+  }
+}
+
+function resetTurnIds(): void {
+  firstTurnId = null;
+  secondTurnId = null;
 }
 
 const exitBtnRef = document.getElementById("exit-btn");

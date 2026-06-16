@@ -5,8 +5,7 @@ export let playerSelected: boolean = false;
 export let boardSelected: boolean = false;
 
 export let gameTheme: "Code-vibes" | "DA-projects";
-export let startPlayer: "Blue" | "Orange";
-export let currentPlayer: "Blue" | "Orange";
+export let startPlayer: "Blue" | "Orange" = "Blue";
 export let boardSize: 16 | 24 | 36;
 
 const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
@@ -79,7 +78,6 @@ export function setStartPlayer(option: "Blue" | "Orange"): void {
   startPlayer = option;
   renderSetPanel(option);
   playerSelected = true;
-  currentPlayer = startPlayer;
   if (allSettingsSelected()) enableStartBtn();
 }
 
