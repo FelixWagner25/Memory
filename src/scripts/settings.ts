@@ -149,3 +149,16 @@ export function setListDecorators(element: HTMLElement): void {
     el.classList.add("set");
   });
 }
+
+export function getCardBgSrc() {
+  let cardSrc: string;
+  switch (gameTheme) {
+    case "Code-vibes":
+      cardSrc = "public/assets/img/card--back_Code-vibes.svg";
+      break;
+    case "DA-projects":
+      cardSrc = "public/assets/img/card--back_DA-projects.svg";
+      break;
+  }
+  return cardSrc;
+}
