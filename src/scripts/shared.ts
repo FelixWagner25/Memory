@@ -8,6 +8,8 @@ interface GameState {
   currentPlayer: "Blue" | "Orange";
   scoreBlue: number;
   scoreOrange: number;
+  flippedCards: number;
+  gameResult: "open" | "Winner-Blue" | "Winner-Orange" | "Draw";
 }
 
 export interface GameCard {
@@ -26,6 +28,8 @@ export let gameState: GameState = {
   currentPlayer: "Blue",
   scoreBlue: 0,
   scoreOrange: 0,
+  flippedCards: 0,
+  gameResult: "open",
 };
 
 export let gameCards: GameCard[] = [];

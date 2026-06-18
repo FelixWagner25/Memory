@@ -1,5 +1,5 @@
 import * as main from "../main";
-import { gameState, gameCards } from "./shared";
+import { gameState, gameCards, startSettings } from "./shared";
 
 export let firstTurnId: number | null = null;
 export let secondTurnId: number | null = null;
@@ -14,6 +14,8 @@ export function processTurn(cardHTMLid: number) {
       addScorePoint(gameState.currentPlayer);
       updateGameBoardScore();
       excludeMatchedCards();
+      gameState.flippedCards += 2;
+      checkGameFinished();
     } else {
       changePlayer();
       updateGameBoard();
@@ -35,6 +37,48 @@ function turnBackFlippedCards() {
     secondCardRef?.classList.toggle("is-flipped");
     gameCoreRef.style.pointerEvents = "auto";
   }, 2000);
+}
+
+function gameIsFinished() {
+  return gameState.flippedCards >= startSettings.boardSize;
+}
+
+function checkGameFinished() {
+  if (gameIsFinished()) {
+    determineResult();
+    let gameScreenRef = document.getElementById("game-screen");
+    if (!gameScreenRef) return;
+    gameScreenRef.classList.add("d-none");
+
+    let winnerBlueRef = document.getElementById("winner-blue");
+    let winnerOrangeRef = document.getElementById("winner-orange");
+    let drawRef = document.getElementById("draw");
+
+    if (!winnerBlueRef || !winnerOrangeRef || !drawRef) return;
+
+    switch (gameState.gameResult) {
+      case "Winner-Blue":
+        winnerBlueRef?.classList.remove("d-none");
+        break;
+      case "Winner-Orange":
+        winnerOrangeRef?.classList.remove("d-none");
+        break;
+      case "Draw":
+        drawRef?.classList.remove("d-none");
+        break;
+    }
+  }
+}
+
+function determineResult() {
+  let scoreDifference = gameState.scoreBlue - gameState.scoreOrange;
+  if (scoreDifference > 0) {
+    gameState.gameResult = "Winner-Blue";
+  } else if (scoreDifference < 0) {
+    gameState.gameResult = "Winner-Orange";
+  } else if ((scoreDifference = 0)) {
+    gameState.gameResult = "Draw";
+  }
 }
 
 function excludeMatchedCards() {
