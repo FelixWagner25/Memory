@@ -11,18 +11,26 @@ export function processTurn(cardHTMLid: number) {
   } else {
     secondTurnId = cardHTMLid;
     if (turnedCardsMatch()) {
-      addScorePoint(gameState.currentPlayer);
-      updateGameBoardScore();
-      excludeMatchedCards();
-      gameState.flippedCards += 2;
-      checkGameFinished();
+      processMatchingTurn();
     } else {
-      changePlayer();
-      updateGameBoard();
-      turnBackFlippedCards();
+      processNonMatchingTurn();
     }
     resetTurnIds();
   }
+}
+
+function processMatchingTurn() {
+  addScorePoint(gameState.currentPlayer);
+  updateGameBoardScore();
+  excludeMatchedCards();
+  gameState.flippedCards += 2;
+  checkGameFinished();
+}
+
+function processNonMatchingTurn() {
+  changePlayer();
+  updateGameBoard();
+  turnBackFlippedCards();
 }
 
 function turnBackFlippedCards() {
@@ -49,24 +57,25 @@ function checkGameFinished() {
     let gameScreenRef = document.getElementById("game-screen");
     if (!gameScreenRef) return;
     gameScreenRef.classList.add("d-none");
+    showResultScreen();
+  }
+}
 
-    let winnerBlueRef = document.getElementById("winner-blue");
-    let winnerOrangeRef = document.getElementById("winner-orange");
-    let drawRef = document.getElementById("draw");
-
-    if (!winnerBlueRef || !winnerOrangeRef || !drawRef) return;
-
-    switch (gameState.gameResult) {
-      case "Winner-Blue":
-        winnerBlueRef?.classList.remove("d-none");
-        break;
-      case "Winner-Orange":
-        winnerOrangeRef?.classList.remove("d-none");
-        break;
-      case "Draw":
-        drawRef?.classList.remove("d-none");
-        break;
-    }
+function showResultScreen() {
+  let winnerBlueRef = document.getElementById("winner-blue");
+  let winnerOrangeRef = document.getElementById("winner-orange");
+  let drawRef = document.getElementById("draw");
+  if (!winnerBlueRef || !winnerOrangeRef || !drawRef) return;
+  switch (gameState.gameResult) {
+    case "Winner-Blue":
+      winnerBlueRef.classList.remove("d-none");
+      break;
+    case "Winner-Orange":
+      winnerOrangeRef.classList.remove("d-none");
+      break;
+    case "Draw":
+      drawRef.classList.remove("d-none");
+      break;
   }
 }
 
