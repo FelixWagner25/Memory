@@ -28,7 +28,7 @@ export let gameState: GameState = {
   currentPlayer: "Blue",
   scoreBlue: 0,
   scoreOrange: 0,
-  flippedCards: 0,
+  flippedCards: 12,
   gameResult: "open",
 };
 

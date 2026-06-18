@@ -74,6 +74,7 @@ function showResultScreen() {
       winnerOrangeRef.classList.remove("d-none");
       break;
     case "Draw":
+      console.log("Draw Case entered");
       drawRef.classList.remove("d-none");
       break;
   }
@@ -85,7 +86,7 @@ function determineResult() {
     gameState.gameResult = "Winner-Blue";
   } else if (scoreDifference < 0) {
     gameState.gameResult = "Winner-Orange";
-  } else if ((scoreDifference = 0)) {
+  } else if (scoreDifference == 0) {
     gameState.gameResult = "Draw";
   }
 }
