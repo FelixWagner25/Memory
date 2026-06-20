@@ -30,6 +30,22 @@ backToStartBtnDraw?.addEventListener("click", () => {
   settingsScreenRef.classList.remove("d-none");
 });
 
+backToStartBtnOrange?.addEventListener("click", () => {
+  let winnerOrangeRef = document.getElementById("winner-orange");
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!winnerOrangeRef || !settingsScreenRef) return;
+  winnerOrangeRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("d-none");
+});
+
+backToStartBtnBlue?.addEventListener("click", () => {
+  let winnerBlueRef = document.getElementById("winner-blue");
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!winnerBlueRef || !settingsScreenRef) return;
+  winnerBlueRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("d-none");
+});
+
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
   if (element) {
