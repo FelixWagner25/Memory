@@ -1,4 +1,5 @@
 import { gameState, gameCards, startSettings } from "./shared";
+import { clearLastGame } from "../main";
 
 export let firstTurnId: number | null = null;
 export let secondTurnId: number | null = null;
@@ -11,6 +12,9 @@ confirmExitGameBtn?.addEventListener("click", () => {
   if (!gameScreenRef || !settingsScreenRef) return;
   gameScreenRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
+  clearLastGame();
+  firstTurnId = null;
+  secondTurnId = null;
 });
 
 export function processTurn(cardHTMLid: number) {

@@ -7,9 +7,14 @@ import {
   gameCards,
   GameCard,
 } from "./scripts/shared";
-import { allSettingsSelected } from "./scripts/settings";
+import { allSettingsSelected, setBoardSize } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
-import { processTurn } from "./scripts/game";
+import {
+  processTurn,
+  updateGameBoard,
+  firstTurnId,
+  secondTurnId,
+} from "./scripts/game";
 
 const homeStartBtn = document.getElementById("home-start-btn");
 const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
@@ -28,6 +33,7 @@ backToStartBtnDraw?.addEventListener("click", () => {
   if (!drawScreenRef || !settingsScreenRef) return;
   drawScreenRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
+  clearLastGame();
 });
 
 backToStartBtnOrange?.addEventListener("click", () => {
@@ -36,6 +42,7 @@ backToStartBtnOrange?.addEventListener("click", () => {
   if (!winnerOrangeRef || !settingsScreenRef) return;
   winnerOrangeRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
+  clearLastGame();
 });
 
 backToStartBtnBlue?.addEventListener("click", () => {
@@ -44,6 +51,7 @@ backToStartBtnBlue?.addEventListener("click", () => {
   if (!winnerBlueRef || !settingsScreenRef) return;
   winnerBlueRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
+  clearLastGame();
 });
 
 export function setInnerText(htmlId: string, text: string): void {
@@ -51,6 +59,30 @@ export function setInnerText(htmlId: string, text: string): void {
   if (element) {
     element.innerText = text;
   }
+}
+
+export function clearLastGame() {
+  resetGameState();
+  clearGameComponent();
+}
+
+function clearGameComponent() {
+  updateGameBoard();
+  clearGameCore();
+}
+
+function clearGameCore() {
+  let gameCoreRef = document.getElementById("game-core");
+  if (!gameCoreRef) return;
+  gameCoreRef.innerHTML = "";
+  gameCoreRef.style.removeProperty("pointer-events");
+}
+
+function resetGameState(): void {
+  gameState.scoreBlue = 0;
+  gameState.scoreOrange = 0;
+  gameState.currentPlayer = startSettings.startPlayer;
+  gameState.flippedCards = 0;
 }
 
 export function initGame(): void {
