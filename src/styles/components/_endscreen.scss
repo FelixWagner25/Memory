@@ -90,6 +90,10 @@
     background-color: #86e9d633;
     color: #ffffff;
     @include mx.font(24px, 700);
+    &:hover {
+      border: 2px solid #4dd5bc;
+      background-color: #5d877f;
+    }
   }
 }
 
@@ -120,5 +124,9 @@
     background-color: #86e9d633;
     color: #ffffff;
     @include mx.font(24px, 700);
+    &:hover {
+      border: 2px solid #4dd5bc;
+      background-color: #5d877f;
+    }
   }
 }
