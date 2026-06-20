@@ -53,12 +53,33 @@ function gameIsFinished() {
 
 function checkGameFinished() {
   if (gameIsFinished()) {
-    determineResult();
     let gameScreenRef = document.getElementById("game-screen");
     if (!gameScreenRef) return;
-    gameScreenRef.classList.add("d-none");
-    showResultScreen();
+    determineResult();
+    setTimeout(() => {
+      gameScreenRef.classList.add("d-none");
+      showGameOverScreen();
+    }, 1000);
+    setTimeout(() => {
+      closeGameOverScreen();
+      showResultScreen();
+    }, 3000);
   }
+}
+
+function showGameOverScreen() {
+  let gameOverRef = document.getElementById("game-over-screen");
+  if (!gameOverRef) return;
+  gameOverRef.classList.remove("d-none");
+  renderFinalScore();
+}
+
+function renderFinalScore() {}
+
+function closeGameOverScreen() {
+  let gameOverRef = document.getElementById("game-over-screen");
+  if (!gameOverRef) return;
+  gameOverRef.classList.add("d-none");
 }
 
 function showResultScreen() {
