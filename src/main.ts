@@ -9,7 +9,26 @@ import {
 } from "./scripts/shared";
 import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
-import { processTurn, updateGameBoard } from "./scripts/game";
+import { processTurn } from "./scripts/game";
+
+const homeStartBtn = document.getElementById("home-start-btn");
+const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
+const backToStartBtnOrange = document.getElementById(
+  "back-to-start-btn-orange",
+);
+const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
+
+homeStartBtn?.addEventListener("click", () => {
+  showSettingsScreen();
+});
+
+backToStartBtnDraw?.addEventListener("click", () => {
+  let drawScreenRef = document.getElementById("draw");
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!drawScreenRef || !settingsScreenRef) return;
+  drawScreenRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("d-none");
+});
 
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
@@ -20,6 +39,8 @@ export function setInnerText(htmlId: string, text: string): void {
 
 export function initGame(): void {
   if (!allSettingsSelected()) return;
+  closeSettingsScreen();
+  showGameScreen();
   initGameCards();
   initGameBoard();
   renderCards();
@@ -69,6 +90,18 @@ function createNewCard(id: number, src: string, partnerId: number) {
     partnerId: partnerId,
   };
   return card;
+}
+
+function showGameScreen() {
+  let gameScreenRef = document.getElementById("game-screen");
+  if (!gameScreenRef) return;
+  gameScreenRef.classList.remove("d-none");
+}
+
+function closeSettingsScreen() {
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!settingsScreenRef) return;
+  settingsScreenRef.classList.add("d-none");
 }
 
 function getCardSrcsPathSet() {
@@ -133,4 +166,12 @@ export function removeAnyGridSetting(): void {
   gameCoreRef?.classList.remove("grid-4x4");
   gameCoreRef?.classList.remove("grid-6x4");
   gameCoreRef?.classList.remove("grid-6x6");
+}
+
+function showSettingsScreen() {
+  let homeScreenRef = document.getElementById("home-screen");
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!homeScreenRef || !settingsScreenRef) return;
+  homeScreenRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("d-none");
 }

@@ -1,8 +1,17 @@
-import * as main from "../main";
 import { gameState, gameCards, startSettings } from "./shared";
 
 export let firstTurnId: number | null = null;
 export let secondTurnId: number | null = null;
+
+const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
+
+confirmExitGameBtn?.addEventListener("click", () => {
+  let gameScreenRef = document.getElementById("game-screen");
+  let settingsScreenRef = document.getElementById("settings-screen");
+  if (!gameScreenRef || !settingsScreenRef) return;
+  gameScreenRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("d-none");
+});
 
 export function processTurn(cardHTMLid: number) {
   if (firstTurnId == null) {
