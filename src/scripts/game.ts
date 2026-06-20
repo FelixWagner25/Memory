@@ -74,7 +74,13 @@ function showGameOverScreen() {
   renderFinalScore();
 }
 
-function renderFinalScore() {}
+function renderFinalScore() {
+  let finalScoreBlueRef = document.getElementById("final-score-blue");
+  let finalScoreOrangeRef = document.getElementById("final-score-orange");
+  if (!finalScoreBlueRef || !finalScoreOrangeRef) return;
+  finalScoreBlueRef.innerText = String(gameState.scoreBlue);
+  finalScoreOrangeRef.innerText = String(gameState.scoreOrange);
+}
 
 function closeGameOverScreen() {
   let gameOverRef = document.getElementById("game-over-screen");
