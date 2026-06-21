@@ -8,37 +8,11 @@ import {
   GameCard,
   clearGameCardsArray,
 } from "./scripts/shared";
-import { allSettingsSelected, setBoardSize } from "./scripts/settings";
+import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
 import { processTurn, updateGameBoard } from "./scripts/game";
 
 let listenerInitialized: boolean = false;
-
-const homeStartBtn = document.getElementById("home-start-btn");
-const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
-const backToStartBtnOrange = document.getElementById(
-  "back-to-start-btn-orange",
-);
-const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
-
-homeStartBtn?.addEventListener("click", () => {
-  switchScreens("home-screen", "settings-screen");
-});
-
-backToStartBtnDraw?.addEventListener("click", () => {
-  switchScreens("draw", "settings-screen");
-  clearLastGame();
-});
-
-backToStartBtnOrange?.addEventListener("click", () => {
-  switchScreens("winner-orange", "settings-screen");
-  clearLastGame();
-});
-
-backToStartBtnBlue?.addEventListener("click", () => {
-  switchScreens("winner-blue", "settings-screen");
-  clearLastGame();
-});
 
 export function switchScreens(closeHTMLId: string, openHTMLId: string) {
   closeScreen(closeHTMLId);
@@ -86,7 +60,7 @@ function resetGameState(): void {
   gameState.scoreBlue = 0;
   gameState.scoreOrange = 0;
   gameState.currentPlayer = startSettings.startPlayer;
-  gameState.flippedCards = 0;
+  gameState.flippedCards = 12;
   gameState.firstTurnId = null;
   gameState.secondTurnId = null;
 }

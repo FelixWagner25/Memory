@@ -5,66 +5,6 @@ export let themeSelected: boolean = false;
 export let playerSelected: boolean = false;
 export let boardSelected: boolean = false;
 
-const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
-const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
-const blueBtnRef = document.getElementById("set-btn-blue");
-const organgeBtnRef = document.getElementById("set-btn-orange");
-const sixteenBtnRef = document.getElementById("set-btn-16-cards");
-const twentyfourBtnRef = document.getElementById("set-btn-24-cards");
-const thirtysixBtnRef = document.getElementById("set-btn-36-cards");
-const setStartBtn = document.getElementById("set-start-btn");
-
-codeVibesBtnRef?.addEventListener("click", () => {
-  setGameTheme("Code-vibes");
-  setListDecorators(codeVibesBtnRef);
-});
-codeVibesBtnRef?.addEventListener("mouseenter", () =>
-  setThemePreview("Code-vibes"),
-);
-codeVibesBtnRef?.addEventListener("mouseout", () =>
-  setThemePreview(startSettings.gameTheme),
-);
-
-daProjectsBtnRef?.addEventListener("click", () => {
-  setGameTheme("DA-projects");
-  setListDecorators(daProjectsBtnRef);
-});
-daProjectsBtnRef?.addEventListener("mouseenter", () =>
-  setThemePreview("DA-projects"),
-);
-daProjectsBtnRef?.addEventListener("mouseout", () =>
-  setThemePreview(startSettings.gameTheme),
-);
-
-blueBtnRef?.addEventListener("click", () => {
-  setStartPlayer("Blue");
-  setListDecorators(blueBtnRef);
-});
-
-organgeBtnRef?.addEventListener("click", () => {
-  setStartPlayer("Orange");
-  setListDecorators(organgeBtnRef);
-});
-
-sixteenBtnRef?.addEventListener("click", () => {
-  setBoardSize(16);
-  setListDecorators(sixteenBtnRef);
-});
-
-twentyfourBtnRef?.addEventListener("click", () => {
-  setBoardSize(24);
-  setListDecorators(twentyfourBtnRef);
-});
-
-thirtysixBtnRef?.addEventListener("click", () => {
-  setBoardSize(36);
-  setListDecorators(thirtysixBtnRef);
-});
-
-setStartBtn?.addEventListener("click", () => {
-  main.initGame();
-});
-
 export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   startSettings.gameTheme = option;
   renderSetPanel(option);

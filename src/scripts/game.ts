@@ -1,13 +1,5 @@
 import { gameState, gameCards, startSettings } from "./shared";
-import { clearLastGame, switchScreens, closeScreen, showScreen } from "../main";
-
-const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
-
-confirmExitGameBtn?.addEventListener("click", (event) => {
-  switchScreens("game-screen", "settings-screen");
-  moveExitOverlay("move-out", event);
-  clearLastGame();
-});
+import { closeScreen, showScreen } from "../main";
 
 export function processTurn(cardHTMLid: number) {
   if (gameState.firstTurnId == null) {
@@ -169,22 +161,6 @@ function updateGameBoardScore() {
   scoreBlueRef.innerText = String(gameState.scoreBlue);
   scoreOrangeRef.innerHTML = String(gameState.scoreOrange);
 }
-
-const exitBtnRef = document.getElementById("exit-btn");
-const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
-const backToGameBtnRef = document.getElementById("back-to-game-btn");
-
-exitBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-in", event);
-});
-
-exitOverlayBgBlurRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
-});
-
-backToGameBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
-});
 
 export function moveExitOverlay(moveType: string, event: Event): void {
   event.stopPropagation();
