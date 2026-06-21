@@ -37,3 +37,7 @@ export let gameState: GameState = {
 };
 
 export let gameCards: GameCard[] = [];
+
+export function clearGameCardsArray() {
+  gameCards = [];
+}

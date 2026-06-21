@@ -6,6 +6,7 @@ import {
   gameState,
   gameCards,
   GameCard,
+  clearGameCardsArray,
 } from "./scripts/shared";
 import { allSettingsSelected, setBoardSize } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
@@ -61,6 +62,7 @@ export function setInnerText(htmlId: string, text: string): void {
 export function clearLastGame() {
   resetGameState();
   clearGameComponent();
+  clearGameCardsArray();
 }
 
 function clearGameComponent() {
