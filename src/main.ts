@@ -29,8 +29,8 @@ backToStartBtnDraw?.addEventListener("click", () => {
   let drawScreenRef = document.getElementById("draw");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!drawScreenRef || !settingsScreenRef) return;
-  drawScreenRef.classList.add("d-none");
-  settingsScreenRef.classList.remove("d-none");
+  drawScreenRef.classList.remove("show-screen");
+  settingsScreenRef.classList.add("show-screen");
   clearLastGame();
 });
 
@@ -38,8 +38,8 @@ backToStartBtnOrange?.addEventListener("click", () => {
   let winnerOrangeRef = document.getElementById("winner-orange");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!winnerOrangeRef || !settingsScreenRef) return;
-  winnerOrangeRef.classList.add("d-none");
-  settingsScreenRef.classList.remove("d-none");
+  winnerOrangeRef.classList.remove("show-screen");
+  settingsScreenRef.classList.add("show-screen");
   clearLastGame();
 });
 
@@ -47,8 +47,8 @@ backToStartBtnBlue?.addEventListener("click", () => {
   let winnerBlueRef = document.getElementById("winner-blue");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!winnerBlueRef || !settingsScreenRef) return;
-  winnerBlueRef.classList.add("d-none");
-  settingsScreenRef.classList.remove("d-none");
+  winnerBlueRef.classList.remove("show-screen");
+  settingsScreenRef.classList.add("show-screen");
   clearLastGame();
 });
 
@@ -145,13 +145,13 @@ function createNewCard(id: number, src: string, partnerId: number) {
 function showGameScreen() {
   let gameScreenRef = document.getElementById("game-screen");
   if (!gameScreenRef) return;
-  gameScreenRef.classList.remove("d-none");
+  gameScreenRef.classList.add("show-screen");
 }
 
 function closeSettingsScreen() {
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!settingsScreenRef) return;
-  settingsScreenRef.classList.add("d-none");
+  settingsScreenRef.classList.remove("show-screen");
 }
 
 function getCardSrcsPathSet() {
@@ -232,6 +232,6 @@ function showSettingsScreen() {
   let homeScreenRef = document.getElementById("home-screen");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!homeScreenRef || !settingsScreenRef) return;
-  homeScreenRef.classList.add("d-none");
-  settingsScreenRef.classList.remove("d-none");
+  homeScreenRef.classList.remove("show-screen");
+  settingsScreenRef.classList.add("show-screen");
 }

@@ -7,8 +7,8 @@ confirmExitGameBtn?.addEventListener("click", (event) => {
   let gameScreenRef = document.getElementById("game-screen");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!gameScreenRef || !settingsScreenRef) return;
-  gameScreenRef.classList.add("d-none");
-  settingsScreenRef.classList.remove("d-none");
+  gameScreenRef.classList.remove("show-screen");
+  settingsScreenRef.classList.add("show-screen");
   moveExitOverlay("move-out", event);
   clearLastGame();
 });
@@ -66,7 +66,7 @@ function checkGameFinished() {
     if (!gameScreenRef) return;
     determineResult();
     setTimeout(() => {
-      gameScreenRef.classList.add("d-none");
+      gameScreenRef.classList.remove("show-screen");
       showGameOverScreen();
     }, 1000);
     setTimeout(() => {
@@ -79,7 +79,7 @@ function checkGameFinished() {
 function showGameOverScreen() {
   let gameOverRef = document.getElementById("game-over-screen");
   if (!gameOverRef) return;
-  gameOverRef.classList.remove("d-none");
+  gameOverRef.classList.remove("show-screen");
   renderFinalScore();
 }
 
@@ -94,7 +94,7 @@ function renderFinalScore() {
 function closeGameOverScreen() {
   let gameOverRef = document.getElementById("game-over-screen");
   if (!gameOverRef) return;
-  gameOverRef.classList.add("d-none");
+  gameOverRef.classList.remove("show-screen");
 }
 
 function showResultScreen() {
@@ -104,14 +104,14 @@ function showResultScreen() {
   if (!winnerBlueRef || !winnerOrangeRef || !drawRef) return;
   switch (gameState.gameResult) {
     case "Winner-Blue":
-      winnerBlueRef.classList.remove("d-none");
+      winnerBlueRef.classList.add("show-screen");
       break;
     case "Winner-Orange":
-      winnerOrangeRef.classList.remove("d-none");
+      winnerOrangeRef.classList.add("show-screen");
       break;
     case "Draw":
       console.log("Draw Case entered");
-      drawRef.classList.remove("d-none");
+      drawRef.classList.add("show-screen");
       break;
   }
 }
