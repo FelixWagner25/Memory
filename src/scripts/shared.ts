@@ -10,6 +10,8 @@ interface GameState {
   scoreOrange: number;
   flippedCards: number;
   gameResult: "open" | "Winner-Blue" | "Winner-Orange" | "Draw";
+  firstTurnId: number | null;
+  secondTurnId: number | null;
 }
 
 export interface GameCard {
@@ -30,6 +32,8 @@ export let gameState: GameState = {
   scoreOrange: 0,
   flippedCards: 12,
   gameResult: "open",
+  firstTurnId: null,
+  secondTurnId: null,
 };
 
 export let gameCards: GameCard[] = [];

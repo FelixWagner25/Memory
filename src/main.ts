@@ -9,12 +9,7 @@ import {
 } from "./scripts/shared";
 import { allSettingsSelected, setBoardSize } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
-import {
-  processTurn,
-  updateGameBoard,
-  firstTurnId,
-  secondTurnId,
-} from "./scripts/game";
+import { processTurn, updateGameBoard } from "./scripts/game";
 
 const homeStartBtn = document.getElementById("home-start-btn");
 const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");

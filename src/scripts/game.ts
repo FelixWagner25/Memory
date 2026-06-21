@@ -1,9 +1,6 @@
 import { gameState, gameCards, startSettings } from "./shared";
 import { clearLastGame } from "../main";
 
-export let firstTurnId: number | null = null;
-export let secondTurnId: number | null = null;
-
 const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
 
 confirmExitGameBtn?.addEventListener("click", () => {
@@ -13,16 +10,14 @@ confirmExitGameBtn?.addEventListener("click", () => {
   gameScreenRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
   clearLastGame();
-  firstTurnId = null;
-  secondTurnId = null;
 });
 
 export function processTurn(cardHTMLid: number) {
-  if (firstTurnId == null) {
-    firstTurnId = cardHTMLid;
+  if (gameState.firstTurnId == null) {
+    gameState.firstTurnId = cardHTMLid;
     return;
   } else {
-    secondTurnId = cardHTMLid;
+    gameState.secondTurnId = cardHTMLid;
     if (turnedCardsMatch()) {
       processMatchingTurn();
     } else {
@@ -47,9 +42,9 @@ function processNonMatchingTurn() {
 }
 
 function turnBackFlippedCards() {
-  if (firstTurnId == null || secondTurnId == null) return;
-  let firstCardRef = document.getElementById(String(firstTurnId));
-  let secondCardRef = document.getElementById(String(secondTurnId));
+  if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
+  let firstCardRef = document.getElementById(String(gameState.firstTurnId));
+  let secondCardRef = document.getElementById(String(gameState.secondTurnId));
   let gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
   gameCoreRef.style.pointerEvents = "none";
@@ -132,17 +127,20 @@ function determineResult() {
 }
 
 function excludeMatchedCards() {
-  if (firstTurnId == null || secondTurnId == null) return;
-  let firstCardRef = document.getElementById(String(firstTurnId));
-  let secondCardRef = document.getElementById(String(secondTurnId));
+  if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
+  let firstCardRef = document.getElementById(String(gameState.firstTurnId));
+  let secondCardRef = document.getElementById(String(gameState.secondTurnId));
   if (!firstCardRef || !secondCardRef) return;
   firstCardRef.style.pointerEvents = "none";
   secondCardRef.style.pointerEvents = "none";
 }
 
 function turnedCardsMatch() {
-  if (firstTurnId == null || secondTurnId == null) return;
-  return gameCards[firstTurnId].partnerId == gameCards[secondTurnId].id;
+  if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
+  return (
+    gameCards[gameState.firstTurnId].partnerId ==
+    gameCards[gameState.secondTurnId].id
+  );
 }
 
 function changePlayer(): void {
@@ -168,8 +166,8 @@ function addScorePoint(player: "Blue" | "Orange"): void {
 }
 
 function resetTurnIds(): void {
-  firstTurnId = null;
-  secondTurnId = null;
+  gameState.firstTurnId = null;
+  gameState.secondTurnId = null;
 }
 
 export function updateGameBoard() {
