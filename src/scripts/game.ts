@@ -3,12 +3,13 @@ import { clearLastGame } from "../main";
 
 const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
 
-confirmExitGameBtn?.addEventListener("click", () => {
+confirmExitGameBtn?.addEventListener("click", (event) => {
   let gameScreenRef = document.getElementById("game-screen");
   let settingsScreenRef = document.getElementById("settings-screen");
   if (!gameScreenRef || !settingsScreenRef) return;
   gameScreenRef.classList.add("d-none");
   settingsScreenRef.classList.remove("d-none");
+  moveExitOverlay("move-out", event);
   clearLastGame();
 });
 

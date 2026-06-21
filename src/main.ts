@@ -190,7 +190,6 @@ export function renderCards(): void {
 export function setCardEventListener() {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
-  gameCoreRef.addEventListener("click", () => console.log("CLICK"));
   gameCoreRef.addEventListener("click", (e) => {
     userClicksCard(e);
   });
