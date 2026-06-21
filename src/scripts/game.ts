@@ -79,7 +79,7 @@ function checkGameFinished() {
 function showGameOverScreen() {
   let gameOverRef = document.getElementById("game-over-screen");
   if (!gameOverRef) return;
-  gameOverRef.classList.remove("show-screen");
+  gameOverRef.classList.add("show-screen");
   renderFinalScore();
 }
 
