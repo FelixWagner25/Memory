@@ -22,35 +22,40 @@ const backToStartBtnOrange = document.getElementById(
 const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
 
 homeStartBtn?.addEventListener("click", () => {
-  showSettingsScreen();
+  switchScreens("home-screen", "settings-screen");
 });
 
 backToStartBtnDraw?.addEventListener("click", () => {
-  let drawScreenRef = document.getElementById("draw");
-  let settingsScreenRef = document.getElementById("settings-screen");
-  if (!drawScreenRef || !settingsScreenRef) return;
-  drawScreenRef.classList.remove("show-screen");
-  settingsScreenRef.classList.add("show-screen");
+  switchScreens("draw", "settings-screen");
   clearLastGame();
 });
 
 backToStartBtnOrange?.addEventListener("click", () => {
-  let winnerOrangeRef = document.getElementById("winner-orange");
-  let settingsScreenRef = document.getElementById("settings-screen");
-  if (!winnerOrangeRef || !settingsScreenRef) return;
-  winnerOrangeRef.classList.remove("show-screen");
-  settingsScreenRef.classList.add("show-screen");
+  switchScreens("winner-orange", "settings-screen");
   clearLastGame();
 });
 
 backToStartBtnBlue?.addEventListener("click", () => {
-  let winnerBlueRef = document.getElementById("winner-blue");
-  let settingsScreenRef = document.getElementById("settings-screen");
-  if (!winnerBlueRef || !settingsScreenRef) return;
-  winnerBlueRef.classList.remove("show-screen");
-  settingsScreenRef.classList.add("show-screen");
+  switchScreens("winner-blue", "settings-screen");
   clearLastGame();
 });
+
+export function switchScreens(closeHTMLId: string, openHTMLId: string) {
+  closeScreen(closeHTMLId);
+  showScreen(openHTMLId);
+}
+
+export function closeScreen(elementId: string) {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+  element.classList.remove("show-screen");
+}
+
+export function showScreen(elementId: string) {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+  element.classList.add("show-screen");
+}
 
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
@@ -88,8 +93,8 @@ function resetGameState(): void {
 
 export function initGame(): void {
   if (!allSettingsSelected()) return;
-  closeSettingsScreen();
-  showGameScreen();
+  closeScreen("settings-screen");
+  showScreen("game-screen");
   initGameCards();
   initGameBoard();
   renderCards();
@@ -140,18 +145,6 @@ function createNewCard(id: number, src: string, partnerId: number) {
     partnerId: partnerId,
   };
   return card;
-}
-
-function showGameScreen() {
-  let gameScreenRef = document.getElementById("game-screen");
-  if (!gameScreenRef) return;
-  gameScreenRef.classList.add("show-screen");
-}
-
-function closeSettingsScreen() {
-  let settingsScreenRef = document.getElementById("settings-screen");
-  if (!settingsScreenRef) return;
-  settingsScreenRef.classList.remove("show-screen");
 }
 
 function getCardSrcsPathSet() {
@@ -226,12 +219,4 @@ export function removeAnyGridSetting(): void {
   gameCoreRef?.classList.remove("grid-4x4");
   gameCoreRef?.classList.remove("grid-6x4");
   gameCoreRef?.classList.remove("grid-6x6");
-}
-
-function showSettingsScreen() {
-  let homeScreenRef = document.getElementById("home-screen");
-  let settingsScreenRef = document.getElementById("settings-screen");
-  if (!homeScreenRef || !settingsScreenRef) return;
-  homeScreenRef.classList.remove("show-screen");
-  settingsScreenRef.classList.add("show-screen");
 }
