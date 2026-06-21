@@ -11,6 +11,8 @@ import { allSettingsSelected, setBoardSize } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
 import { processTurn, updateGameBoard } from "./scripts/game";
 
+let listenerInitialized: boolean = false;
+
 const homeStartBtn = document.getElementById("home-start-btn");
 const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
 const backToStartBtnOrange = document.getElementById(
@@ -78,6 +80,8 @@ function resetGameState(): void {
   gameState.scoreOrange = 0;
   gameState.currentPlayer = startSettings.startPlayer;
   gameState.flippedCards = 0;
+  gameState.firstTurnId = null;
+  gameState.secondTurnId = null;
 }
 
 export function initGame(): void {
@@ -87,6 +91,7 @@ export function initGame(): void {
   initGameCards();
   initGameBoard();
   renderCards();
+  if (!listenerInitialized) setCardEventListener();
 }
 
 export function initGameCards() {
@@ -180,14 +185,25 @@ export function renderCards(): void {
   for (let i = 0; i < startSettings.boardSize; i++) {
     gameCoreRef.innerHTML += getCardTemplate(i);
   }
+}
+
+export function setCardEventListener() {
+  const gameCoreRef = document.getElementById("game-core");
+  if (!gameCoreRef) return;
+  gameCoreRef.addEventListener("click", () => console.log("CLICK"));
   gameCoreRef.addEventListener("click", (e) => {
-    const card = (e.target as HTMLElement).closest(
-      ".card",
-    ) as HTMLButtonElement;
-    if (!card) return;
-    card.classList.toggle("is-flipped");
-    processTurn(Number(card.id));
+    userClicksCard(e);
   });
+  listenerInitialized = true;
+}
+
+export function userClicksCard(event: Event) {
+  const card = (event.target as HTMLElement).closest(
+    ".card",
+  ) as HTMLButtonElement;
+  if (!card) return;
+  card.classList.toggle("is-flipped");
+  processTurn(Number(card.id));
 }
 
 export function renderCardGrid(boardSize: number): void {
