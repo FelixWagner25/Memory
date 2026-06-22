@@ -1,6 +1,7 @@
 @use "./components/main" as comp;
 @use "./abstract/main" as abs;
 @use "./base/typography" as typgr;
+@use "./themes/main" as themes;
 
 body {
   margin: 0;
