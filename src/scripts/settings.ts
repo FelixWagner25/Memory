@@ -11,6 +11,18 @@ export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   setThemePreview(option);
   themeSelected = true;
   if (allSettingsSelected()) enableStartBtn();
+  setStyleDataTheme(option);
+}
+
+function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
+  switch (option) {
+    case "Code-vibes":
+      // default theme
+      break;
+    case "DA-projects":
+      document.documentElement.setAttribute("data-theme", option);
+      break;
+  }
 }
 
 export function setStartPlayer(option: "Blue" | "Orange"): void {

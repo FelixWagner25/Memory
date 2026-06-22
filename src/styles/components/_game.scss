@@ -7,6 +7,7 @@
     $justify-content: flex-start,
     $gap: 54px
   );
+  padding-top: 16px;
 }
 
 .game-screen {
@@ -16,14 +17,21 @@
 }
 
 .game-header {
-  @include mx.d-flex($justify-content: space-between, $gap: 54px);
-  padding-top: 40px;
+  @include mx.d-flex(
+    $justify-content: space-between,
+    $gap: 54px,
+    $align-items: center
+  );
+  padding: 20px 24px;
   width: 100%;
+  background-color: var(--game-board-bg-color);
+  border-radius: var(--game-board-border-radius);
 
   &__score {
     padding: 17px 20px;
     background-color: var(--game-board-score-bg-color);
     @include mx.d-flex($gap: 20px);
+    border-radius: var(--game-board-border-radius);
 
     &--blue,
     &--orange {
@@ -53,6 +61,7 @@
     background-color: var(--exit-btn-bg-color);
     padding: 16px 24px;
     border: 3px solid var(--exit-btn-border-color);
+    border-radius: var(--game-board-border-radius);
 
     img {
       width: 26px;
@@ -62,6 +71,7 @@
     &:hover {
       border: 3px solid var(--exit-btn-border-hover-color);
       background-color: var(--exit-btn-bg-hover-color);
+      color: var(--exit-btn-text-hover-color);
     }
   }
 }
@@ -102,8 +112,9 @@
 }
 
 .card {
-  height: 120px;
-  width: 120px;
+  height: var(--card-height);
+  width: var(--card-width);
+  border-radius: var(--card-border-radius);
 
   &__inner {
     position: relative;
