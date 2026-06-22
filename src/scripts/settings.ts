@@ -15,9 +15,10 @@ export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
 }
 
 function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
+  document.documentElement.removeAttribute("data-theme");
   switch (option) {
     case "Code-vibes":
-      // default theme
+      // default
       break;
     case "DA-projects":
       document.documentElement.setAttribute("data-theme", option);
