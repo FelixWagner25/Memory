@@ -22,7 +22,7 @@
 
   &__score {
     padding: 17px 20px;
-    background-color: #86e9d633;
+    background-color: var(--game-board-score-bg-color);
     @include mx.d-flex($gap: 20px);
 
     &--blue,
@@ -41,7 +41,7 @@
   }
 
   &__current-player {
-    color: #ffffff;
+    color: var(--game-board-text-color);
     @include mx.font(26px, 400);
     @include mx.d-flex();
   }
@@ -49,10 +49,10 @@
   &__exit-btn {
     @include mx.d-flex();
     @include mx.font(24px, 700);
-    color: white;
-    background-color: #86e9d633;
+    color: var(--exit-btn-text-color);
+    background-color: var(--exit-btn-bg-color);
     padding: 16px 24px;
-    border: 3px solid #4dd5bc;
+    border: 3px solid var(--exit-btn-border-color);
 
     img {
       width: 26px;
@@ -60,8 +60,8 @@
     }
 
     &:hover {
-      border: 3px solid #6cf0d8;
-      background-color: #438e7f33;
+      border: 3px solid var(--exit-btn-border-hover-color);
+      background-color: var(--exit-btn-bg-hover-color);
     }
   }
 }
@@ -139,14 +139,14 @@
   translate: -50% -50%;
   width: 540px;
   height: 270px;
-  background-color: #ffffff;
+  background-color: var(--exit-overlay-bg-color);
   border-radius: 24px;
   padding: 40px;
   @include mx.d-flex($flex-direction: column, $gap: 54px);
   transition: all 400ms ease-in-out;
 
   &__text {
-    color: #303131;
+    color: var(--exit-overlay-text-color);
     @include mx.font(32px, 700);
     line-height: 40px;
     text-align: center;
@@ -155,21 +155,21 @@
   &__btn {
     @include mx.font(20px, 700);
     padding: 16px 24px;
-    border: 2px solid #4dd5bc;
+    border: 2px solid var(--exit-overlay-btn-border-color);
 
     &--primary {
-      background-color: #66cfbc;
-      color: #ffffff;
+      background-color: var(--exit-overlay-primary-btn-bg-color);
+      color: var(--exit-overlay-primary-btn-text-color);
       &:hover {
-        background-color: #86e9d6;
+        background-color: var(--exit-overlay-primary-btn-bg-hover-color);
       }
     }
 
     &--secondary {
-      background-color: #dcfdf6;
-      color: #4dd5bc;
+      background-color: var(--exit-overlay-secondary-btn-bg-color);
+      color: var(--exit-overlay-secondary-btn-text-color);
       &:hover {
-        background-color: #b4f6e9;
+        background-color: var(--exit-overlay-secondary-btn-bg-hover-color);
       }
     }
   }

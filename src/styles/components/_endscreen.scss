@@ -14,7 +14,7 @@
   }
 
   &__headline {
-    color: #4dd5bc;
+    color: var(--game-over-headline-color);
     @include mx.font(140px, 700);
   }
   &__score {
