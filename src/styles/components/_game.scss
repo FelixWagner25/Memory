@@ -1,6 +1,7 @@
 @use "../abstract/mixins" as mx;
 
 .game {
+  font-family: var(--theme-font);
   width: 1220px;
   @include mx.d-flex(
     $flex-direction: column,

@@ -1,6 +1,7 @@
 @use "../abstract/mixins" as mx;
 
 .game-over {
+  font-family: var(--theme-font);
   @include mx.d-flex();
   @include mx.font(26px, 400);
   color: #ffffff;
@@ -48,7 +49,7 @@
 
 .winner {
   @include mx.d-flex($flex-direction: column, $justify-content: flex-start);
-
+  font-family: var(--theme-font);
   > div {
     width: 1220px;
     @include mx.d-flex(
@@ -98,6 +99,7 @@
 }
 
 .draw {
+  font-family: var(--theme-font);
   @include mx.d-flex($flex-direction: column, $gap: 64px);
   &__headline {
     @include mx.d-flex($flex-direction: column, $gap: 0);
