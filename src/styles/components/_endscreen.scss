@@ -20,7 +20,7 @@
   }
   &__score {
     padding: 17px 20px;
-    background-color: #86e9d633;
+    background-color: var(--game-board-score-bg-color);
     @include mx.d-flex($gap: 32px);
 
     &--blue,
@@ -87,13 +87,14 @@
 
   &__btn {
     padding: 16px 24px;
-    border: 1px solid #4dd5bc;
-    background-color: #86e9d633;
-    color: #ffffff;
+    border: 1px solid var(--exit-btn-border-color);
+    background-color: var(--exit-btn-bg-color);
+    color: var(--exit-btn-text-color);
     @include mx.font(24px, 700);
     &:hover {
-      border: 2px solid #4dd5bc;
-      background-color: #5d877f;
+      padding: 15px 23px;
+      border: 2px solid var(--exit-btn-border-color);
+      background-color: var(--exit-btn-bg-hover-color);
     }
   }
 }
@@ -105,13 +106,13 @@
     @include mx.d-flex($flex-direction: column, $gap: 0);
     &--primary {
       @include mx.font(100px, 700);
-      color: #4dd5bc;
+      color: var(--draw-headline-primary-color);
       text-transform: uppercase;
     }
 
     &--secondary {
       @include mx.font(40px, 400);
-      color: #ffffff;
+      color: var(--draw-headline-secondary-color);
     }
   }
 
@@ -122,13 +123,14 @@
 
   &__btn {
     padding: 16px 24px;
-    border: 1px solid #4dd5bc;
-    background-color: #86e9d633;
-    color: #ffffff;
+    border: 1px solid var(--exit-btn-border-color);
+    background-color: var(--exit-btn-bg-color);
+    color: var(--exit-btn-text-color);
     @include mx.font(24px, 700);
     &:hover {
-      border: 2px solid #4dd5bc;
-      background-color: #5d877f;
+      padding: 15px 23px;
+      border: 2px solid var(--exit-btn-border-color);
+      background-color: var(--exit-btn-bg-hover-color);
     }
   }
 }
