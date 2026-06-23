@@ -136,12 +136,14 @@
     padding: 16px 24px;
     border: 1px solid var(--exit-btn-border-color);
     background-color: var(--exit-btn-bg-color);
+    border-radius: var(--primary-btn-border-radius);
     color: var(--exit-btn-text-color);
     @include mx.font(24px, 700);
     &:hover {
       padding: 15px 23px;
       border: 2px solid var(--exit-btn-border-color);
       background-color: var(--exit-btn-bg-hover-color);
+      color: var(--exit-btn-text-hover-color);
     }
   }
 }
