@@ -10,7 +10,9 @@ import {
 } from "./scripts/shared";
 import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
+import { getGameHeaderTemplate } from "./templates/game-header-templates";
 import { processTurn, updateGameBoard } from "./scripts/game";
+import { getGameOverTemplate } from "./templates/game-over-templates";
 
 let listenerInitialized: boolean = false;
 
@@ -67,12 +69,25 @@ function resetGameState(): void {
 
 export function initGame(): void {
   if (!allSettingsSelected()) return;
-  closeScreen("settings-screen");
-  showScreen("game-screen");
+  switchScreens("settings-screen", "game-screen");
   initGameCards();
-  initGameBoard();
+  renderGameHeader(startSettings.gameTheme);
+  if (startSettings.gameTheme == "Code-vibes") initGameHeaderDecorators();
   renderCards();
+  initGameOverScreen(startSettings.gameTheme);
   if (!listenerInitialized) setCardEventListener();
+}
+
+function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects") {
+  const gameOverRef = document.getElementById("game-over-screen");
+  if (!gameOverRef) return;
+  gameOverRef.innerHTML = getGameOverTemplate(gameTheme);
+}
+
+function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects") {
+  const gameHeaderRef = document.getElementById("game-header");
+  if (!gameHeaderRef) return;
+  gameHeaderRef.innerHTML = getGameHeaderTemplate(gameTheme);
 }
 
 export function initGameCards() {
@@ -97,7 +112,7 @@ export function initGameCards() {
   console.log(gameCards);
 }
 
-function initGameBoard() {
+function initGameHeaderDecorators(): void {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
   iconRef.classList.remove("player-icon--blue");

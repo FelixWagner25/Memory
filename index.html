@@ -146,31 +146,7 @@
     </section>
     <section class="screen game-screen" id="game-screen">
       <div class="game">
-        <div class="game-header">
-          <div class="game-header__score">
-            <div class="game-header__score--blue">
-              <div class="player-icon player-icon--blue"></div>
-              <span>Blue</span>
-              <span id="score-blue">0</span>
-            </div>
-            <div class="game-header__score--orange">
-              <div class="player-icon player-icon--orange"></div>
-              <span>Orange</span>
-              <span id="score-orange">0</span>
-            </div>
-          </div>
-          <div class="game-header__current-player">
-            <span>Current player:</span>
-            <div
-              id="current-player-icon"
-              class="player-icon player-icon--blue"
-            ></div>
-          </div>
-          <button class="game-header__exit-btn" id="exit-btn">
-            <img src="public/assets/img/leave.svg" alt="exit icon" />
-            <span>Exit game</span>
-          </button>
-        </div>
+        <div class="game-header" id="game-header"></div>
         <div class="game-core" id="game-core"></div>
       </div>
       <div class="exit-overlay-blur" id="exit-overlay-bg-blur"></div>
@@ -194,26 +170,7 @@
         </div>
       </div>
     </section>
-    <section class="screen game-over" id="game-over-screen">
-      <div>
-        <div class="game-over__headline">Game over</div>
-        <div class="game-over-score-wrap">
-          <div>Final score</div>
-          <div class="game-over__score">
-            <div class="game-over__score--blue">
-              <div class="player-icon player-icon--blue"></div>
-              <span>Blue</span>
-              <span id="final-score-blue">0</span>
-            </div>
-            <div class="game-over__score--orange">
-              <div class="player-icon player-icon--orange"></div>
-              <span>Orange</span>
-              <span id="final-score-orange">0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="screen game-over" id="game-over-screen"></section>
     <section class="screen winner" id="winner-orange">
       <div>
         <img
