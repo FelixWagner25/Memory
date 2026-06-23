@@ -5,7 +5,7 @@ export function getWinnerOrangeTemplate(
     case "DA-projects":
       return `
         <div>
-        <div class="winner-content">
+        <div class="winner-content pd-t-192px">
           <div class="winner-content__headline">
             <div class="winner-content__headline--secondary">The winner is</div>
             <div class="winner-content__headline--primary">
@@ -57,7 +57,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
     case "DA-projects":
       return `
       <div>
-        <div class="winner-content">
+        <div class="winner-content pd-t-192px">
           <div class="winner-content__headline">
             <div class="winner-content__headline--secondary">The winner is</div>
             <div class="winner-content__headline--primary">

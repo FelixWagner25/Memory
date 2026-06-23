@@ -9,11 +9,11 @@ export function getGameOverTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             <div class="game-over__score">
                 <div class="game-over__score--orange">
                     <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_orange.svg" />
-                    <span id="final-score-orange">0</span>
+                    <span id="final-score-orange" class="color-orange">0</span>
                 </div>
                 <div class="game-over__score--blue">
                     <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_blue.svg" />
-                    <span id="final-score-blue">0</span>
+                    <span id="final-score-blue" class="color-blue">0</span>
                 </div>            
             </div>
         </div>
