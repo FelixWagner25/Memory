@@ -1,7 +1,26 @@
 export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
   switch (gameTheme) {
     case "DA-projects":
-      return ``;
+      return `
+          <div class="game-header__score">
+            <div class="game-header__score--orange">
+              <img class="player-icon-img" src="public/assets/img/chess_pawn_orange.svg" />
+              <span id="score-orange">0</span>
+            </div>
+            <div class="game-header__score--blue">
+              <img class="player-icon-img" src="public/assets/img/chess_pawn_blue.svg" />
+              <span id="score-blue">0</span>
+            </div>
+          </div>
+          <div class="game-header__current-player">
+            <span>Current player:</span>
+            <img id="current-player-icon" class="current-player-icon-img current-player-icon-img--blue" src="public/assets/img/chess_pawn_white.svg"/>
+          </div>
+          <button class="game-header__exit-btn" id="exit-btn">
+            <img src="public/assets/img/leave_blue.svg" alt="exit icon" />
+            <span>Exit game</span>
+          </button>
+      `;
     default:
       return `
             <div class="game-header__score">
@@ -28,6 +47,5 @@ export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             <span>Exit game</span>
           </button>
             `;
-      break;
   }
 }

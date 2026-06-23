@@ -92,6 +92,25 @@
   }
 }
 
+.player-icon-img {
+  width: 20px;
+  height: 25px;
+}
+
+.current-player-icon-img {
+  width: 25px;
+  height: 32px;
+  padding: 4px 8px;
+
+  &--blue {
+    background-color: #097fc5;
+  }
+
+  &--orange {
+    background-color: #ea6900;
+  }
+}
+
 .game-core {
   display: grid;
   gap: 8px;
