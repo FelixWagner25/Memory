@@ -13,6 +13,10 @@ import { getCardTemplate } from "./templates/card-templates";
 import { getGameHeaderTemplate } from "./templates/game-header-templates";
 import { processTurn, updateGameBoard } from "./scripts/game";
 import { getGameOverTemplate } from "./templates/game-over-templates";
+import {
+  getWinnerBlueTemplate,
+  getWinnerOrangeTemplate,
+} from "./templates/winner-templates";
 
 let listenerInitialized: boolean = false;
 
@@ -74,8 +78,33 @@ export function initGame(): void {
   renderGameHeader(startSettings.gameTheme);
   if (startSettings.gameTheme == "Code-vibes") initGameHeaderDecorators();
   renderCards();
-  initGameOverScreen(startSettings.gameTheme);
   if (!listenerInitialized) setCardEventListener();
+  initGameOverScreen(startSettings.gameTheme);
+  initEndScreens(startSettings.gameTheme);
+}
+
+function initEndScreens(gameTheme: "Code-vibes" | "DA-projects") {
+  initWinnerOrangeScreen(gameTheme);
+  initWinnerBlueScreen(gameTheme);
+  initDrawScreen(gameTheme);
+}
+
+function initWinnerOrangeScreen(gameTheme: "Code-vibes" | "DA-projects") {
+  const winnerOrangeRef = document.getElementById("winner-orange");
+  if (!winnerOrangeRef) return;
+  winnerOrangeRef.innerHTML = getWinnerOrangeTemplate(gameTheme);
+}
+
+function initWinnerBlueScreen(gameTheme: "Code-vibes" | "DA-projects") {
+  const winnerBlueRef = document.getElementById("winner-blue");
+  if (!winnerBlueRef) return;
+  winnerBlueRef.innerHTML = getWinnerBlueTemplate(gameTheme);
+}
+
+function initDrawScreen(gameTheme: "Code-vibes" | "DA-projects") {
+  const drawRef = document.getElementById("draw");
+  if (!drawRef) return;
+  drawRef.innerHTML = getDrawTemplate(gameTheme);
 }
 
 function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects") {
