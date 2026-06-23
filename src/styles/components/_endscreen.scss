@@ -99,6 +99,11 @@
       background-color: var(--exit-btn-bg-hover-color);
     }
   }
+
+  &__img {
+    height: 250px;
+    width: 200px;
+  }
 }
 
 .draw {

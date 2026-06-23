@@ -20,7 +20,7 @@ export function getWinnerOrangeTemplate(
             </div>
           </div>
           <img
-            src="public/assets/img/chess_pawn_orange.svg"
+            src="public/assets/img/chess_pawn_orange_code-vibes.svg"
             alt=""
             class="winner-content__img"
           />
@@ -53,7 +53,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             </div>
           </div>
           <img
-            src="public/assets/img/chess_pawn_blue.svg"
+            src="public/assets/img/chess_pawn_blue_code-vibes.svg"
             alt="orange chess pawn"
             class="winner-content__img"
           />
