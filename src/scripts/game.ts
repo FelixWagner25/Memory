@@ -149,8 +149,8 @@ export function updateGameBoard() {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
   setTimeout(() => {
-    iconRef.classList.toggle("player-icon--blue");
-    iconRef.classList.toggle("player-icon--orange");
+    iconRef.classList.toggle("bg-blue");
+    iconRef.classList.toggle("bg-orange");
   }, 2500);
 }
 

@@ -39,7 +39,7 @@ export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             <span>Current player:</span>
             <div
               id="current-player-icon"
-              class="player-icon player-icon--blue"
+              class="player-icon bg-blue"
             ></div>
           </div>
           <button class="game-header__exit-btn" id="exit-btn">
