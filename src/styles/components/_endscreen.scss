@@ -23,6 +23,7 @@
     padding: 17px 20px;
     background-color: var(--game-board-score-bg-color);
     @include mx.d-flex($gap: 32px);
+    border-radius: var(--game-board-border-radius);
 
     &--blue,
     &--orange {
