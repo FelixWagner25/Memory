@@ -20,23 +20,45 @@ import {
 import { getDrawTemplate } from "./templates/draw-templates";
 import { setBtnEventListeners } from "./scripts/listeners";
 
-export function switchScreens(closeHTMLId: string, openHTMLId: string) {
+/**
+ * Closes one screen and opens another.
+ *
+ * @param closeHTMLId - Id of screen to close
+ * @param openHTMLId - Id of screen to open
+ */
+export function switchScreens(closeHTMLId: string, openHTMLId: string): void {
   closeScreen(closeHTMLId);
   showScreen(openHTMLId);
 }
 
-export function closeScreen(elementId: string) {
+/**
+ * Closes one screen.
+ *
+ * @param elementId - Id of screen to close
+ */
+export function closeScreen(elementId: string): void {
   const element = document.getElementById(elementId);
   if (!element) return;
   element.classList.remove("show-screen");
 }
 
-export function showScreen(elementId: string) {
+/**
+ * Opens one screen.
+ *
+ * @param elementId - Id of screen to open
+ */
+export function showScreen(elementId: string): void {
   const element = document.getElementById(elementId);
   if (!element) return;
   element.classList.add("show-screen");
 }
 
+/**
+ * Sets text to innerText of element.
+ *
+ * @param htmlId - Id of element
+ * @param text - Text to be put into element
+ */
 export function setInnerText(htmlId: string, text: string): void {
   const element = document.getElementById(htmlId);
   if (element) {
@@ -44,24 +66,40 @@ export function setInnerText(htmlId: string, text: string): void {
   }
 }
 
-export function clearLastGame() {
+/**
+ * Clears content of current game.
+ *
+ */
+export function clearCurrentGame(): void {
   resetGameState();
   clearGameComponent();
   clearGameCardsArray();
 }
 
-function clearGameComponent() {
+/**
+ * Clears content of current game component.
+ *
+ */
+function clearGameComponent(): void {
   updateGameBoard();
   clearGameCore();
 }
 
-function clearGameCore() {
+/**
+ * Clears content of current game core.
+ *
+ */
+function clearGameCore(): void {
   let gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
   gameCoreRef.innerHTML = "";
   gameCoreRef.style.removeProperty("pointer-events");
 }
 
+/**
+ * Resets current game state.
+ *
+ */
 function resetGameState(): void {
   gameState.scoreBlue = 0;
   gameState.scoreOrange = 0;
@@ -71,6 +109,10 @@ function resetGameState(): void {
   gameState.secondTurnId = null;
 }
 
+/**
+ * Initializes new menory game.
+ *
+ */
 export function initGame(): void {
   if (!allSettingsSelected()) return;
   switchScreens("settings-screen", "game-screen");
@@ -86,43 +128,76 @@ export function initGame(): void {
   }, 100);
 }
 
-function initEndScreens(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Initializes endscreens.
+ *
+ * @param gameTheme - Game theme
+ */
+function initEndScreens(gameTheme: "Code-vibes" | "DA-projects"): void {
   initWinnerOrangeScreen(gameTheme);
   initWinnerBlueScreen(gameTheme);
   initDrawScreen(gameTheme);
 }
 
-function initWinnerOrangeScreen(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Initializes winner orange screen.
+ *
+ * @param gameTheme - Game theme
+ */
+function initWinnerOrangeScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
   const winnerOrangeRef = document.getElementById("winner-orange");
   if (!winnerOrangeRef) return;
   winnerOrangeRef.innerHTML = getWinnerOrangeTemplate(gameTheme);
 }
 
-function initWinnerBlueScreen(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Initializes winner blue screen.
+ *
+ * @param gameTheme - Game theme
+ */
+function initWinnerBlueScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
   const winnerBlueRef = document.getElementById("winner-blue");
   if (!winnerBlueRef) return;
   winnerBlueRef.innerHTML = getWinnerBlueTemplate(gameTheme);
 }
 
-function initDrawScreen(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Initializes draw screen.
+ *
+ * @param gameTheme - Game theme
+ */
+function initDrawScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
   const drawRef = document.getElementById("draw");
   if (!drawRef) return;
   drawRef.innerHTML = getDrawTemplate(gameTheme);
 }
 
-function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Initializes game over screen
+ *
+ * @param gameTheme - Game theme
+ */
+function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
   const gameOverRef = document.getElementById("game-over-screen");
   if (!gameOverRef) return;
   gameOverRef.innerHTML = getGameOverTemplate(gameTheme);
 }
 
-function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects") {
+/**
+ * Renders game header.
+ *
+ * @param gameTheme - Game theme
+ */
+function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects"): void {
   const gameHeaderRef = document.getElementById("game-header");
   if (!gameHeaderRef) return;
   gameHeaderRef.innerHTML = getGameHeaderTemplate(gameTheme);
 }
 
-export function initGameCards() {
+/**
+ * Initializes game cards.
+ */
+export function initGameCards(): void {
   let randomIndex: number;
   let cardSrc: string;
   let srcPaths = getCardSrcsPathSet();
@@ -141,9 +216,13 @@ export function initGameCards() {
     gameCards.push(card, partnerCard);
   }
   shuffleArray(gameCards);
-  console.log(gameCards);
 }
 
+/**
+ * Initializes game header decorators.
+ *
+ * @param currentPlayer - Current player
+ */
 function initGameHeaderDecorators(currentPlayer: "Blue" | "Orange"): void {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
@@ -159,6 +238,13 @@ function initGameHeaderDecorators(currentPlayer: "Blue" | "Orange"): void {
   }
 }
 
+/**
+ * Creates new Card.
+ *
+ * @param id - Card id
+ * @param src - Card source path
+ * @param partnerId - Id of partner card
+ */
 function createNewCard(id: number, src: string, partnerId: number) {
   let card: GameCard = {
     id: id,
@@ -168,6 +254,11 @@ function createNewCard(id: number, src: string, partnerId: number) {
   return card;
 }
 
+/**
+ * Returns cars source path set.
+ *
+ * @returns - Card source path set
+ */
 function getCardSrcsPathSet() {
   let srcPaths: string[];
   switch (startSettings.gameTheme) {
@@ -181,6 +272,12 @@ function getCardSrcsPathSet() {
   return srcPaths;
 }
 
+/**
+ * Shuffles elements of array.
+ *
+ * @param array - Array to shuffle
+ * @returns - Suffled array.
+ */
 function shuffleArray<T>(array: T[]): T[] {
   let currentIndex = array.length;
   while (currentIndex != 0) {
@@ -194,6 +291,9 @@ function shuffleArray<T>(array: T[]): T[] {
   return array;
 }
 
+/**
+ * Renders cards.
+ */
 export function renderCards(): void {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
@@ -203,7 +303,10 @@ export function renderCards(): void {
   }
 }
 
-export function setCardEventListener() {
+/**
+ * Sets card event listeners.
+ */
+export function setCardEventListener(): void {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
   gameCoreRef.addEventListener("click", (e) => {
@@ -212,6 +315,10 @@ export function setCardEventListener() {
   startSettings.initCardListeners = true;
 }
 
+/**
+ * Performs actions of user clicks card.
+ * @param event - Browser event
+ */
 export function userClicksCard(event: Event) {
   const card = (event.target as HTMLElement).closest(
     ".card",
@@ -221,6 +328,11 @@ export function userClicksCard(event: Event) {
   processTurn(Number(card.id));
 }
 
+/**
+ * Renders card grid.
+ *
+ * @param boardSize - Board size
+ */
 export function renderCardGrid(boardSize: number): void {
   const gameCoreRef = document.getElementById("game-core");
   removeAnyGridSetting();
@@ -235,6 +347,9 @@ export function renderCardGrid(boardSize: number): void {
   }
 }
 
+/**
+ * Removes previous grid settings.
+ */
 export function removeAnyGridSetting(): void {
   const gameCoreRef = document.getElementById("game-core");
   gameCoreRef?.classList.remove("grid-4x4");

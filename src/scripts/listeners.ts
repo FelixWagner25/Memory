@@ -1,4 +1,4 @@
-import { switchScreens, clearLastGame, initGame } from "../main";
+import { switchScreens, clearCurrentGame, initGame } from "../main";
 import { moveExitOverlay } from "./game";
 import {
   setListDecorators,
@@ -87,23 +87,23 @@ export function setBtnEventListeners() {
 
   backToStartBtnDraw?.addEventListener("click", () => {
     switchScreens("draw", "settings-screen");
-    clearLastGame();
+    clearCurrentGame();
   });
 
   backToStartBtnOrange?.addEventListener("click", () => {
     switchScreens("winner-orange", "settings-screen");
-    clearLastGame();
+    clearCurrentGame();
   });
 
   backToStartBtnBlue?.addEventListener("click", () => {
     switchScreens("winner-blue", "settings-screen");
-    clearLastGame();
+    clearCurrentGame();
   });
 
   confirmExitGameBtn?.addEventListener("click", (event) => {
     switchScreens("game-screen", "settings-screen");
     moveExitOverlay("move-out", event);
-    clearLastGame();
+    clearCurrentGame();
   });
 
   exitBtnRef?.addEventListener("click", (event) => {
