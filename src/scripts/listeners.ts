@@ -10,15 +10,6 @@ import {
 import { startSettings } from "./shared";
 
 const homeStartBtn = document.getElementById("home-start-btn");
-const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
-const backToStartBtnOrange = document.getElementById(
-  "back-to-start-btn-orange",
-);
-const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
-const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
-const exitBtnRef = document.getElementById("exit-btn");
-const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
-const backToGameBtnRef = document.getElementById("back-to-game-btn");
 const codeVibesBtnRef = document.getElementById("set-btn-code-vibes");
 const daProjectsBtnRef = document.getElementById("set-btn-DA-projects");
 const blueBtnRef = document.getElementById("set-btn-blue");
@@ -30,39 +21,6 @@ const setStartBtn = document.getElementById("set-start-btn");
 
 homeStartBtn?.addEventListener("click", () => {
   switchScreens("home-screen", "settings-screen");
-});
-
-backToStartBtnDraw?.addEventListener("click", () => {
-  switchScreens("draw", "settings-screen");
-  clearLastGame();
-});
-
-backToStartBtnOrange?.addEventListener("click", () => {
-  switchScreens("winner-orange", "settings-screen");
-  clearLastGame();
-});
-
-backToStartBtnBlue?.addEventListener("click", () => {
-  switchScreens("winner-blue", "settings-screen");
-  clearLastGame();
-});
-
-confirmExitGameBtn?.addEventListener("click", (event) => {
-  switchScreens("game-screen", "settings-screen");
-  moveExitOverlay("move-out", event);
-  clearLastGame();
-});
-
-exitBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-in", event);
-});
-
-exitOverlayBgBlurRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
-});
-
-backToGameBtnRef?.addEventListener("click", (event) => {
-  moveExitOverlay("move-out", event);
 });
 
 codeVibesBtnRef?.addEventListener("click", () => {
@@ -115,3 +73,50 @@ thirtysixBtnRef?.addEventListener("click", () => {
 setStartBtn?.addEventListener("click", () => {
   initGame();
 });
+
+export function setBtnEventListeners() {
+  const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
+  const backToStartBtnOrange = document.getElementById(
+    "back-to-start-btn-orange",
+  );
+  const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
+  const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
+  const exitBtnRef = document.getElementById("exit-btn");
+  const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
+  const backToGameBtnRef = document.getElementById("back-to-game-btn");
+
+  backToStartBtnDraw?.addEventListener("click", () => {
+    switchScreens("draw", "settings-screen");
+    clearLastGame();
+  });
+
+  backToStartBtnOrange?.addEventListener("click", () => {
+    switchScreens("winner-orange", "settings-screen");
+    clearLastGame();
+  });
+
+  backToStartBtnBlue?.addEventListener("click", () => {
+    switchScreens("winner-blue", "settings-screen");
+    clearLastGame();
+  });
+
+  confirmExitGameBtn?.addEventListener("click", (event) => {
+    switchScreens("game-screen", "settings-screen");
+    moveExitOverlay("move-out", event);
+    clearLastGame();
+  });
+
+  exitBtnRef?.addEventListener("click", (event) => {
+    moveExitOverlay("move-in", event);
+  });
+
+  exitOverlayBgBlurRef?.addEventListener("click", (event) => {
+    moveExitOverlay("move-out", event);
+  });
+
+  backToGameBtnRef?.addEventListener("click", (event) => {
+    moveExitOverlay("move-out", event);
+  });
+
+  startSettings.initBtnListeners = true;
+}

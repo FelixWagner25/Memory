@@ -17,8 +17,8 @@ import {
   getWinnerBlueTemplate,
   getWinnerOrangeTemplate,
 } from "./templates/winner-templates";
-
-let listenerInitialized: boolean = false;
+import { getDrawTemplate } from "./templates/draw-templates";
+import { setBtnEventListeners } from "./scripts/listeners";
 
 export function switchScreens(closeHTMLId: string, openHTMLId: string) {
   closeScreen(closeHTMLId);
@@ -78,9 +78,12 @@ export function initGame(): void {
   renderGameHeader(startSettings.gameTheme);
   if (startSettings.gameTheme == "Code-vibes") initGameHeaderDecorators();
   renderCards();
-  if (!listenerInitialized) setCardEventListener();
   initGameOverScreen(startSettings.gameTheme);
   initEndScreens(startSettings.gameTheme);
+  setTimeout(() => {
+    if (!startSettings.initCardListeners) setCardEventListener();
+    if (!startSettings.initBtnListeners) setBtnEventListeners();
+  }, 100);
 }
 
 function initEndScreens(gameTheme: "Code-vibes" | "DA-projects") {
@@ -206,7 +209,7 @@ export function setCardEventListener() {
   gameCoreRef.addEventListener("click", (e) => {
     userClicksCard(e);
   });
-  listenerInitialized = true;
+  startSettings.initCardListeners = true;
 }
 
 export function userClicksCard(event: Event) {

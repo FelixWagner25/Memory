@@ -2,6 +2,8 @@ interface Settings {
   gameTheme: "Code-vibes" | "DA-projects";
   startPlayer: "Blue" | "Orange";
   boardSize: 16 | 24 | 36;
+  initCardListeners: boolean;
+  initBtnListeners: boolean;
 }
 
 interface GameState {
@@ -24,6 +26,8 @@ export let startSettings: Settings = {
   gameTheme: "Code-vibes",
   startPlayer: "Blue",
   boardSize: 16,
+  initCardListeners: false,
+  initBtnListeners: false,
 };
 
 export let gameState: GameState = {

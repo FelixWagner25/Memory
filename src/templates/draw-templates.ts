@@ -1,4 +1,4 @@
-function getDrawTemplate(gameTheme: "Code-vibes" | "DA-projects") {
+export function getDrawTemplate(gameTheme: "Code-vibes" | "DA-projects") {
   switch (gameTheme) {
     case "DA-projects":
       return ` 
