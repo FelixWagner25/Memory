@@ -69,10 +69,18 @@
       height: 23px;
     }
 
+    .img-blue {
+      content: url("../../../public/assets/img/leave_blue.svg");
+    }
+
     &:hover {
       border: 3px solid var(--exit-btn-border-hover-color);
       background-color: var(--exit-btn-bg-hover-color);
       color: var(--exit-btn-text-hover-color);
+
+      .img-blue {
+        content: url("../../../public/assets/img/leave.svg");
+      }
     }
   }
 }

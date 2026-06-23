@@ -17,7 +17,7 @@ export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             <img id="current-player-icon" class="current-player-icon-img bg-blue" src="public/assets/img/chess_pawn_white.svg"/>
           </div>
           <button class="game-header__exit-btn" id="exit-btn">
-            <img src="public/assets/img/leave_blue.svg" alt="exit icon" />
+            <img class="img-blue" alt="exit icon" />
             <span>Exit game</span>
           </button>
       `;
