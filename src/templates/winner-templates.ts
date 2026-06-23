@@ -61,7 +61,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
           <div class="winner-content__headline">
             <div class="winner-content__headline--secondary">The winner is</div>
             <div class="winner-content__headline--primary">
-              Orange Player
+              Blue Player
             </div>
           </div>
           <img
