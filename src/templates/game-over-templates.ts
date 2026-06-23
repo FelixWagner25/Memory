@@ -10,12 +10,12 @@ export function getGameOverTemplate(gameTheme: "Code-vibes" | "DA-projects") {
           <div>Final score</div>
           <div class="game-over__score">
             <div class="game-over__score--blue">
-              <div class="player-icon player-icon--blue"></div>
+              <div class="player-icon bg-blue"></div>
               <span>Blue</span>
               <span id="final-score-blue">0</span>
             </div>
             <div class="game-over__score--orange">
-              <div class="player-icon player-icon--orange"></div>
+              <div class="player-icon bg-orange"></div>
               <span>Orange</span>
               <span id="final-score-orange">0</span>
             </div>
