@@ -76,7 +76,7 @@ export function initGame(): void {
   switchScreens("settings-screen", "game-screen");
   initGameCards();
   renderGameHeader(startSettings.gameTheme);
-  if (startSettings.gameTheme == "Code-vibes") initGameHeaderDecorators();
+  initGameHeaderDecorators(startSettings.gameTheme);
   renderCards();
   initGameOverScreen(startSettings.gameTheme);
   initEndScreens(startSettings.gameTheme);
@@ -144,17 +144,34 @@ export function initGameCards() {
   console.log(gameCards);
 }
 
-function initGameHeaderDecorators(): void {
+function initGameHeaderDecorators(
+  gameTheme: "Code-vibes" | "DA-projects",
+): void {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
-  iconRef.classList.remove("player-icon--blue");
-  iconRef.classList.remove("player-icon--orange");
-  switch (gameState.currentPlayer) {
-    case "Blue":
-      iconRef.classList.add("player-icon--blue");
-      break;
-    case "Orange":
-      iconRef.classList.add("player-icon--orange");
+  switch (gameTheme) {
+    case "DA-projects":
+      iconRef.classList.remove("current-player-icon-img--blue");
+      iconRef.classList.remove("current-player-icon-img--orange");
+      switch (gameState.currentPlayer) {
+        case "Blue":
+          iconRef.classList.add("current-player-icon-img--blue");
+          break;
+        case "Orange":
+          iconRef.classList.add("current-player-icon-img--orange");
+          break;
+      }
+    default:
+      iconRef.classList.remove("player-icon--blue");
+      iconRef.classList.remove("player-icon--orange");
+      switch (gameState.currentPlayer) {
+        case "Blue":
+          iconRef.classList.add("player-icon--blue");
+          break;
+        case "Orange":
+          iconRef.classList.add("player-icon--orange");
+          break;
+      }
       break;
   }
 }
