@@ -3,7 +3,26 @@ export function getWinnerOrangeTemplate(
 ) {
   switch (gameTheme) {
     case "DA-projects":
-      return ``;
+      return `
+        <div>
+        <div class="winner-content">
+          <div class="winner-content__headline">
+            <div class="winner-content__headline--secondary">The winner is</div>
+            <div class="winner-content__headline--primary">
+              Orange Player
+            </div>
+          </div>
+          <img
+            src="public/assets/img/DA-projects/chess_pawn_orange.svg"
+            alt="Chess pawn orange"
+            class="winner-content__img"
+          />
+          <button class="winner-content__btn" id="back-to-start-btn-orange">
+            Home
+          </button>
+        </div>
+      </div>
+      `;
     default:
       return `
       <div>
@@ -21,7 +40,7 @@ export function getWinnerOrangeTemplate(
           </div>
           <img
             src="public/assets/img/code-vibes/chess_pawn_orange.svg"
-            alt=""
+            alt="Chess pawn orange"
             class="winner-content__img"
           />
           <button class="winner-content__btn" id="back-to-start-btn-orange">
@@ -36,7 +55,26 @@ export function getWinnerOrangeTemplate(
 export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
   switch (gameTheme) {
     case "DA-projects":
-      return ``;
+      return `
+      <div>
+        <div class="winner-content">
+          <div class="winner-content__headline">
+            <div class="winner-content__headline--secondary">The winner is</div>
+            <div class="winner-content__headline--primary">
+              Orange Player
+            </div>
+          </div>
+          <img
+            src="public/assets/img/DA-projects/chess_pawn_blue.svg"
+            alt="Chess pawn blue"
+            class="winner-content__img"
+          />
+          <button class="winner-content__btn" id="back-to-start-btn-orange">
+            Home
+          </button>
+        </div>
+      </div>
+      `;
     default:
       return `
         <div>

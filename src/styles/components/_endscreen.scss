@@ -31,11 +31,11 @@
     }
 
     &--blue {
-      color: #2bb1ff;
+      color: var(--theme-color-blue);
     }
 
     &--orange {
-      color: #f58e39;
+      color: var(--theme-color-orange);
     }
   }
 

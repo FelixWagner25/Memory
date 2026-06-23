@@ -8,11 +8,11 @@ export function getGameOverTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             <div>Final score</div>
             <div class="game-over__score">
                 <div class="game-over__score--orange">
-                    <img class="player-icon-img" src="public/assets/img/chess_pawn_orange.svg" />
+                    <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_orange.svg" />
                     <span id="final-score-orange">0</span>
                 </div>
                 <div class="game-over__score--blue">
-                    <img class="player-icon-img" src="public/assets/img/chess_pawn_blue.svg" />
+                    <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_blue.svg" />
                     <span id="final-score-blue">0</span>
                 </div>            
             </div>
