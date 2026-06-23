@@ -76,7 +76,7 @@ export function initGame(): void {
   switchScreens("settings-screen", "game-screen");
   initGameCards();
   renderGameHeader(startSettings.gameTheme);
-  initGameHeaderDecorators(startSettings.gameTheme);
+  initGameHeaderDecorators(gameState.currentPlayer);
   renderCards();
   initGameOverScreen(startSettings.gameTheme);
   initEndScreens(startSettings.gameTheme);
@@ -144,34 +144,17 @@ export function initGameCards() {
   console.log(gameCards);
 }
 
-function initGameHeaderDecorators(
-  gameTheme: "Code-vibes" | "DA-projects",
-): void {
+function initGameHeaderDecorators(currentPlayer: "Blue" | "Orange"): void {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
-  switch (gameTheme) {
-    case "DA-projects":
-      iconRef.classList.remove("current-player-icon-img--blue");
-      iconRef.classList.remove("current-player-icon-img--orange");
-      switch (gameState.currentPlayer) {
-        case "Blue":
-          iconRef.classList.add("current-player-icon-img--blue");
-          break;
-        case "Orange":
-          iconRef.classList.add("current-player-icon-img--orange");
-          break;
-      }
-    default:
-      iconRef.classList.remove("player-icon--blue");
-      iconRef.classList.remove("player-icon--orange");
-      switch (gameState.currentPlayer) {
-        case "Blue":
-          iconRef.classList.add("player-icon--blue");
-          break;
-        case "Orange":
-          iconRef.classList.add("player-icon--orange");
-          break;
-      }
+  iconRef.classList.remove("bg-blue");
+  iconRef.classList.remove("bg-orange");
+  switch (currentPlayer) {
+    case "Blue":
+      iconRef.classList.add("bg-blue");
+      break;
+    case "Orange":
+      iconRef.classList.add("bg-orange");
       break;
   }
 }

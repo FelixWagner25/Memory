@@ -44,11 +44,19 @@ input[type="radio"] {
 }
 
 .color-blue {
-  color: #2bb1ff;
+  color: var(--theme-blue-color);
 }
 
 .color-orange {
-  color: #f58e39;
+  color: var(--theme-orange-color);
+}
+
+.bg-blue {
+  background-color: var(--theme-blue-color);
+}
+
+.bg-orange {
+  background-color: var(--theme-orange-color);
 }
 
 .min-width-200px {
