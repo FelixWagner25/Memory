@@ -69,7 +69,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             alt="Chess pawn blue"
             class="winner-content__img"
           />
-          <button class="winner-content__btn" id="back-to-start-btn-orange">
+          <button class="winner-content__btn" id="back-to-start-btn-blue">
             Home
           </button>
         </div>
