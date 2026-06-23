@@ -82,7 +82,7 @@ export function initGame(): void {
   initEndScreens(startSettings.gameTheme);
   setTimeout(() => {
     if (!startSettings.initCardListeners) setCardEventListener();
-    if (!startSettings.initBtnListeners) setBtnEventListeners();
+    setBtnEventListeners();
   }, 100);
 }
 
