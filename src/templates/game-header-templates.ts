@@ -4,11 +4,11 @@ export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
       return `
           <div class="game-header__score">
             <div class="game-header__score--orange">
-              <img class="player-icon-img" src="public/assets/img/chess_pawn_orange.svg" />
+              <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_orange.svg" />
               <span id="score-orange">0</span>
             </div>
             <div class="game-header__score--blue">
-              <img class="player-icon-img" src="public/assets/img/chess_pawn_blue.svg" />
+              <img class="player-icon-img" src="public/assets/img/DA-projects/chess_pawn_blue.svg" />
               <span id="score-blue">0</span>
             </div>
           </div>
