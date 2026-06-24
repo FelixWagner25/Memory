@@ -5,6 +5,11 @@ export let themeSelected: boolean = false;
 export let playerSelected: boolean = false;
 export let boardSelected: boolean = false;
 
+/**
+ * Sets game theme.
+ *
+ * @param option - Game theme
+ */
 export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   startSettings.gameTheme = option;
   renderSetPanel(option);
@@ -14,6 +19,11 @@ export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
   setStyleDataTheme(option);
 }
 
+/**
+ * Sets data theme for application of styling variables depending on game theme.
+ *
+ * @param option - Game theme
+ */
 function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
   document.documentElement.removeAttribute("data-theme");
   switch (option) {
@@ -26,6 +36,11 @@ function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
   }
 }
 
+/**
+ * Sets playe who starts the game.
+ *
+ * @param option - Game theme
+ */
 export function setStartPlayer(option: "Blue" | "Orange"): void {
   startSettings.startPlayer = option;
   gameState.currentPlayer = option;
@@ -34,6 +49,11 @@ export function setStartPlayer(option: "Blue" | "Orange"): void {
   if (allSettingsSelected()) enableStartBtn();
 }
 
+/**
+ * Sets game board size.
+ *
+ * @param option - Game theme
+ */
 export function setBoardSize(option: 16 | 24 | 36): void {
   startSettings.boardSize = option;
   renderSetPanel(option);
@@ -41,14 +61,27 @@ export function setBoardSize(option: 16 | 24 | 36): void {
   if (allSettingsSelected()) enableStartBtn();
 }
 
+/**
+ * Checks whether all required settings are selected.
+ *
+ * @returns - True if all settings were selected; otherwise false.
+ */
 export function allSettingsSelected() {
   return themeSelected && playerSelected && boardSelected;
 }
 
+/**
+ * Enables start button.
+ */
 export function enableStartBtn(): void {
   document.getElementById("set-start-btn")?.classList.remove("disabled");
 }
 
+/**
+ * Renders start settings into settings panel.
+ *
+ * @param option - Game theme, starting player or board size
+ */
 export function renderSetPanel(option: string | number): void {
   switch (option) {
     case "Code-vibes":
@@ -67,6 +100,11 @@ export function renderSetPanel(option: string | number): void {
   }
 }
 
+/**
+ * Sets theme preview picture in settings screen.
+ *
+ * @param option - Game theme
+ */
 export function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
   switch (option) {
     case "DA-projects":
@@ -84,6 +122,12 @@ export function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
   }
 }
 
+/**
+ * Sets new image source path to image html element.
+ *
+ * @param htmlId - image element id
+ * @param srcPath - image source path to be set
+ */
 export function changeImageSrc(htmlId: string, srcPath: string): void {
   const element = document.getElementById(htmlId);
   if (element && element instanceof HTMLImageElement) {
@@ -91,6 +135,11 @@ export function changeImageSrc(htmlId: string, srcPath: string): void {
   }
 }
 
+/**
+ * Sets list decorators to HTML element.
+ *
+ * @param element - HTML element
+ */
 export function setListDecorators(element: HTMLElement): void {
   const partentElement = element.parentElement;
   if (partentElement) {
@@ -103,6 +152,11 @@ export function setListDecorators(element: HTMLElement): void {
   });
 }
 
+/**
+ * Returns card background source path depending on game theme.
+ *
+ * @returns - source path of card
+ */
 export function getCardBgSrc() {
   let cardSrc: string;
   switch (startSettings.gameTheme) {

@@ -1,7 +1,12 @@
 import { gameState, gameCards, startSettings } from "./shared";
 import { closeScreen, showScreen } from "../main";
 
-export function processTurn(cardHTMLid: number) {
+/**
+ * Processes a card turn
+ *
+ * @param cardHTMLid - Id of card element
+ */
+export function processTurn(cardHTMLid: number): void {
   if (gameState.firstTurnId == null) {
     gameState.firstTurnId = cardHTMLid;
     return;
@@ -16,7 +21,10 @@ export function processTurn(cardHTMLid: number) {
   }
 }
 
-function processMatchingTurn() {
+/**
+ * Processes turn if pulled cards are matching.
+ */
+function processMatchingTurn(): void {
   addScorePoint(gameState.currentPlayer);
   updateGameBoardScore();
   excludeMatchedCards();
@@ -24,13 +32,20 @@ function processMatchingTurn() {
   checkGameFinished();
 }
 
-function processNonMatchingTurn() {
+/**
+ * Processes turn if pulled cards are not matching.
+ */
+function processNonMatchingTurn(): void {
   changePlayer();
   updateGameBoard();
   turnBackFlippedCards();
 }
 
-function turnBackFlippedCards() {
+/**
+ * Turns back cards after flipping in a turn.
+ *
+ */
+function turnBackFlippedCards(): void {
   if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
   let firstCardRef = document.getElementById(String(gameState.firstTurnId));
   let secondCardRef = document.getElementById(String(gameState.secondTurnId));
@@ -44,11 +59,19 @@ function turnBackFlippedCards() {
   }, 2000);
 }
 
+/**
+ * Checks whether all cards have been matched and flipped.
+ *
+ * @returns - True if all cards have been flipped; otherwise, false.
+ */
 function gameIsFinished() {
   return gameState.flippedCards >= startSettings.boardSize;
 }
 
-function checkGameFinished() {
+/**
+ * Checks if game is finished.
+ */
+function checkGameFinished(): void {
   if (gameIsFinished()) {
     determineResult();
     setTimeout(() => {
@@ -63,7 +86,10 @@ function checkGameFinished() {
   }
 }
 
-function renderFinalScore() {
+/**
+ * Renders final score to game over screen.
+ */
+function renderFinalScore(): void {
   let finalScoreBlueRef = document.getElementById("final-score-blue");
   let finalScoreOrangeRef = document.getElementById("final-score-orange");
   if (!finalScoreBlueRef || !finalScoreOrangeRef) return;
@@ -71,7 +97,10 @@ function renderFinalScore() {
   finalScoreOrangeRef.innerText = String(gameState.scoreOrange);
 }
 
-function showResultScreen() {
+/**
+ * Selects and shows result screen.
+ */
+function showResultScreen(): void {
   let winnerBlueRef = document.getElementById("winner-blue");
   let winnerOrangeRef = document.getElementById("winner-orange");
   let drawRef = document.getElementById("draw");
@@ -89,7 +118,10 @@ function showResultScreen() {
   }
 }
 
-function determineResult() {
+/**
+ * Determines the game result.
+ */
+function determineResult(): void {
   let scoreDifference = gameState.scoreBlue - gameState.scoreOrange;
   if (scoreDifference > 0) {
     gameState.gameResult = "Winner-Blue";
@@ -100,7 +132,10 @@ function determineResult() {
   }
 }
 
-function excludeMatchedCards() {
+/**
+ * Exclude matched cards from game. No flipping and points for these any more.
+ */
+function excludeMatchedCards(): void {
   if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
   let firstCardRef = document.getElementById(String(gameState.firstTurnId));
   let secondCardRef = document.getElementById(String(gameState.secondTurnId));
@@ -109,6 +144,11 @@ function excludeMatchedCards() {
   secondCardRef.style.pointerEvents = "none";
 }
 
+/**
+ * Checks whether turned card faces are matching.
+ *
+ * @returns True if card faces are matching: otherwise false.
+ */
 function turnedCardsMatch() {
   if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
   return (
@@ -117,6 +157,9 @@ function turnedCardsMatch() {
   );
 }
 
+/**
+ * Changes player whose turn it is to pull cards.
+ */
 function changePlayer(): void {
   switch (gameState.currentPlayer) {
     case "Blue":
@@ -128,6 +171,11 @@ function changePlayer(): void {
   }
 }
 
+/**
+ * Adds point to player's score.
+ *
+ * @param player - Color of player
+ */
 function addScorePoint(player: "Blue" | "Orange"): void {
   switch (player) {
     case "Blue":
@@ -139,12 +187,18 @@ function addScorePoint(player: "Blue" | "Orange"): void {
   }
 }
 
+/**
+ * Resets ids of pulled cards of a turn.
+ */
 function resetTurnIds(): void {
   gameState.firstTurnId = null;
   gameState.secondTurnId = null;
 }
 
-export function updateGameBoard() {
+/**
+ * Updates score and displayed current player marker on game header.
+ */
+export function updateGameBoard(): void {
   updateGameBoardScore();
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
@@ -154,7 +208,10 @@ export function updateGameBoard() {
   }, 2500);
 }
 
-function updateGameBoardScore() {
+/**
+ * Updates score displayed in game header.
+ */
+function updateGameBoardScore(): void {
   const scoreBlueRef = document.getElementById("score-blue");
   const scoreOrangeRef = document.getElementById("score-orange");
   if (!scoreBlueRef || !scoreOrangeRef) return;
@@ -162,6 +219,12 @@ function updateGameBoardScore() {
   scoreOrangeRef.innerHTML = String(gameState.scoreOrange);
 }
 
+/**
+ * Moves exit overlay in or outside the display.
+ *
+ * @param moveType - Move-in or Move-out operation
+ * @param event - Browser event
+ */
 export function moveExitOverlay(moveType: string, event: Event): void {
   event.stopPropagation();
   const overlayElement = document.getElementById("exit-overlay");

@@ -74,7 +74,10 @@ setStartBtn?.addEventListener("click", () => {
   initGame();
 });
 
-export function setBtnEventListeners() {
+/**
+ * Sets all event listeners for buttons in document.
+ */
+export function setBtnEventListeners(): void {
   const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
   const backToStartBtnOrange = document.getElementById(
     "back-to-start-btn-orange",
