@@ -108,16 +108,10 @@ export function renderSetPanel(option: string | number): void {
 export function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
   switch (option) {
     case "DA-projects":
-      changeImageSrc(
-        "theme-preview",
-        "public/assets/img/preview_DA_projects.svg",
-      );
+      changeImageSrc("theme-preview", "assets/img/preview_DA_projects.svg");
       break;
     default:
-      changeImageSrc(
-        "theme-preview",
-        "public/assets/img/preview_code_icons.svg",
-      );
+      changeImageSrc("theme-preview", "assets/img/preview_code_icons.svg");
       break;
   }
 }
@@ -161,10 +155,10 @@ export function getCardBgSrc() {
   let cardSrc: string;
   switch (startSettings.gameTheme) {
     case "Code-vibes":
-      cardSrc = "public/assets/img/card--back_Code-vibes.svg";
+      cardSrc = "assets/img/card--back_Code-vibes.svg";
       break;
     case "DA-projects":
-      cardSrc = "public/assets/img/card--back_DA-projects.svg";
+      cardSrc = "assets/img/card--back_DA-projects.svg";
       break;
   }
   return cardSrc;

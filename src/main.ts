@@ -104,7 +104,7 @@ function resetGameState(): void {
   gameState.scoreBlue = 0;
   gameState.scoreOrange = 0;
   gameState.currentPlayer = startSettings.startPlayer;
-  gameState.flippedCards = 12;
+  gameState.flippedCards = 0;
   gameState.firstTurnId = null;
   gameState.secondTurnId = null;
 }

@@ -34,7 +34,7 @@ export let gameState: GameState = {
   currentPlayer: "Blue",
   scoreBlue: 0,
   scoreOrange: 0,
-  flippedCards: 12,
+  flippedCards: 0,
   gameResult: "open",
   firstTurnId: null,
   secondTurnId: null,

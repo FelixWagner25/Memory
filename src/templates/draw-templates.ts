@@ -7,7 +7,7 @@ export function getDrawTemplate(gameTheme: "Code-vibes" | "DA-projects") {
         <div class="draw__headline--primary">Draw</div>
       </div>
       <img
-        src="public/assets/img/DA-projects/scale.svg"
+        src="assets/img/DA-projects/scale.svg"
         alt="equal scale"
         class="draw__img"
       />
@@ -22,7 +22,7 @@ export function getDrawTemplate(gameTheme: "Code-vibes" | "DA-projects") {
         <div class="draw__headline--primary">Draw</div>
       </div>
       <img
-        src="public/assets/img/code-vibes/scale.svg"
+        src="assets/img/code-vibes/scale.svg"
         alt="equal scale"
         class="draw__img"
       />

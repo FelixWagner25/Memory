@@ -13,7 +13,7 @@ export function getWinnerOrangeTemplate(
             </div>
           </div>
           <img
-            src="public/assets/img/DA-projects/chess_pawn_orange.svg"
+            src="assets/img/DA-projects/chess_pawn_orange.svg"
             alt="Chess pawn orange"
             class="winner-content__img"
           />
@@ -27,7 +27,7 @@ export function getWinnerOrangeTemplate(
       return `
       <div>
         <img
-          src="public/assets/img/confetti.svg"
+          src="assets/img/confetti.svg"
           alt="confetti"
           class="confetti"
         />
@@ -39,7 +39,7 @@ export function getWinnerOrangeTemplate(
             </div>
           </div>
           <img
-            src="public/assets/img/code-vibes/chess_pawn_orange.svg"
+            src="assets/img/code-vibes/chess_pawn_orange.svg"
             alt="Chess pawn orange"
             class="winner-content__img"
           />
@@ -65,7 +65,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             </div>
           </div>
           <img
-            src="public/assets/img/DA-projects/chess_pawn_blue.svg"
+            src="assets/img/DA-projects/chess_pawn_blue.svg"
             alt="Chess pawn blue"
             class="winner-content__img"
           />
@@ -79,7 +79,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
       return `
         <div>
         <img
-          src="public/assets/img/confetti.svg"
+          src="assets/img/confetti.svg"
           alt="confetti"
           class="confetti"
         />
@@ -91,7 +91,7 @@ export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
             </div>
           </div>
           <img
-            src="public/assets/img/code-vibes/chess_pawn_blue.svg"
+            src="assets/img/code-vibes/chess_pawn_blue.svg"
             alt="orange chess pawn"
             class="winner-content__img"
           />
