@@ -70,7 +70,7 @@
     }
 
     .img-blue {
-      content: url("../../../public/assets/img/leave_blue.svg");
+      content: url("../../../assets/img/leave_blue.svg");
     }
 
     &:hover {
@@ -79,7 +79,7 @@
       color: var(--exit-btn-text-hover-color);
 
       .img-blue {
-        content: url("../../../public/assets/img/leave.svg");
+        content: url("../../../assets/img/leave.svg");
       }
     }
   }
