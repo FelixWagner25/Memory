@@ -56,7 +56,7 @@ function turnBackFlippedCards(): void {
     firstCardRef?.classList.toggle("is-flipped");
     secondCardRef?.classList.toggle("is-flipped");
     gameCoreRef.style.pointerEvents = "auto";
-  }, 2000);
+  }, 1000);
 }
 
 /**
@@ -205,7 +205,7 @@ export function updateGameBoard(): void {
   setTimeout(() => {
     iconRef.classList.toggle("bg-blue");
     iconRef.classList.toggle("bg-orange");
-  }, 2500);
+  }, 1500);
 }
 
 /**
