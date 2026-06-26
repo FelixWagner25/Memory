@@ -27,9 +27,11 @@ codeVibesBtnRef?.addEventListener("click", () => {
   setGameTheme("Code-vibes");
   setListDecorators(codeVibesBtnRef);
 });
+
 codeVibesBtnRef?.addEventListener("mouseenter", () =>
   setThemePreview("Code-vibes"),
 );
+
 codeVibesBtnRef?.addEventListener("mouseout", () =>
   setThemePreview(startSettings.gameTheme),
 );
@@ -38,9 +40,11 @@ daProjectsBtnRef?.addEventListener("click", () => {
   setGameTheme("DA-projects");
   setListDecorators(daProjectsBtnRef);
 });
+
 daProjectsBtnRef?.addEventListener("mouseenter", () =>
   setThemePreview("DA-projects"),
 );
+
 daProjectsBtnRef?.addEventListener("mouseout", () =>
   setThemePreview(startSettings.gameTheme),
 );
