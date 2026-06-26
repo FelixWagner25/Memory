@@ -115,8 +115,9 @@ function resetGameState(): void {
  */
 export function initGame(): void {
   if (!allSettingsSelected()) return;
+  console.log("startSettings.boardSize", startSettings.boardSize);
   switchScreens("settings-screen", "game-screen");
-  initGameCards();
+  initGameCards(startSettings.gameTheme, startSettings.boardSize);
   renderGameHeader(startSettings.gameTheme);
   initGameHeaderDecorators(gameState.currentPlayer);
   renderCards();
@@ -197,25 +198,26 @@ function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects"): void {
 /**
  * Initializes game cards.
  */
-export function initGameCards(): void {
+export function initGameCards(
+  gameTheme: "Code-vibes" | "DA-projects",
+  boardSize: 16 | 24 | 36,
+): void {
   let randomIndex: number;
   let cardSrc: string;
-  let srcPaths = getCardSrcsPathSet();
-
-  for (let i = 0; i < startSettings.boardSize / 2; i++) {
-    randomIndex = Math.round(
-      (startSettings.boardSize / 2 - i - 1) * Math.random(),
-    );
+  let srcPaths = getCardSrcsPathSet(gameTheme, boardSize);
+  console.log("srcPaths", srcPaths);
+  console.log("initGameCards()", boardSize);
+  for (let i = 0; i < boardSize / 2; i++) {
+    randomIndex = Math.round((boardSize / 2 - i - 1) * Math.random());
     cardSrc = srcPaths.splice(randomIndex, 1)[0];
-    let card = createNewCard(i, cardSrc, i + startSettings.boardSize / 2);
-    let partnerCard = createNewCard(
-      i + startSettings.boardSize / 2,
-      cardSrc,
-      i,
-    );
+    console.log(randomIndex, cardSrc);
+    let card = createNewCard(i, cardSrc, i + boardSize / 2);
+    let partnerCard = createNewCard(i + boardSize / 2, cardSrc, i);
     gameCards.push(card, partnerCard);
   }
+  console.log(gameCards);
   shuffleArray(gameCards);
+  console.log(gameCards);
 }
 
 /**
@@ -259,17 +261,24 @@ function createNewCard(id: number, src: string, partnerId: number) {
  *
  * @returns - Card source path set
  */
-function getCardSrcsPathSet() {
-  let srcPaths: string[];
-  switch (startSettings.gameTheme) {
+function getCardSrcsPathSet(
+  gameTheme: "Code-vibes" | "DA-projects",
+  boardSize: 16 | 24 | 36,
+) {
+  let srcPaths: string[] = [];
+  switch (gameTheme) {
     case "Code-vibes":
-      srcPaths = constants.codeVibesSrc;
-      break;
+      for (let i = 0; i < boardSize; i++) {
+        srcPaths.push(constants.codeVibesSrc[i]);
+      }
+      return srcPaths;
     case "DA-projects":
-      srcPaths = constants.DAProjectsSrc;
-      break;
+      for (let i = 0; i < boardSize; i++) {
+        srcPaths.push(constants.DAProjectsSrc[i]);
+      }
+      return srcPaths;
   }
-  return srcPaths;
+  console.log("getCardSrcPathSet", srcPaths);
 }
 
 /**

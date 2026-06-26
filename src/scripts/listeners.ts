@@ -120,6 +120,4 @@ export function setBtnEventListeners(): void {
   backToGameBtnRef?.addEventListener("click", (event) => {
     moveExitOverlay("move-out", event);
   });
-
-  startSettings.initBtnListeners = true;
 }
