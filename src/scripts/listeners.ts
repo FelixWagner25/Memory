@@ -76,6 +76,7 @@ setStartBtn?.addEventListener("click", () => {
 
 /**
  * Sets all event listeners for buttons in document.
+ *
  */
 export function setBtnEventListeners(): void {
   const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");

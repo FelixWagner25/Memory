@@ -197,6 +197,7 @@ function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects"): void {
 
 /**
  * Initializes game cards.
+ *
  */
 export function initGameCards(
   gameTheme: "Code-vibes" | "DA-projects",
@@ -302,6 +303,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 /**
  * Renders cards.
+ *
  */
 export function renderCards(): void {
   const gameCoreRef = document.getElementById("game-core");
@@ -314,6 +316,7 @@ export function renderCards(): void {
 
 /**
  * Sets card event listeners.
+ *
  */
 export function setCardEventListener(): void {
   const gameCoreRef = document.getElementById("game-core");
@@ -326,6 +329,7 @@ export function setCardEventListener(): void {
 
 /**
  * Performs actions of user clicks card.
+ *
  * @param event - Browser event
  */
 export function userClicksCard(event: Event) {
@@ -358,6 +362,7 @@ export function renderCardGrid(boardSize: number): void {
 
 /**
  * Removes previous grid settings.
+ *
  */
 export function removeAnyGridSetting(): void {
   const gameCoreRef = document.getElementById("game-core");

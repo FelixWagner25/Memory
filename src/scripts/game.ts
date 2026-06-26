@@ -23,6 +23,7 @@ export function processTurn(cardHTMLid: number): void {
 
 /**
  * Processes turn if pulled cards are matching.
+ *
  */
 function processMatchingTurn(): void {
   addScorePoint(gameState.currentPlayer);
@@ -34,6 +35,7 @@ function processMatchingTurn(): void {
 
 /**
  * Processes turn if pulled cards are not matching.
+ *
  */
 function processNonMatchingTurn(): void {
   changePlayer();
@@ -70,6 +72,7 @@ function gameIsFinished() {
 
 /**
  * Checks if game is finished.
+ *
  */
 function checkGameFinished(): void {
   if (gameIsFinished()) {
@@ -88,6 +91,7 @@ function checkGameFinished(): void {
 
 /**
  * Renders final score to game over screen.
+ *
  */
 function renderFinalScore(): void {
   let finalScoreBlueRef = document.getElementById("final-score-blue");
@@ -98,7 +102,8 @@ function renderFinalScore(): void {
 }
 
 /**
- * Selects and shows result screen.
+ *  Selects and shows result screen.
+ *
  */
 function showResultScreen(): void {
   let winnerBlueRef = document.getElementById("winner-blue");
@@ -120,6 +125,7 @@ function showResultScreen(): void {
 
 /**
  * Determines the game result.
+ *
  */
 function determineResult(): void {
   let scoreDifference = gameState.scoreBlue - gameState.scoreOrange;
@@ -134,6 +140,7 @@ function determineResult(): void {
 
 /**
  * Exclude matched cards from game. No flipping and points for these any more.
+ *
  */
 function excludeMatchedCards(): void {
   if (gameState.firstTurnId == null || gameState.secondTurnId == null) return;
@@ -159,6 +166,7 @@ function turnedCardsMatch() {
 
 /**
  * Changes player whose turn it is to pull cards.
+ *
  */
 function changePlayer(): void {
   switch (gameState.currentPlayer) {
@@ -189,6 +197,7 @@ function addScorePoint(player: "Blue" | "Orange"): void {
 
 /**
  * Resets ids of pulled cards of a turn.
+ *
  */
 function resetTurnIds(): void {
   gameState.firstTurnId = null;
@@ -197,6 +206,7 @@ function resetTurnIds(): void {
 
 /**
  * Updates score and displayed current player marker on game header.
+ *
  */
 export function updateGameBoard(): void {
   updateGameBoardScore();
@@ -210,6 +220,7 @@ export function updateGameBoard(): void {
 
 /**
  * Updates score displayed in game header.
+ *
  */
 function updateGameBoardScore(): void {
   const scoreBlueRef = document.getElementById("score-blue");

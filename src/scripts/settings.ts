@@ -72,6 +72,7 @@ export function allSettingsSelected() {
 
 /**
  * Enables start button.
+ *
  */
 export function enableStartBtn(): void {
   document.getElementById("set-start-btn")?.classList.remove("disabled");
