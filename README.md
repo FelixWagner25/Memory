@@ -24,7 +24,7 @@ Install Vite on your local device.
 Clone this repository:
 
 ```bash
-git clone https://github.com/FelixWagner25/ElPolloLoco.git
+git clone https://github.com/FelixWagner25/Memory.git
 ```
 
 Run app in development mode:
