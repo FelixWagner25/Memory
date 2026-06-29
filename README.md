@@ -13,6 +13,38 @@ The project was developed as part of the Developer Akademie Frontend Course.
 - SCSS - Styling and layout
 - HTML - Structure
 
+## Developement Tools
+
+- Vite
+
+## Local Intallation
+
+Install Vite on your local device.
+
+Clone this repository:
+
+```bash
+git clone https://github.com/FelixWagner25/ElPolloLoco.git
+```
+
+Run app in developement mode:
+
+```bash
+npm run dev
+```
+
+Or deploy app via vite:
+
+```bash
+mdkir Memory
+```
+
+```bash
+npm run build
+```
+
+open `index.html` in your browser
+
 ## License
 
 This project is intended for educational purposes only. You are welcome to view and explore the code but redistribution or commerical use is not permitted.
