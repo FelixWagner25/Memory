@@ -1,4 +1,4 @@
-import { gameState, gameCards, startSettings } from "./shared";
+import { gameState, gameCards, startSettings, PlayerColor } from "./shared";
 import { closeScreen, showScreen } from "../main";
 
 /**
@@ -184,7 +184,7 @@ function changePlayer(): void {
  *
  * @param player - Color of player
  */
-function addScorePoint(player: "Blue" | "Orange"): void {
+function addScorePoint(player: PlayerColor): void {
   switch (player) {
     case "Blue":
       gameState.scoreBlue += 1;

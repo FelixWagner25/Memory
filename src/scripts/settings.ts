@@ -1,5 +1,11 @@
 import * as main from "../main";
-import { startSettings, gameState } from "./shared";
+import {
+  startSettings,
+  gameState,
+  GameTheme,
+  PlayerColor,
+  BoardSize,
+} from "./shared";
 
 export let themeSelected: boolean = false;
 export let playerSelected: boolean = false;
@@ -10,7 +16,7 @@ export let boardSelected: boolean = false;
  *
  * @param option - Game theme
  */
-export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
+export function setGameTheme(option: GameTheme): void {
   startSettings.gameTheme = option;
   renderSetPanel(option);
   setThemePreview(option);
@@ -24,7 +30,7 @@ export function setGameTheme(option: "Code-vibes" | "DA-projects"): void {
  *
  * @param option - Game theme
  */
-function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
+function setStyleDataTheme(option: GameTheme): void {
   document.documentElement.removeAttribute("data-theme");
   switch (option) {
     case "Code-vibes":
@@ -41,7 +47,7 @@ function setStyleDataTheme(option: "Code-vibes" | "DA-projects"): void {
  *
  * @param option - Game theme
  */
-export function setStartPlayer(option: "Blue" | "Orange"): void {
+export function setStartPlayer(option: PlayerColor): void {
   startSettings.startPlayer = option;
   gameState.currentPlayer = option;
   renderSetPanel(option);
@@ -54,7 +60,7 @@ export function setStartPlayer(option: "Blue" | "Orange"): void {
  *
  * @param option - Game theme
  */
-export function setBoardSize(option: 16 | 24 | 36): void {
+export function setBoardSize(option: BoardSize): void {
   startSettings.boardSize = option;
   renderSetPanel(option);
   boardSelected = true;
@@ -106,7 +112,7 @@ export function renderSetPanel(option: string | number): void {
  *
  * @param option - Game theme
  */
-export function setThemePreview(option: "Code-vibes" | "DA-projects"): void {
+export function setThemePreview(option: GameTheme): void {
   switch (option) {
     case "DA-projects":
       changeImageSrc("theme-preview", "assets/img/preview_DA_projects.svg");

@@ -1,4 +1,6 @@
-export function getGameHeaderTemplate(gameTheme: "Code-vibes" | "DA-projects") {
+import { GameTheme } from "../scripts/shared";
+
+export function getGameHeaderTemplate(gameTheme: GameTheme) {
   switch (gameTheme) {
     case "DA-projects":
       return `

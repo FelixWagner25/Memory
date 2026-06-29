@@ -1,4 +1,6 @@
-export function getDrawTemplate(gameTheme: "Code-vibes" | "DA-projects") {
+import { GameTheme } from "../scripts/shared";
+
+export function getDrawTemplate(gameTheme: GameTheme) {
   switch (gameTheme) {
     case "DA-projects":
       return `

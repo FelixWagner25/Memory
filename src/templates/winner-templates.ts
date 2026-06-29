@@ -1,6 +1,6 @@
-export function getWinnerOrangeTemplate(
-  gameTheme: "Code-vibes" | "DA-projects",
-) {
+import { GameTheme } from "../scripts/shared";
+
+export function getWinnerOrangeTemplate(gameTheme: GameTheme) {
   switch (gameTheme) {
     case "DA-projects":
       return `
@@ -52,7 +52,7 @@ export function getWinnerOrangeTemplate(
   }
 }
 
-export function getWinnerBlueTemplate(gameTheme: "Code-vibes" | "DA-projects") {
+export function getWinnerBlueTemplate(gameTheme: GameTheme) {
   switch (gameTheme) {
     case "DA-projects":
       return `

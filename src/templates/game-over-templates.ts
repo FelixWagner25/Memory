@@ -1,4 +1,6 @@
-export function getGameOverTemplate(gameTheme: "Code-vibes" | "DA-projects") {
+import { GameTheme } from "../scripts/shared";
+
+export function getGameOverTemplate(gameTheme: GameTheme) {
   switch (gameTheme) {
     case "DA-projects":
       return `

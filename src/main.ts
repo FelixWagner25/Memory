@@ -7,6 +7,9 @@ import {
   gameCards,
   GameCard,
   clearGameCardsArray,
+  GameTheme,
+  PlayerColor,
+  BoardSize,
 } from "./scripts/shared";
 import { allSettingsSelected } from "./scripts/settings";
 import { getCardTemplate } from "./templates/card-templates";
@@ -115,7 +118,6 @@ function resetGameState(): void {
  */
 export function initGame(): void {
   if (!allSettingsSelected()) return;
-  console.log("startSettings.boardSize", startSettings.boardSize);
   switchScreens("settings-screen", "game-screen");
   initGameCards(startSettings.gameTheme, startSettings.boardSize);
   renderGameHeader(startSettings.gameTheme);
@@ -134,7 +136,7 @@ export function initGame(): void {
  *
  * @param gameTheme - Game theme
  */
-function initEndScreens(gameTheme: "Code-vibes" | "DA-projects"): void {
+function initEndScreens(gameTheme: GameTheme): void {
   initWinnerOrangeScreen(gameTheme);
   initWinnerBlueScreen(gameTheme);
   initDrawScreen(gameTheme);
@@ -145,7 +147,7 @@ function initEndScreens(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  * @param gameTheme - Game theme
  */
-function initWinnerOrangeScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
+function initWinnerOrangeScreen(gameTheme: GameTheme): void {
   const winnerOrangeRef = document.getElementById("winner-orange");
   if (!winnerOrangeRef) return;
   winnerOrangeRef.innerHTML = getWinnerOrangeTemplate(gameTheme);
@@ -156,7 +158,7 @@ function initWinnerOrangeScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  * @param gameTheme - Game theme
  */
-function initWinnerBlueScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
+function initWinnerBlueScreen(gameTheme: GameTheme): void {
   const winnerBlueRef = document.getElementById("winner-blue");
   if (!winnerBlueRef) return;
   winnerBlueRef.innerHTML = getWinnerBlueTemplate(gameTheme);
@@ -167,7 +169,7 @@ function initWinnerBlueScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  * @param gameTheme - Game theme
  */
-function initDrawScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
+function initDrawScreen(gameTheme: GameTheme): void {
   const drawRef = document.getElementById("draw");
   if (!drawRef) return;
   drawRef.innerHTML = getDrawTemplate(gameTheme);
@@ -178,7 +180,7 @@ function initDrawScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  * @param gameTheme - Game theme
  */
-function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
+function initGameOverScreen(gameTheme: GameTheme): void {
   const gameOverRef = document.getElementById("game-over-screen");
   if (!gameOverRef) return;
   gameOverRef.innerHTML = getGameOverTemplate(gameTheme);
@@ -189,7 +191,7 @@ function initGameOverScreen(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  * @param gameTheme - Game theme
  */
-function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects"): void {
+function renderGameHeader(gameTheme: GameTheme): void {
   const gameHeaderRef = document.getElementById("game-header");
   if (!gameHeaderRef) return;
   gameHeaderRef.innerHTML = getGameHeaderTemplate(gameTheme);
@@ -200,25 +202,20 @@ function renderGameHeader(gameTheme: "Code-vibes" | "DA-projects"): void {
  *
  */
 export function initGameCards(
-  gameTheme: "Code-vibes" | "DA-projects",
-  boardSize: 16 | 24 | 36,
+  gameTheme: GameTheme,
+  boardSize: BoardSize,
 ): void {
   let randomIndex: number;
   let cardSrc: string;
   let srcPaths = getCardSrcsPathSet(gameTheme, boardSize);
-  console.log("srcPaths", srcPaths);
-  console.log("initGameCards()", boardSize);
   for (let i = 0; i < boardSize / 2; i++) {
     randomIndex = Math.round((boardSize / 2 - i - 1) * Math.random());
     cardSrc = srcPaths.splice(randomIndex, 1)[0];
-    console.log(randomIndex, cardSrc);
     let card = createNewCard(i, cardSrc, i + boardSize / 2);
     let partnerCard = createNewCard(i + boardSize / 2, cardSrc, i);
     gameCards.push(card, partnerCard);
   }
-  console.log(gameCards);
   shuffleArray(gameCards);
-  console.log(gameCards);
 }
 
 /**
@@ -226,7 +223,7 @@ export function initGameCards(
  *
  * @param currentPlayer - Current player
  */
-function initGameHeaderDecorators(currentPlayer: "Blue" | "Orange"): void {
+function initGameHeaderDecorators(currentPlayer: PlayerColor): void {
   const iconRef = document.getElementById("current-player-icon");
   if (!iconRef) return;
   iconRef.classList.remove("bg-blue");
@@ -262,10 +259,7 @@ function createNewCard(id: number, src: string, partnerId: number) {
  *
  * @returns - Card source path set
  */
-function getCardSrcsPathSet(
-  gameTheme: "Code-vibes" | "DA-projects",
-  boardSize: 16 | 24 | 36,
-) {
+function getCardSrcsPathSet(gameTheme: GameTheme, boardSize: BoardSize) {
   let srcPaths: string[] = [];
   switch (gameTheme) {
     case "Code-vibes":
@@ -279,7 +273,6 @@ function getCardSrcsPathSet(
       }
       return srcPaths;
   }
-  console.log("getCardSrcPathSet", srcPaths);
 }
 
 /**

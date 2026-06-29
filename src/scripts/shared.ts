@@ -1,12 +1,16 @@
+export type GameTheme = "Code-vibes" | "DA-projects";
+export type PlayerColor = "Blue" | "Orange";
+export type BoardSize = 16 | 24 | 36;
+
 interface Settings {
-  gameTheme: "Code-vibes" | "DA-projects";
-  startPlayer: "Blue" | "Orange";
-  boardSize: 16 | 24 | 36;
+  gameTheme: GameTheme;
+  startPlayer: PlayerColor;
+  boardSize: BoardSize;
   initCardListeners: boolean;
 }
 
 interface GameState {
-  currentPlayer: "Blue" | "Orange";
+  currentPlayer: PlayerColor;
   scoreBlue: number;
   scoreOrange: number;
   flippedCards: number;
