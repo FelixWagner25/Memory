@@ -2,7 +2,7 @@ import { gameState, gameCards, startSettings, PlayerColor } from "./shared";
 import { closeScreen, showScreen } from "../main";
 
 /**
- * Processes a card turn
+ * Processes a card turn.
  *
  * @param cardHTMLid - Id of card element
  */
