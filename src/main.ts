@@ -176,7 +176,7 @@ function initDrawScreen(gameTheme: GameTheme): void {
 }
 
 /**
- * Initializes game over screen
+ * Initializes game over screen.
  *
  * @param gameTheme - Game theme
  */
