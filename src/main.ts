@@ -205,12 +205,10 @@ export function initGameCards(
   gameTheme: GameTheme,
   boardSize: BoardSize,
 ): void {
-  let randomIndex: number;
-  let cardSrc: string;
   let srcPaths = getCardSrcsPathSet(gameTheme, boardSize);
   for (let i = 0; i < boardSize / 2; i++) {
-    randomIndex = Math.round((boardSize / 2 - i - 1) * Math.random());
-    cardSrc = srcPaths.splice(randomIndex, 1)[0];
+    let randomIndex = Math.round((boardSize / 2 - i - 1) * Math.random());
+    let cardSrc = srcPaths.splice(randomIndex, 1)[0];
     let card = createNewCard(i, cardSrc, i + boardSize / 2);
     let partnerCard = createNewCard(i + boardSize / 2, cardSrc, i);
     gameCards.push(card, partnerCard);

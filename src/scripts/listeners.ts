@@ -83,20 +83,21 @@ setStartBtn?.addEventListener("click", () => {
  *
  */
 export function setBtnEventListeners(): void {
-  const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
+  setExitBtnListeners();
+  setExitOverlayBtnListeners();
+  setBackToStartWinnerListeners();
+  setBackToStartDrawListener();
+}
+
+/**
+ * Sets event listeners for back to start buttons on winner endscreens.
+ *
+ */
+function setBackToStartWinnerListeners(): void {
   const backToStartBtnOrange = document.getElementById(
     "back-to-start-btn-orange",
   );
   const backToStartBtnBlue = document.getElementById("back-to-start-btn-blue");
-  const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
-  const exitBtnRef = document.getElementById("exit-btn");
-  const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
-  const backToGameBtnRef = document.getElementById("back-to-game-btn");
-
-  backToStartBtnDraw?.addEventListener("click", () => {
-    switchScreens("draw", "settings-screen");
-    clearCurrentGame();
-  });
 
   backToStartBtnOrange?.addEventListener("click", () => {
     switchScreens("winner-orange", "settings-screen");
@@ -107,19 +108,48 @@ export function setBtnEventListeners(): void {
     switchScreens("winner-blue", "settings-screen");
     clearCurrentGame();
   });
+}
 
-  confirmExitGameBtn?.addEventListener("click", (event) => {
-    switchScreens("game-screen", "settings-screen");
-    moveExitOverlay("move-out", event);
+/**
+ * Sets event listeners for back to start buttons on draw endscreen.
+ *
+ */
+function setBackToStartDrawListener(): void {
+  const backToStartBtnDraw = document.getElementById("back-to-start-btn-draw");
+  backToStartBtnDraw?.addEventListener("click", () => {
+    switchScreens("draw", "settings-screen");
     clearCurrentGame();
   });
+}
 
+/**
+ * Sets event listeners for exit button press on game screen.
+ *
+ */
+function setExitBtnListeners(): void {
+  const exitBtnRef = document.getElementById("exit-btn");
+  const exitOverlayBgBlurRef = document.getElementById("exit-overlay-bg-blur");
   exitBtnRef?.addEventListener("click", (event) => {
     moveExitOverlay("move-in", event);
   });
 
   exitOverlayBgBlurRef?.addEventListener("click", (event) => {
     moveExitOverlay("move-out", event);
+  });
+}
+
+/**
+ * Sets event listeners for buttons on exit overlay on game screen.
+ *
+ */
+function setExitOverlayBtnListeners(): void {
+  const confirmExitGameBtn = document.getElementById("confirm-exit-game-btn");
+  const backToGameBtnRef = document.getElementById("back-to-game-btn");
+
+  confirmExitGameBtn?.addEventListener("click", (event) => {
+    switchScreens("game-screen", "settings-screen");
+    moveExitOverlay("move-out", event);
+    clearCurrentGame();
   });
 
   backToGameBtnRef?.addEventListener("click", (event) => {
