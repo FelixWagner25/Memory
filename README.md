@@ -1,23 +1,23 @@
 # Memory
 
-Memory is a browser-based version of the classical memory card game. The players can choose between two different game themes and three different board sizes. <br>
+Memory is a browser-based version of the classic memory card game. Players can choose between two different game themes and three different board sizes. <br>
 The project was developed as part of the Developer Akademie Frontend Course.
 
 ## Content
 
-- Browser based version of classical memory card game for two players.
+- Browser based version of classic memory card game for two players.
 
 ## Tech Stack
 
-- Typescript - Game logic
+- TypeScript - Game logic
 - SCSS - Styling and layout
 - HTML - Structure
 
-## Developement Tools
+## Development Tools
 
 - Vite
 
-## Local Intallation
+## Local Installation
 
 Install Vite on your local device.
 
@@ -27,16 +27,16 @@ Clone this repository:
 git clone https://github.com/FelixWagner25/ElPolloLoco.git
 ```
 
-Run app in developement mode:
+Run app in development mode:
 
 ```bash
 npm run dev
 ```
 
-Or deploy app via vite:
+Or build app via vite:
 
 ```bash
-mdkir Memory
+mkdir Memory
 ```
 
 ```bash
@@ -47,6 +47,6 @@ open `index.html` in your browser
 
 ## License
 
-This project is intended for educational purposes only. You are welcome to view and explore the code but redistribution or commerical use is not permitted.
+This project is intended for educational purposes only. You are welcome to view and explore the code but redistribution or commercial use is not permitted.
 
 &copy; 2026 Felix Wagner
