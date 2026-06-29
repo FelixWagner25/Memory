@@ -152,21 +152,3 @@ export function setListDecorators(element: HTMLElement): void {
     el.classList.add("set");
   });
 }
-
-/**
- * Returns card background source path depending on game theme.
- *
- * @returns - source path of card
- */
-export function getCardBgSrc() {
-  let cardSrc: string;
-  switch (startSettings.gameTheme) {
-    case "Code-vibes":
-      cardSrc = "assets/img/card--back_Code-vibes.svg";
-      break;
-    case "DA-projects":
-      cardSrc = "assets/img/card--back_DA-projects.svg";
-      break;
-  }
-  return cardSrc;
-}

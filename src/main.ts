@@ -122,7 +122,7 @@ export function initGame(): void {
   initGameCards(startSettings.gameTheme, startSettings.boardSize);
   renderGameHeader(startSettings.gameTheme);
   initGameHeaderDecorators(gameState.currentPlayer);
-  renderCards();
+  renderCards(startSettings.gameTheme);
   initGameOverScreen(startSettings.gameTheme);
   initEndScreens(startSettings.gameTheme);
   setTimeout(() => {
@@ -296,12 +296,12 @@ function shuffleArray<T>(array: T[]): T[] {
  * Renders cards.
  *
  */
-export function renderCards(): void {
+export function renderCards(gameTheme: GameTheme): void {
   const gameCoreRef = document.getElementById("game-core");
   if (!gameCoreRef) return;
   renderCardGrid(startSettings.boardSize);
   for (let i = 0; i < startSettings.boardSize; i++) {
-    gameCoreRef.innerHTML += getCardTemplate(i);
+    gameCoreRef.innerHTML += getCardTemplate(gameTheme, i);
   }
 }
 
