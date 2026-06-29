@@ -110,7 +110,16 @@ function showResultScreen(): void {
   let winnerOrangeRef = document.getElementById("winner-orange");
   let drawRef = document.getElementById("draw");
   if (!winnerBlueRef || !winnerOrangeRef || !drawRef) return;
-  switch (gameState.gameResult) {
+  selectResultScreen(gameState.gameResult);
+}
+
+/**
+ * Determines endscreen to show.
+ *
+ * @param gameResult - game result status
+ */
+function selectResultScreen(gameResult: string) {
+  switch (gameResult) {
     case "Winner-Blue":
       showScreen("winner-blue");
       break;
