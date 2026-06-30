@@ -175,11 +175,10 @@ h2 {
   position: absolute;
   left: 0;
   top: 50%;
-  translate: -100% -50%;
   width: 14px;
   height: 14px;
   background-color: #f0ea6e;
-  transform: rotate(45deg);
+  transform: translate(-100%, -50%) rotate(45deg);
 }
 
 .h1-wrap {
@@ -199,11 +198,10 @@ h2 {
   position: absolute;
   right: 0;
   top: 50%;
-  translate: 0 -50%;
   width: 8px;
   height: 8px;
   background-color: #f0ea6e;
-  transform: rotate(45deg);
+  transform: translate(0, -50%) rotate(45deg);
 }
 
 .set-deco.set {
